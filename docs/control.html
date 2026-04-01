@@ -118,6 +118,11 @@ function stopShow() {
   timers = [];
 }
 
+
+  function stopFlash() {
+  socket.emit("stopFlash");
+}
+  
 /* カラーピッカー */
 document.getElementById("colorPicker").addEventListener("input", (e) => {
   setColor(e.target.value);
