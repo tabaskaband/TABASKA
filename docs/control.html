@@ -4,12 +4,28 @@
 <meta charset="UTF-8">
 <title>Control</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+
+<style>
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+</style>
 </head>
 
 <body>
 
-<h1>Light Control</h1>
+<h1>🎛 Light Control</h1>
 
 <input type="color" id="colorPicker">
 
@@ -19,99 +35,84 @@
   <button onclick="setColor('#0000ff')">青</button>
   <button onclick="setColor('#ffffff')">白</button>
   <button onclick="setColor('#000000')">黒</button>
-  <button onclick="startShow()">演出スタート</button>
-<button onclick="stopShow()">ストップ</button>
 </div>
 
 <div class="buttons">
-  <button onclick="flash()">フラッシュ</button>
+  <button onclick="startShow()">▶ 演出スタート</button>
+  <button onclick="stopShow()">■ ストップ</button>
 </div>
 
-<script src="/socket.io/socket.io.js"></script>
+<div class="buttons">
+  <button onclick="flash()">⚡ フラッシュ</button>
+</div>
+
+<!-- Socket.IO CDN（重要） -->
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
 <script>
 const socket = io("https://tabaska-server.onrender.com");
 
+// 接続確認
+socket.on("connect", () => {
+  console.log("connected:", socket.id);
+});
+
+// 色送信
 function setColor(color) {
   socket.emit("changeColor", color);
 }
 
+// フラッシュ
 function flash() {
   socket.emit("flash");
 }
 
+/* =========================
+   🎬 自動演出
+========================= */
 
-
-
-
-
-
-
-// 🎬 自動演出
-
-
-
-  const scenes = [
-  
-    { time: 5000, action: () => setColor("#0000ff") }, // 青
-    { time: 10000, action: () => setColor("#00ff00") }, // 緑
-    { time: 15000, action: () => setColor("#ffff00") },   // 黄
-    { time: 20000, action: () => setColor("#ffa500") }, // オレンジ
-    { time: 25000, action: () => setColor("#ff0000") },   // 赤
-    { time: 30000, action: () => setColor("#9400d3") },   // 紫
-
-
-
-
+const scenes = [
+  { time: 0, action: () => setColor("#ff0000") },
+  { time: 5000, action: () => setColor("#0000ff") },
+  { time: 10000, action: () => setColor("#00ff00") },
+  { time: 15000, action: () => setColor("#ffff00") },
+  { time: 20000, action: () => setColor("#ffa500") },
+  { time: 25000, action: () => setColor("#9400d3") }
 ];
-
-
-
 
 let timers = [];
 let isRunning = false;
 
-// ▶️ 開始（ループ）
 function startShow() {
   if (isRunning) return;
   isRunning = true;
-
   runScenes();
 }
 
-// シーン実行
 function runScenes() {
   scenes.forEach(scene => {
-    const timer = setTimeout(() => {
+    const t = setTimeout(() => {
       if (isRunning) scene.action();
     }, scene.time);
-
-    timers.push(timer);
+    timers.push(t);
   });
 
-  // 最後まで行ったらループ
-  const totalTime = scenes[scenes.length - 1].time;
+  const loopTime = scenes[scenes.length - 1].time + 5000;
 
-  const loopTimer = setTimeout(() => {
+  const loop = setTimeout(() => {
     if (isRunning) runScenes();
-  }, totalTime);
+  }, loopTime);
 
-  timers.push(loopTimer);
+  timers.push(loop);
 }
 
-// ⏹ 停止
 function stopShow() {
   isRunning = false;
-
-  timers.forEach(timer => clearTimeout(timer));
+  timers.forEach(t => clearTimeout(t));
   timers = [];
-
-  console.log("演出停止");
 }
 
-
-
-
-
+/* カラーピッカー */
 document.getElementById("colorPicker").addEventListener("input", (e) => {
   setColor(e.target.value);
 });
