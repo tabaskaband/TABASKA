@@ -4,54 +4,41 @@
 <meta charset="UTF-8">
 <title>Light</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  transition: background 0.8s ease;
+  background: black;
+}
+</style>
 </head>
 
-<body id="screen">
+<body>
 
-<div id="info">TAP TO FULLSCREEN</div>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 
-<script src="/socket.io/socket.io.js"></script>
 <script>
 const socket = io("https://tabaska-server.onrender.com");
-const screen = document.getElementById("screen");
-const info = document.getElementById("info");
 
-let currentColor = "#000"; // 現在の色を記憶
-
-// 色変更
-socket.on("colorUpdate", (color) => {
-  currentColor = color;
-  screen.style.backgroundColor = color;
+// 接続確認
+socket.on("connect", () => {
+  console.log("light connected:", socket.id);
 });
 
+// 色変更受信
+socket.on("colorUpdate", (color) => {
+  document.body.style.background = color;
+});
+
+// フラッシュ
 socket.on("flash", () => {
-  let count = 0;
+  document.body.style.background = "#ffffff";
 
-  const interval = setInterval(
-
-() => {
-    screen.style.backgroundColor = (count % 2 === 0) ? "#ffffff" : currentColor;
-    count++;
-
-    if (count > 50 
-
-) clearInterval(interval);
-
-  }, 800);
-}
-
-);
-
-
-
-
-// フルスクリーン
-document.body.addEventListener("click", () => {
-  if (document.documentElement.requestFullscreen) {
-    document.documentElement.requestFullscreen();
-  }
-  info.style.display = "none";
+  setTimeout(() => {
+    document.body.style.background = "#000000";
+  }, 100);
 });
 </script>
 
