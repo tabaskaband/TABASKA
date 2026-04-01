@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Light</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body id="screen">
+
+<div id="info">TAP TO FULLSCREEN</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const socket = io();
+const screen = document.getElementById("screen");
+const info = document.getElementById("info");
+
+let currentColor = "#000"; // 現在の色を記憶
+
+// 色変更
+socket.on("colorUpdate", (color) => {
+  currentColor = color;
+  screen.style.backgroundColor = color;
+});
+
+socket.on("flash", () => {
+  let count = 0;
+
+  const interval = setInterval(
+
+() => {
+    screen.style.backgroundColor = (count % 2 === 0) ? "#ffffff" : currentColor;
+    count++;
+
+    if (count > 50 
+
+) clearInterval(interval);
+
+  }, 800);
+}
+
+);
+
+
+
+
+// フルスクリーン
+document.body.addEventListener("click", () => {
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  }
+  info.style.display = "none";
+});
+</script>
+
+</body>
+</html>
