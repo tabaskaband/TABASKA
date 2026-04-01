@@ -22,7 +22,7 @@ body {
 <script>
 const socket = io("https://tabaska.onrender.com");
 
-// フラッシュ中フラグ
+// フラッシュ状態管理
 let flashing = false;
 
 // 接続確認
@@ -30,25 +30,32 @@ socket.on("connect", () => {
   console.log("light connected:", socket.id);
 });
 
-// 🎨 通常の色変更（フラッシュ中は無効）
+// 🎨 通常の色変更（フラッシュ中は無視）
 socket.on("colorUpdate", (color) => {
   if (flashing) return;
   document.body.style.background = color;
 });
 
-// ⚡ フラッシュ
+// ⚡ フラッシュ開始
 socket.on("flash", () => {
   flashing = true;
 
-  // 強制白
   document.body.style.background = "#ffffff";
 
-  // すぐ戻す（見えるように少し長め）
   setTimeout(() => {
-    document.body.style.background = "#000000";
-    flashing = false;
+    if (flashing) {
+      document.body.style.background = "#000000";
+      flashing = false;
+    }
   }, 150);
 });
+
+// 🛑 フラッシュ停止
+socket.on("stopFlash", () => {
+  flashing = false;
+  document.body.style.background = "#000000";
+});
+
 </script>
 
 </body>
