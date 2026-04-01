@@ -52,6 +52,10 @@ button {
 <script>
 const socket = io("https://tabaska.onrender.com");
 
+function setColor(color) {
+  socket.emit("changeColor", color);
+}
+  
 // 接続確認
 socket.on("connect", () => {
   console.log("connected:", socket.id);
