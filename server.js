@@ -31,6 +31,15 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("切断:", socket.id);
   });
+
+  socket.on("flash", () => {
+  io.emit("flash");
+});
+
+socket.on("stopFlash", () => {
+  io.emit("stopFlash");
+});
+
 });
 
 // Render用PORT（安定版）
