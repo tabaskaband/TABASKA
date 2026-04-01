@@ -19,10 +19,12 @@ io.on("connection", (socket) => {
   console.log("接続:", socket.id);
 
   socket.on("changeColor", (color) => {
+    console.log("color:", color); // ←デバッグ用（重要）
     io.emit("colorUpdate", color);
   });
 
   socket.on("flash", () => {
+    console.log("flash");
     io.emit("flash");
   });
 
@@ -31,8 +33,8 @@ io.on("connection", (socket) => {
   });
 });
 
-// Render用PORT（ここ重要）
-const PORT = process.env.PORT || 10000;
+// Render用PORT（安定版）
+const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
   console.log("Server running on port", PORT);
