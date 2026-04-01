@@ -7,20 +7,21 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*", // GitHub Pagesから接続OKにする
+    origin: "*",
     methods: ["GET", "POST"]
   }
 });
 
+// 静的ファイル（必要なら）
+app.use(express.static("public"));
+
 io.on("connection", (socket) => {
   console.log("接続:", socket.id);
 
-  // 色変更
   socket.on("changeColor", (color) => {
     io.emit("colorUpdate", color);
   });
 
-  // フラッシュ
   socket.on("flash", () => {
     io.emit("flash");
   });
@@ -30,8 +31,9 @@ io.on("connection", (socket) => {
   });
 });
 
-// Render用（重要）
+// Render用PORT（ここ重要）
 const PORT = process.env.PORT || 10000;
+
 server.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
