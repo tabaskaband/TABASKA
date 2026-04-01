@@ -58,8 +58,8 @@ socket.on("connect", () => {
 });
 
 // 色送信
-function setColor(color) {
-  socket.emit("changeColor", color);
+function sendColor() {
+  socket.emit("changeColor", "#ff0000");
 }
 
 // フラッシュ
