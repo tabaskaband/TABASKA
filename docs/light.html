@@ -10,7 +10,7 @@ body {
   margin: 0;
   height: 100vh;
   background: black;
-  transition: background 0.2s ease;
+  transition: background 0.05s linear;
 }
 </style>
 </head>
@@ -22,40 +22,65 @@ body {
 <script>
 const socket = io("https://tabaska.onrender.com");
 
-// フラッシュ状態管理
+// 状態
 let flashing = false;
+let flashTimer = null;
+let showWhite = false;
 
 // 接続確認
 socket.on("connect", () => {
   console.log("light connected:", socket.id);
 });
 
-// 🎨 通常の色変更（フラッシュ中は無視）
+// 通常色
 socket.on("colorUpdate", (color) => {
   if (flashing) return;
   document.body.style.background = color;
 });
 
+// 🎲 ランダムカラー
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
 // ⚡ フラッシュ開始
 socket.on("flash", () => {
+  if (flashing) return;
+
   flashing = true;
-
-  document.body.style.background = "#ffffff";
-
-  setTimeout(() => {
-    if (flashing) {
-      document.body.style.background = "#000000";
-      flashing = false;
-    }
-  }, 450);
+  runFlashLoop();
 });
 
-// 🛑 フラッシュ停止
+// 🔁 ランダム＋白交互ループ
+function runFlashLoop() {
+  if (!flashing) return;
+
+  if (showWhite) {
+    document.body.style.background = "#ffffff";
+  } else {
+    document.body.style.background = getRandomColor();
+  }
+
+  showWhite = !showWhite;
+
+  flashTimer = setTimeout(runFlashLoop, 120);
+}
+
+// 🛑 停止
 socket.on("stopFlash", () => {
   flashing = false;
-  document.body.style.background = "#000000";
-});
+  showWhite = false;
 
+  if (flashTimer) {
+    clearTimeout(flashTimer);
+    flashTimer = null;
+  }
+
+  document.body.style.background = "black";
+});
 </script>
 
 </body>
