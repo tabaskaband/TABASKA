@@ -2,37 +2,342 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>TABASKA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TABASKA Official Site</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #020617;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+
+    /* ===== アニメーション ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== ヘッダー ===== */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding-top: 100px;
-      background: #f5f5f5;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      position: relative;
     }
-    h1 {
-      font-size: 48px;
-      margin-bottom: 40px;
+
+    header h1 {
+      display: none;
     }
-    a {
-      display: inline-block;
-      padding: 12px 24px;
-      background: #333;
-      color: #fff;
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #38bdf8; }
+      to { text-shadow: 0 0 30px #0ea5e9; }
+    }
+
+    header img {
+      width: 250px;
+      max-width: 80%;
+      margin-bottom: 20px;
+      animation: fadeLogo 2s ease;
+    }
+
+    @keyframes fadeLogo {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header p {
+      margin-top: 15px;
+      color: #94a3b8;
+      font-size: 1.2em;
+    }
+
+    /* ===== ナビ ===== */
+    nav {
+      position: sticky;
+      top: 20px;
+      margin: 10px auto;
+      width: fit-content;
+      padding: 10px 30px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #e2e8f0;
+      margin: 0 15px;
       text-decoration: none;
-      border-radius: 8px;
-      font-size: 18px;
+      font-weight: bold;
+      position: relative;
     }
-    a:hover {
-      background: #555;
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: #38bdf8;
+      transition: 0.3s;
     }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== セクション ===== */
+    section {
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      border-left: 5px solid #38bdf8;
+      padding-left: 10px;
+      margin-bottom: 30px;
+    }
+
+    /* ===== メンバー ===== */
+    .member {
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      background: #0f172a;
+      transition: 0.3s;
+    }
+
+    .member:hover {
+      transform: scale(1.05);
+      background: #1e293b;
+    }
+
+    /* ===== イベント ===== */
+    ul li {
+      margin-bottom: 10px;
+      transition: 0.3s;
+    }
+
+    ul li:hover {
+      transform: translateX(10px);
+      color: #38bdf8;
+    }
+
+    /* ===== フッター ===== */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #020617;
+      color: #64748b;
+    }
+  
+
+    /* ===== SNS 横並び ===== */
+    .sns-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .sns-btn {
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+      transition: 0.3s;
+    }
+
+    .sns-btn:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 0 20px rgba(56,189,248,0.6), 0 0 40px rgba(56,189,248,0.4);
+    }
+
+    .instagram {
+      background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+    }
+
+    .youtube {
+      background: #ff0000;
+    }
+
+    .facebook {
+      background: #1877f2;
+    }
+
+  
+
+    /* ===== 固定CTAボタン ===== */
+    .cta-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      padding: 15px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg,#38bdf8,#0ea5e9);
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      z-index: 2000;
+      transition: 0.3s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 0 20px rgba(56,189,248,0.8);
+    }
+
   </style>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-  <h1>TABASKA</h1>
+<header>
+  <img src="TABASKA_LOGO.jpg" alt="TABASKAロゴ">
+  <p>音楽でつながる、新しい体験を。</p>
+</header>
 
-  <a href="docs/control.html">control.htmlへ移動</a>
+<nav>
+  <a href="#about">About</a>
+  <a href="#members">Members</a>
+  <a href="#events">Events</a>
+  <a href="#contact">Contact</a>
+  <a href="#instagram">Instagram</a>
+  <a href="#youtube">YouTube</a>
+  <a href="#facebook">Facebook</a>
+</nav>
+
+<section id="about" class="fade-in">
+  <h2>About</h2>
+  <p>TABASKAは2015年に結成された音楽団体です。DTMを取り入れたパフォーマンスをしています。</p>
+</section>
+
+<section id="members" class="fade-in">
+  <h2>Members</h2>
+  <div class="member">Vo. まる</div>
+  <div class="member">Gt. りお</div>
+  <div class="member">Fl. AYA</div>
+  <div class="member">Tp. nico</div>
+  <div class="member">Tb. JILL</div>
+  <div class="member">Cl. しょうこ</div>
+</section>
+
+<section id="events" class="fade-in">
+  <h2>Events</h2>
+  <ul>
+    <li>イオンモールイベント出演</li>
+    <li>クリスマスコンサート</li>
+    <li>ディナーライブ</li>
+    <li>各種イベント出演</li>
+  </ul>
+</section>
+
+<section id="contact" class="fade-in">
+  <h2>Contact</h2>
+  <p>出演依頼・お問い合わせはメールまたはSNSからお願いします。</p>
+  <p>Email: tabaska.band@gmail.com</p>
+</section>
+
+<section id="instagram" class="fade-in">
+  <h2>Instagram</h2>
+  <p>最新の活動はInstagramでチェック！</p>
+  <a href="https://www.instagram.com/tabaskaband/" target="_blank" style="display:inline-block; padding:12px 20px; border-radius:999px; background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); color:white; text-decoration:none; font-weight:bold; transition:0.3s;">
+    Instagram
+  </a>
+</section>
+
+<section id="youtube" class="fade-in">
+  <h2>YouTube</h2>
+  <p>演奏動画はこちらからご覧ください。</p>
+  <a href="https://www.youtube.com/@tabaska2025" target="_blank" style="display:inline-block; padding:12px 20px; border-radius:999px; background:#ff0000; color:white; text-decoration:none; font-weight:bold; transition:0.3s;">
+    YouTube
+  </a>
+  <div style="margin-top:20px;">
+    <iframe width="100%" height="400" src="https://www.youtube.com/embed?listType=user_uploads&list=tabaska2025" frameborder="0" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section id="sns" class="fade-in">
+  <h2>SNS</h2>
+  <div class="sns-container">
+    <a href="https://www.instagram.com/tabaskaband/" target="_blank" class="sns-btn instagram" title="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@tabaska2025" target="_blank" class="sns-btn youtube" title="YouTube">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+    <a href="https://www.facebook.com/tabaska.band/" target="_blank" class="sns-btn facebook" title="Facebook">
+      <i class="fa-brands fa-facebook-f"></i>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 TABASKA</p>
+</footer>
+
+<script>
+  // スクロールでフェードイン
+  const elements = document.querySelectorAll('.fade-in');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  });
+
+  elements.forEach(el => observer.observe(el));
+
+  // ナビをスクロールで少し縮める＋滑らかに
+  const nav = document.querySelector("nav");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      nav.style.transform = "scale(0.9)";
+      nav.style.opacity = "0.9";
+    } else {
+      nav.style.transform = "scale(1)";
+      nav.style.opacity = "1";
+    }
+  });
+</script>
+
+  <a href="#contact" class="cta-btn">出演依頼</a>
 
 </body>
 </html>
