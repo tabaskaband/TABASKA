@@ -8,6 +8,9 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body {
       margin: 0;
@@ -38,7 +41,6 @@
       align-items: center;
       text-align: center;
       background: linear-gradient(135deg, #0f172a, #1e293b);
-      position: relative;
     }
 
     header h1 {
@@ -50,12 +52,6 @@
     @keyframes glow {
       from { text-shadow: 0 0 10px #38bdf8; }
       to { text-shadow: 0 0 30px #0ea5e9; }
-    }
-
-    
-
-    
-      to { opacity: 1; transform: translateY(0); }
     }
 
     header p {
@@ -72,25 +68,16 @@
       width: 100%;
       padding: 10px 20px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255,255,255,0.08);
       backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       display: flex;
       gap: 20px;
       overflow-x: auto;
       white-space: nowrap;
-      scrollbar-width: none;
-    }
-
-    nav::-webkit-scrollbar {
-      display: none;
     }
 
     nav a {
       color: #e2e8f0;
-      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
       position: relative;
@@ -114,7 +101,7 @@
     /* ===== セクション ===== */
     section {
       padding: 80px 20px;
-      max-width: 900px;
+      max-width: 1100px;
       margin: auto;
     }
 
@@ -138,71 +125,69 @@
       background: #1e293b;
     }
 
-    /* ===== イベント ===== */
-    ul li {
-      margin-bottom: 10px;
+    /* ===== イベントカード ===== */
+    .history-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .history-card {
+      background: #0f172a;
+      border-radius: 12px;
+      overflow: hidden;
       transition: 0.3s;
     }
 
-    ul li:hover {
-      transform: translateX(10px);
-      color: #38bdf8;
+    .history-card:hover {
+      transform: translateY(-5px);
     }
 
-    /* ===== フッター ===== */
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #020617;
-      color: #64748b;
+    .history-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
     }
-  
 
-    /* ===== SNS 横並び ===== */
+    .history-content {
+      padding: 15px;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+      font-size: 0.9em;
+    }
+
+    /* ===== SNS ===== */
     .sns-container {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
       display: flex;
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
-      margin-top: 20px;
     }
 
     .sns-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
+      font-size: 24px;
       color: white;
       text-decoration: none;
-      font-size: 28px;
       transition: 0.3s;
     }
 
     .sns-btn:hover {
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 0 20px rgba(56,189,248,0.6), 0 0 40px rgba(56,189,248,0.4);
+      transform: scale(1.1);
     }
 
-    .instagram {
-      background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
-    }
+    .instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); }
+    .youtube { background: #ff0000; }
+    .facebook { background: #1877f2; }
 
-    .youtube {
-      background: #ff0000;
-    }
-
-    .facebook {
-      background: #1877f2;
-    }
-
-  
-
-    /* ===== 固定CTAボタン ===== */
+    /* ===== CTA ===== */
     .cta-btn {
       position: fixed;
       right: 20px;
@@ -213,74 +198,17 @@
       color: white;
       font-weight: bold;
       text-decoration: none;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      z-index: 2000;
-      transition: 0.3s;
     }
 
-    .cta-btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 0 20px rgba(56,189,248,0.8);
+    /* ===== フッター ===== */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #64748b;
     }
-
-  
-
-    /* ===== レスポンシブ対応 ===== */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.2em;
-      }
-
-      header p {
-        font-size: 1em;
-      }
-
-      nav {
-        padding: 8px 15px;
-      }
-
-      nav a {
-        margin: 0 8px;
-        font-size: 0.9em;
-      }
-
-      section {
-        padding: 50px 15px;
-      }
-
-      .sns-btn {
-        width: 55px;
-        height: 55px;
-        font-size: 22px;
-      }
-
-      .cta-btn {
-        padding: 12px 15px;
-        font-size: 0.9em;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      section {
-        max-width: 1100px;
-      }
-
-      header h1 {
-        font-size: 4em;
-      }
-    }
-
-  
-    /* Events リストを少し小さく */
-    #events-history li {
-      font-size: 0.9em;
-      line-height: 1.6;
-    }
-
   </style>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
 <header>
@@ -291,11 +219,8 @@
 <nav>
   <a href="#about">About</a>
   <a href="#members">Members</a>
-  <a href="#events">events-history</a>
+  <a href="#events-history">Events</a>
   <a href="#contact">Contact</a>
-  <a href="#instagram"><i class="fa-brands fa-instagram"></i></a>
-  <a href="#youtube"><i class="fa-brands fa-youtube"></i></a>
-  <a href="#facebook"><i class="fa-brands fa-facebook-f"></i></a>
 </nav>
 
 <section id="about" class="fade-in">
@@ -313,8 +238,7 @@
   <div class="member">Cl. しょうこ</div>
 </section>
 
-
-<section id="events-history"　class="history-section fade-in">
+<section id="events-history" class="fade-in">
   <h2>Performance History</h2>
 
   <div class="history-grid">
@@ -324,9 +248,9 @@
       <div class="history-content">
         <h3>商業施設・大型イベント</h3>
         <ul>
-          <li>イオンモール鹿児島　イベントステージ出演</li>
-          <li>イオンタウン姶良　イベントステージ出演</li>
-          <li>クリスマスコンサート等　出演</li>
+          <li>イオンモール鹿児島</li>
+          <li>イオンタウン姶良</li>
+          <li>クリスマスコンサート</li>
         </ul>
       </div>
     </div>
@@ -334,11 +258,11 @@
     <div class="history-card">
       <img src="images/20201101_吉野地区合同コンサート.JPG">
       <div class="history-content">
-        <h3>地域イベント・フェスティバル</h3>
+        <h3>地域イベント</h3>
         <ul>
-          <li>地域主催イベント・フェス出演</li>
-          <li>公園イベント・野外ステージ演奏</li>
-          <li>ファミリー向けイベント出演</li>
+          <li>地域フェス出演</li>
+          <li>公園イベント</li>
+          <li>ファミリーイベント</li>
         </ul>
       </div>
     </div>
@@ -346,93 +270,48 @@
     <div class="history-card">
       <img src="images/20170826_BigBand.JPG">
       <div class="history-content">
-        <h3>ホテル・レストラン演奏</h3>
+        <h3>レストラン演奏</h3>
         <ul>
-          <li>ディナーライブ・レストラン演奏</li>
-          <li>パーティー・貸切イベント演奏</li>
-          <li>記念日・特別イベントでの演奏</li>
+          <li>ディナーライブ</li>
+          <li>貸切イベント</li>
         </ul>
       </div>
     </div>
 
     <div class="history-card">
-      <img src="images/20250816_パーティー.jpg">
+      <img src="images/20250816_パーティー.jpg">
       <div class="history-content">
-        <h3>ブライダル・企業イベント</h3>
+        <h3>ブライダル</h3>
         <ul>
-          <li>結婚式・披露宴での演奏</li>
-          <li>企業イベント・式典演奏</li>
-          <li>各種セレモニー演奏</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="history-card">
-      <img src="images/20201101_吉野地区合同コンサート.jpg">
-      <div class="history-content">
-        <h3>教育・福祉関連イベント</h3>
-        <ul>
-          <li>福祉施設・地域交流イベント出演</li>
-          <li>学校関連コンサート・合同企画</li>
-          <li>子ども向けコンサート出演</li>
+          <li>結婚式演奏</li>
+          <li>企業イベント</li>
         </ul>
       </div>
     </div>
 
   </div>
 </section>
-
-
-
 
 <section id="contact" class="fade-in">
   <h2>Contact</h2>
-  <p>出演依頼・お問い合わせはメールまたはSNSからお願いします。</p>
   <p>Email: tabaska.band@gmail.com</p>
 </section>
 
-<section id="instagram" class="fade-in">
-  <h2>Instagram</h2>
-  <p>最新の活動はInstagramでチェック！</p>
-  <a href="https://www.instagram.com/tabaskaband/" target="_blank" style="display:inline-block; padding:12px 20px; border-radius:999px; background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); color:white; text-decoration:none; font-weight:bold; transition:0.3s;">
-    <i class="fa-brands fa-instagram"></i> Instagram
-  </a>
-</section>
-
-<section id="youtube" class="fade-in">
-  <h2>YouTube</h2>
-  <p>演奏動画はこちらからご覧ください。</p>
-  <a href="https://www.youtube.com/@tabaska2025" target="_blank" style="display:inline-block; padding:12px 20px; border-radius:999px; background:#ff0000; color:white; text-decoration:none; font-weight:bold; transition:0.3s;">
-    <i class="fa-brands fa-youtube"></i> YouTube
-  </a>
-
-</section>
-
-<section id="sns" class="fade-in">
+<section class="fade-in">
   <h2>SNS</h2>
   <div class="sns-container">
-    <a href="https://www.instagram.com/tabaskaband/" target="_blank" class="sns-btn instagram" title="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-    <a href="https://www.youtube.com/@tabaska2025" target="_blank" class="sns-btn youtube" title="YouTube">
-      <i class="fa-brands fa-youtube"></i>
-    </a>
-    <a href="https://www.facebook.com/tabaska.band/" target="_blank" class="sns-btn facebook" title="Facebook">
-      <i class="fa-brands fa-facebook-f"></i>
-    </a>
+    <a href="https://www.instagram.com/tabaskaband/" class="sns-btn instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.youtube.com/@tabaska2025" class="sns-btn youtube"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://www.facebook.com/tabaska.band/" class="sns-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>
   </div>
 </section>
-
-
 
 <footer>
   <p>© 2026 TABASKA</p>
 </footer>
 
 <script>
-  // スクロールでフェードイン
   const elements = document.querySelectorAll('.fade-in');
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -440,24 +319,10 @@
       }
     });
   });
-
   elements.forEach(el => observer.observe(el));
-
-  // ナビをスクロールで少し縮める＋滑らかに
-  const nav = document.querySelector("nav");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      nav.style.transform = "scale(0.9)";
-      nav.style.opacity = "0.9";
-    } else {
-      nav.style.transform = "scale(1)";
-      nav.style.opacity = "1";
-    }
-  });
 </script>
 
-  <a href="#contact" class="cta-btn">出演依頼</a>
+<a href="#contact" class="cta-btn">出演依頼</a>
 
 </body>
 </html>
