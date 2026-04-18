@@ -155,15 +155,23 @@
     font-size: 0.85em;
   }
 
-  .sns-fixed {
-    position: fixed;
-    right: 20px;
-    bottom: 80px; /* ←出演依頼ボタンとかぶらない位置 */
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1000;
-  }
+.sns-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 90px; /* ←出演依頼ボタンの上に配置 */
+  display: flex;
+  flex-direction: row; /* ←横並び */
+  gap: 10px;
+  z-index: 1000;
+}
+
+.sns-fixed a {
+  transition: 0.3s;
+}
+
+.sns-fixed a:hover {
+  transform: scale(1.15);
+}
     
   </style>
 </head>
