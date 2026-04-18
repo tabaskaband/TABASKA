@@ -154,6 +154,17 @@
     color: #94a3b8;     /* 少し補足っぽく */
     font-size: 0.85em;
   }
+
+  .sns-fixed {
+    position: fixed;
+    right: 20px;
+    bottom: 80px; /* ←出演依頼ボタンとかぶらない位置 */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+  }
+    
   </style>
 </head>
 
@@ -377,5 +388,17 @@ const observer = new IntersectionObserver((entries)=>{
 elements.forEach(el=>observer.observe(el));
 </script>
 
+<div class="sns-fixed">
+  <a href="https://www.instagram.com/tabaskaband/" target="_blank" class="sns-btn instagram">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+  <a href="https://www.youtube.com/@tabaska2025" target="_blank" class="sns-btn youtube">
+    <i class="fa-brands fa-youtube"></i>
+  </a>
+  <a href="https://www.facebook.com/tabaska.band/" target="_blank" class="sns-btn facebook">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+</div>
+  
 </body>
 </html>
