@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TABASKA Official Site</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -17,10 +14,8 @@
       font-family: 'Poppins', sans-serif;
       background: #020617;
       color: #f1f5f9;
-      overflow-x: hidden;
     }
 
-    /* ===== アニメーション ===== */
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -32,21 +27,20 @@
       transform: translateY(0);
     }
 
-    /* ===== ヘッダー ===== */
     header {
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
       background: linear-gradient(135deg, #0f172a, #1e293b);
+      text-align: center;
     }
 
     header h1 {
       font-size: 3.5em;
       margin: 0;
-      animation: glow 2s ease-in-out infinite alternate;
+      animation: glow 2s infinite alternate;
     }
 
     @keyframes glow {
@@ -54,51 +48,23 @@
       to { text-shadow: 0 0 30px #0ea5e9; }
     }
 
-    header p {
-      margin-top: 15px;
-      color: #94a3b8;
-      font-size: 1.2em;
-    }
-
-    /* ===== ナビ ===== */
     nav {
       position: sticky;
       top: 20px;
-      margin: 10px auto;
-      width: 100%;
-      padding: 10px 20px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(15px);
+      padding: 10px;
       display: flex;
+      justify-content: center;
       gap: 20px;
-      overflow-x: auto;
-      white-space: nowrap;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
     }
 
     nav a {
-      color: #e2e8f0;
+      color: white;
       text-decoration: none;
       font-weight: bold;
-      position: relative;
     }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background: #38bdf8;
-      transition: 0.3s;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* ===== セクション ===== */
     section {
       padding: 80px 20px;
       max-width: 1100px;
@@ -108,27 +74,19 @@
     h2 {
       border-left: 5px solid #38bdf8;
       padding-left: 10px;
-      margin-bottom: 30px;
     }
 
-    /* ===== メンバー ===== */
     .member {
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 10px;
       background: #0f172a;
-      transition: 0.3s;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 10px;
     }
 
-    .member:hover {
-      transform: scale(1.05);
-      background: #1e293b;
-    }
-
-    /* ===== イベントカード ===== */
+    /* カード */
     .history-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
       gap: 20px;
     }
 
@@ -136,11 +94,6 @@
       background: #0f172a;
       border-radius: 12px;
       overflow: hidden;
-      transition: 0.3s;
-    }
-
-    .history-card:hover {
-      transform: translateY(-5px);
     }
 
     .history-card img {
@@ -154,16 +107,14 @@
     }
 
     ul li {
-      margin-bottom: 8px;
       font-size: 0.9em;
+      margin-bottom: 5px;
     }
 
-    /* ===== SNS ===== */
     .sns-container {
       display: flex;
       justify-content: center;
       gap: 20px;
-      flex-wrap: wrap;
     }
 
     .sns-btn {
@@ -173,38 +124,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
       color: white;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .sns-btn:hover {
-      transform: scale(1.1);
     }
 
     .instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); }
-    .youtube { background: #ff0000; }
+    .youtube { background: red; }
     .facebook { background: #1877f2; }
 
-    /* ===== CTA ===== */
     .cta-btn {
       position: fixed;
       right: 20px;
       bottom: 20px;
-      padding: 15px 20px;
+      background: #38bdf8;
+      padding: 15px;
       border-radius: 999px;
-      background: linear-gradient(135deg,#38bdf8,#0ea5e9);
       color: white;
-      font-weight: bold;
       text-decoration: none;
-    }
-
-    /* ===== フッター ===== */
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #64748b;
     }
   </style>
 </head>
@@ -225,7 +160,7 @@
 
 <section id="about" class="fade-in">
   <h2>About</h2>
-  <p>TABASKAは2015年に結成された音楽団体です。DTMを取り入れたパフォーマンスをしています。</p>
+  <p>TABASKAは2015年に結成された音楽団体です。</p>
 </section>
 
 <section id="members" class="fade-in">
@@ -246,11 +181,10 @@
     <div class="history-card">
       <img src="images/20251005_IONMALL.png">
       <div class="history-content">
-        <h3>商業施設・大型イベント</h3>
+        <h3>商業施設</h3>
         <ul>
           <li>イオンモール鹿児島</li>
           <li>イオンタウン姶良</li>
-          <li>クリスマスコンサート</li>
         </ul>
       </div>
     </div>
@@ -262,7 +196,6 @@
         <ul>
           <li>地域フェス出演</li>
           <li>公園イベント</li>
-          <li>ファミリーイベント</li>
         </ul>
       </div>
     </div>
@@ -273,18 +206,29 @@
         <h3>レストラン演奏</h3>
         <ul>
           <li>ディナーライブ</li>
-          <li>貸切イベント</li>
         </ul>
       </div>
     </div>
 
     <div class="history-card">
-      <img src="images/20250816_パーティー.png">
+      <img src="images/20250816_パーティー.jpg">
       <div class="history-content">
         <h3>ブライダル</h3>
         <ul>
           <li>結婚式演奏</li>
-          <li>企業イベント</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ★追加ここ -->
+    <div class="history-card">
+      <img src="images/20250307_キャリアデザイン専門学校.jpg">
+      <div class="history-content">
+        <h3>教育・福祉関連イベント</h3>
+        <ul>
+          <li>福祉施設での演奏</li>
+          <li>学校コンサート</li>
+          <li>子ども向けイベント</li>
         </ul>
       </div>
     </div>
@@ -300,29 +244,25 @@
 <section class="fade-in">
   <h2>SNS</h2>
   <div class="sns-container">
-    <a href="https://www.instagram.com/tabaskaband/" class="sns-btn instagram"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://www.youtube.com/@tabaska2025" class="sns-btn youtube"><i class="fa-brands fa-youtube"></i></a>
-    <a href="https://www.facebook.com/tabaska.band/" class="sns-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" class="sns-btn instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" class="sns-btn youtube"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#" class="sns-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>
   </div>
 </section>
 
-<footer>
-  <p>© 2026 TABASKA</p>
-</footer>
+<a href="#contact" class="cta-btn">出演依頼</a>
 
 <script>
-  const elements = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
+const elements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('active');
+    }
   });
-  elements.forEach(el => observer.observe(el));
+});
+elements.forEach(el=>observer.observe(el));
 </script>
-
-<a href="#contact" class="cta-btn">出演依頼</a>
 
 </body>
 </html>
