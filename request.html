@@ -2,47 +2,196 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>TABASKA 出演依頼・お問い合わせ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | TABASKA</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     body {
-      font-family: Arial;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #020617;
+      color: #f1f5f9;
+    }
+
+    /* フェードイン（完全一致） */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ヘッダー（トップと同じ） */
+    header {
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
       text-align: center;
-      background: #f4f4f4;
     }
-    .container {
-      max-width: 800px;
+
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      animation: glow 2s infinite alternate;
+      cursor: pointer;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #38bdf8; }
+      to { text-shadow: 0 0 30px #0ea5e9; }
+    }
+
+    /* ナビ */
+    nav {
+      position: sticky;
+      top: 20px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
       margin: auto;
-      padding: 20px;
     }
+
+    h2 {
+      border-left: 5px solid #38bdf8;
+      padding-left: 10px;
+    }
+
+    /* フォーム枠 */
+    .form-box {
+      margin-top: 30px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
     iframe {
       width: 100%;
       height: 900px;
       border: none;
+      background: white;
     }
+
+    /* ボタン */
     .back-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #333;
-      color: white;
+      display: block;
+      margin: 40px auto;
+      width: 220px;
+      text-align: center;
+      padding: 12px;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
       text-decoration: none;
-      display: inline-block;
+      border-radius: 999px;
+      transition: 0.3s;
     }
+
+    .back-btn:hover {
+      background: #38bdf8;
+      color: white;
+    }
+
+    /* SNS固定（そのまま流用） */
+    .sns-fixed {
+      position: fixed;
+      right: 20px;
+      bottom: 90px;
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .sns-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); }
+    .youtube { background: red; }
+    .facebook { background: #1877f2; }
+
   </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>出演依頼・お問い合わせ</h1>
+<header>
+  <!-- ★トップと同じロゴ文字 -->
+  <h1 onclick="location.href='https://tabaskaband.github.io/TABASKA/index.html'">
+    TABASKA
+  </h1>
+  <p>出演依頼・お問い合わせ</p>
+</header>
 
-  <!-- Googleフォーム埋め込み -->
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScXTHEBabXQRTOzU1gncVavrnVPiBeMihbDG2ASo44wGojiug/viewform?usp=publish-editor"></iframe>
+<nav>
+  <a href="https://tabaskaband.github.io/TABASKA/index.html">Home</a>
+</nav>
 
-  <a href="https://tabaskaband.github.io/TABASKA/Application_Completed.html" class="back-btn">
+<section class="fade-in">
+  <h2>Contact</h2>
+
+  <div class="form-box">
+    <!-- ★ここ差し替え -->
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScXTHEBabXQRTOzU1gncVavrnVPiBeMihbDG2ASo44wGojiug/viewform?embedded=true" width="640" height="1296" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+  </div>
+
+  <a href="https://tabaskaband.github.io/TABASKA/index.html" class="back-btn">
     戻る
   </a>
+</section>
+
+<!-- SNS固定 -->
+<div class="sns-fixed">
+  <a href="https://www.instagram.com/tabaskaband/" target="_blank" class="sns-btn instagram">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+  <a href="https://www.youtube.com/@tabaska2025" target="_blank" class="sns-btn youtube">
+    <i class="fa-brands fa-youtube"></i>
+  </a>
+  <a href="https://www.facebook.com/tabaska.band/" target="_blank" class="sns-btn facebook">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
 </div>
+
+<script>
+const elements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('active');
+    }
+  });
+});
+elements.forEach(el=>observer.observe(el));
+</script>
 
 </body>
 </html>
