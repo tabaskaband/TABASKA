@@ -2,19 +2,166 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>送信完了</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>送信完了 | TABASKA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-body { text-align:center; padding:50px; font-family:Arial; }
-button { padding:10px 20px; }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #020617;
+  color: #f1f5f9;
+}
+
+/* フェードイン */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.fade-in.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ヘッダー */
+header {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3em;
+  margin: 0;
+  animation: glow 2s infinite alternate;
+  cursor: pointer;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #38bdf8; }
+  to { text-shadow: 0 0 30px #0ea5e9; }
+}
+
+/* メイン */
+section {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+h2 {
+  border-left: 5px solid #38bdf8;
+  padding-left: 10px;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+/* メッセージカード */
+.thanks-box {
+  background: #0f172a;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* ボタン */
+.back-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 25px;
+  border-radius: 999px;
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #38bdf8;
+  color: white;
+}
+
+/* SNS固定 */
+.sns-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.sns-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); }
+.youtube { background: red; }
+.facebook { background: #1877f2; }
+
 </style>
 </head>
 
 <body>
-<h1>ありがとうございました。</h1>
-<p>お問い合わせを受け付けました。</p>
 
-<a href="https://tabaskaband.github.io/TABASKA/index.html">
-  <button>トップページへ戻る</button>
-</a>
+<header>
+  <h1 onclick="location.href='https://tabaskaband.github.io/TABASKA/index.html'">
+    TABASKA
+  </h1>
+  <p>送信完了</p>
+</header>
+
+<section class="fade-in">
+  <div class="thanks-box">
+    <h2>ありがとうございました。</h2>
+    <p>お問い合わせを受け付けました。</p>
+
+    <a href="https://tabaskaband.github.io/TABASKA/index.html" class="back-btn">
+      TOPへ戻る
+    </a>
+  </div>
+</section>
+
+<!-- SNS -->
+<div class="sns-fixed">
+  <a href="https://www.instagram.com/tabaskaband/" target="_blank" class="sns-btn instagram">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+  <a href="https://www.youtube.com/@tabaska2025" target="_blank" class="sns-btn youtube">
+    <i class="fa-brands fa-youtube"></i>
+  </a>
+  <a href="https://www.facebook.com/tabaska.band/" target="_blank" class="sns-btn facebook">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+</div>
+
+<script>
+const elements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('active');
+    }
+  });
+});
+elements.forEach(el=>observer.observe(el));
+</script>
+
 </body>
 </html>
