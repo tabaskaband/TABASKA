@@ -505,6 +505,12 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 sections.forEach(section => observer.observe(section));
+
+  if (entry.isIntersecting) {
+  entry.target.classList.add("active");
+} else if (entry.boundingClientRect.top < window.innerHeight) {
+  entry.target.classList.add("active");
+}
 </script>
 
 <div class="sns-fixed">
