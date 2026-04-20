@@ -64,12 +64,24 @@ html {
   scroll-padding-top: 70px;
 }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
 
+nav a:hover {
+  background: rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 10px #38bdf8;
+  color: #38bdf8;
+}    
+nav a.active {
+  color: #38bdf8;
+  text-shadow: 0 0 10px #38bdf8;
+}
     section {
       padding: 80px 20px;
       max-width: 1100px;
@@ -461,6 +473,31 @@ const observer = new IntersectionObserver((entries)=>{
   });
 });
 elements.forEach(el=>observer.observe(el));
+
+<script>
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100; // ←微調整OK
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+
+  
 </script>
 
 <div class="sns-fixed">
