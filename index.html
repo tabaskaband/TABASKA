@@ -484,20 +484,31 @@ body {
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
-const observerNav = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
+
+    // フェードイン
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    }
+
+    // ナビのアクティブ制御
     if (entry.isIntersecting) {
       navLinks.forEach(link => link.classList.remove("active"));
+
       const id = entry.target.getAttribute("id");
       const activeLink = document.querySelector(`nav a[href="#${id}"]`);
-      if (activeLink) activeLink.classList.add("active");
+      if (activeLink) {
+        activeLink.classList.add("active");
+      }
     }
+
   });
 }, {
   rootMargin: "-40% 0px -50% 0px"
 });
 
-sections.forEach(section => observerNav.observe(section));
+sections.forEach(section => observer.observe(section));
 </script>
 
 <div class="sns-fixed">
