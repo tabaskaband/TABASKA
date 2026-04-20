@@ -481,40 +481,23 @@ body {
 <a href="https://tabaskaband.github.io/TABASKA/request.html" class="cta-btn">出演依頼</a>
 
 <script>
-const elements = document.querySelectorAll('.fade-in');
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('active');
-    }
-  });
-});
-elements.forEach(el=>observer.observe(el));
-
-
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100; // ←微調整OK
-    if (scrollY >= sectionTop) {
-      current = section.getAttribute("id");
+const observerNav = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.remove("active"));
+      const id = entry.target.getAttribute("id");
+      const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+      if (activeLink) activeLink.classList.add("active");
     }
   });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-  });
+}, {
+  rootMargin: "-40% 0px -50% 0px"
 });
 
-
-  
+sections.forEach(section => observerNav.observe(section));
 </script>
 
 <div class="sns-fixed">
