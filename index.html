@@ -75,9 +75,11 @@ nav a {
 
 nav a:hover {
   background: rgba(56, 189, 248, 0.15);
-  box-shadow: 0 0 10px #38bdf8;
   color: #38bdf8;
-}    
+  text-shadow: 0 0 10px #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+  transform: translateY(-2px);
+}
 nav a.active {
   color: #38bdf8;
   text-shadow: 0 0 10px #38bdf8;
@@ -480,38 +482,7 @@ body {
 
 <a href="https://tabaskaband.github.io/TABASKA/request.html" class="cta-btn">出演依頼</a>
 
-<script>
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-
-    if (entry.isIntersecting) {
-      entry.target.classList.add("active");
-
-      navLinks.forEach(link => link.classList.remove("active"));
-
-      const id = entry.target.getAttribute("id");
-      const activeLink = document.querySelector(`nav a[href="#${id}"]`);
-      if (activeLink) {
-        activeLink.classList.add("active");
-      }
-    }
-
-  });
-}, {
-  rootMargin: "-20% 0px -20% 0px" // ←ここ変更
-});
-
-sections.forEach(section => observer.observe(section));
-
-  if (entry.isIntersecting) {
-  entry.target.classList.add("active");
-} else if (entry.boundingClientRect.top < window.innerHeight) {
-  entry.target.classList.add("active");
-}
-</script>
 
 <div class="sns-fixed">
   <a href="https://www.instagram.com/tabaskaband/" target="_blank" class="sns-btn instagram">
