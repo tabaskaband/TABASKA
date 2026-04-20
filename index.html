@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -16,6 +17,7 @@
       color: #f1f5f9;
     }
 
+    /* フェード */
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -25,6 +27,14 @@
     .fade-in.active {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Safari fallback */
+    @supports not (animation-timeline: view()) {
+      .fade-in {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     header {
@@ -48,15 +58,19 @@
       to { text-shadow: 0 0 30px #0ea5e9; }
     }
 
+    /* Safari対応ナビ */
     nav {
+      position: -webkit-sticky;
       position: sticky;
-      top: 20px;
+      top: 0;
       padding: 10px;
       display: flex;
       justify-content: center;
       gap: 20px;
       background: rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
+      z-index: 999;
     }
 
     nav a {
@@ -75,168 +89,22 @@
       border-left: 5px solid #38bdf8;
       padding-left: 10px;
     }
-    
+
     .member {
       background: #0f172a;
       margin-bottom: 10px;
       padding: 10px;
       border-radius: 10px;
-      transition: all 0.3s ease;  /* ←これ重要 */
+      transition: all 0.3s ease;
     }
 
     .member:hover {
       transform: translateY(-5px);
+      -webkit-transform: translateY(-5px);
       box-shadow: 0 0 15px #38bdf8;
     }
-    
-    /* カード */
-    .history-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-      gap: 20px;
-    }
-
-    .history-card {
-      background: #0f172a;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .history-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .history-content {
-      padding: 15px;
-    }
-
-    ul li {
-      font-size: 0.9em;
-      margin-bottom: 5px;
-    }
-
-    .sns-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .sns-btn {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
-
-    .instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); }
-    .youtube { background: red; }
-    .facebook { background: #1877f2; }
-
-    .cta-btn {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background: #38bdf8;
-      padding: 15px;
-      border-radius: 999px;
-      color: white;
-      text-decoration: none;
-    }
-
-  .no-bullet {
-    list-style: none;   /* ← ・を消す */
-    margin-top: 10px;
-    color: #94a3b8;     /* 少し補足っぽく */
-    font-size: 0.85em;
-  }
-
-.sns-fixed {
-  position: fixed;
-  right: 20px;
-  bottom: 90px; /* ←出演依頼ボタンの上に配置 */
-  display: flex;
-  flex-direction: row; /* ←横並び */
-  gap: 10px;
-  z-index: 1000;
-}
-
-.sns-fixed a {
-  transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.sns-fixed a:hover {
-  transform: scale(1.15);
-}
-
-.logo-img {
-  width: 80%;
-  max-width: 320px;
-  height: 226px;
-  object-fit: cover;
-  display: block;
-  margin: 20px auto 0;
-  border-radius: 12px;
-}
-.logo-img {
-  transition: 0.4s;
-}
-
-.logo-img:hover {
-  transform: scale(1.03);
-}
-    
-/* ←ここに追加 */
-@media (max-width: 768px) {
-  .sns-fixed {
-    bottom: 80px;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .sns-btn {
-    width: 50px;
-    height: 50px;
-  }
-.email-link {
-  color: #fff;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.email-link:visited {
-  color: #fff;
-}
-
-.email-link:hover {
-  color: #38bdf8;
-  text-shadow: 0 0 8px #38bdf8;
-}
-
-}
-
-a.email-link,
-a.email-link:link,
-a.email-link:visited,
-a.email-link:active {
-  color: #fff !important;
-  text-decoration: none;
-}
-
-a.email-link:hover {
-  color: #38bdf8 !important;
-  text-shadow: 0 0 8px #38bdf8;
-}
-.email-link i {
-  margin-right: 8px;
-}
-
   </style>
+
 </head>
 
 <body>
@@ -256,7 +124,7 @@ a.email-link:hover {
 <section id="about" class="fade-in">
   <h2>About</h2>
   <p>TABASKAは2015年に結成された音楽団体です。DTMを取り入れたパフォーマンスをしています。</p>
-  <img src="images/TABASKA_LOGO.jpg" class="logo-img">
+  <img src="images/TABASKA_LOGO.jpg" style="width:80%;max-width:320px;height:226px;object-fit:cover;display:block;margin:20px auto 0;border-radius:12px;">
 </section>
 
 <section id="members" class="fade-in">
@@ -265,197 +133,194 @@ a.email-link:hover {
   <div class="member">Gt./Tp./Cho./Vo. りお</div>
   <div class="member">Fl. AYA</div>
   <div class="member">Cl. しょうこ</div>
-  <div class="member">A.Sax./S.Sax. ちぽ  (YourTube・Video Editor・Videographer)</div>
-  <div class="member">Tp./Flug. nico  (instagram・Photographer)</div>
-  <div class="member">Tb./DTM JILL  (Facebook・Web)</div>
-
+  <div class="member">A.Sax./S.Sax. ちぽ (YouTube・Video Editor・Videographer)</div>
+  <div class="member">Tp./Flug. nico (Instagram・Photographer)</div>
+  <div class="member">Tb./DTM JILL (Facebook・Web)</div>
 </section>
-
 <section id="events-history" class="fade-in">
   <h2>Performance History</h2>
   <div class="history-grid">
-    <div class="history-card">
-      <img src="images/20251005_IONMALL.jpg">
-      <div class="history-content">
-        <h3>商業施設</h3>
-        <ul>
-          <li>鹿児島中央駅前アミュ広場</li>
-          <li class="no-bullet">桜島・錦江湾ジオパークイベント など</li>
-          <li>イオンモール鹿児島</li>
-          <li class="no-bullet">夏祭り</li>
-          <li class="no-bullet">MALL de Music</li>          
-          <li>イオンタウン姶良</li>
-          <li class="no-bullet">サマーコンサート</li>
-          <li class="no-bullet">イルミネーション点灯式</li>
-          <li class="no-bullet">クリスマスコンサート など</li>
-          <li>指宿フラワーパーク</li>
-          <li class="no-bullet">イルミネーション点灯式</li>
-          <li class="no-bullet">ウインターフェスティバル</li>
-          <li>吹上浜フィールドホテル</li>
-          <li class="no-bullet">サンセットライブ</li>
-          <li class="no-bullet">１周年アニバーサリーライブ</li>         
-          <li>霧島国際ホテル</li>
-          <li class="no-bullet">霧島まるしぇ</li>
-          <li>ウェルビュー鹿児島</li>
-          <li class="no-bullet">キッズフェスタ など</li>
-        </ul>
-      </div>
-    </div>
 
-    <div class="history-card">
-      <img src="images/20201101_吉野地区合同コンサート.JPG">
-      <div class="history-content">
-        <h3>地域イベント出演・協力</h3>
-        <ul>
-          <li>地域イベント出演</li>
-          <li class="no-bullet">鹿児島マラソン</li>          
-          <li class="no-bullet">吉野公園さくらまつり</li>
-          <li class="no-bullet">霧島国分夏まつり</li>
-          <li class="no-bullet">オロシティー夏祭り</li>          
-          <li class="no-bullet">武岡ハイランド50周年夏祭り</li>
-          <li class="no-bullet">鴨池ワールドフェス</li>
-          <li class="no-bullet">鴨池地区夏まつり など</li>
-          <li>地域イベントへのステージ関係の協力</li>
-          <li class="no-bullet">いちき串木野市 くるくるMOMIJIバス Live</li>
-          <li class="no-bullet">霧島クラフト展 など</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="history-card">
-      <img src="images/20170826_BigBand.JPG">
-      <div class="history-content">
-        <h3>レストラン・貸切イベント演奏</h3>
-        <ul>
-          <li>ディナーライブ</li>
-          <li class="no-bullet">Beer Bar YOKABITO ライブ</li>
-          <li class="no-bullet">ウェルビュー鹿児島ディナーライブ</li>
-          <li class="no-bullet">レンブラントホテル鹿児島ディナーライブ</li>
-          <li class="no-bullet">ポルトカーサビアライブ</li>
-          <li>ランチタイムライブ</li>
-          <li class="no-bullet">石窯cafe kunkun ライブ など</li>
-          <li>貸切イベント</li>
-          <li class="no-bullet">桜島納涼観光船</li>
-
-        </ul>
-      </div>
-    </div>
-
-    <div class="history-card">
-      <img src="images/20250816_パーティー.jpg">
-      <div class="history-content">
-        <h3>ブライダル・式典</h3>
-        <ul>
-          <li>結婚式演奏</li>
-          <li class="no-bullet">城山観光ホテル</li>
-          <li class="no-bullet">ザ・ピークプレミアムテラス</li>
-          <li class="no-bullet">THE GRAND HOUSE</li>
-          <li class="no-bullet">旧 ベイサイド迎賓館 など</li>
-          <li>パーティー・企業イベント演奏</li>
-          <li class="no-bullet">おぎおんさぁ 六番神輿葵連 設立二十周年記念祝賀会</li>
-          <li class="no-bullet">濱田酒造１５０周年新酒まつり など</li>
-          
-        </ul>
-      </div>
-    </div>
-
-    <!-- ★追加ここ -->
-    <div class="history-card">
-      <img src="images/20191001_赤い羽根共同募金.jpg">
-      <div class="history-content">
-        <h3>福祉関連イベント</h3>
-        <ul>
-          <li>福祉関係</li>
-          <li class="no-bullet">赤い羽根共同募金セレモニー</li>
-          <li class="no-bullet">鹿児島市制130周年記念第8回わくわく福祉交流フェア</li>
-          <li class="no-bullet">SMILE PROJECT</li>
-          <li class="no-bullet">福祉施設クリスマスコンサート</li>          
-          <li class="no-bullet">高齢者福祉施設慰問演奏</li>
-          <li class="no-bullet">病院慰問演奏 など</li>
-          
-        </ul>
-      </div>
-    </div>
-
-        <!-- ★追加ここ -->
-    <div class="history-card">
-      <img src="images/20250307_キャリアデザイン専門学校.jpg">
-      <div class="history-content">
-        <h3>教育関連イベント</h3>
-        <ul>
-          <li>学校コンサート</li>
-          <li class="no-bullet">キャリアデザイン専門学校ライブ</li> 
-          <li class="no-bullet">ユーススコラ鹿児島ライブ</li>               
-          <li>子ども向けイベント</li>
-          <li class="no-bullet">ファミリーサポートセンター全体交流会</li>
-          
-        </ul>
-      </div>
-    </div>
-
-    <!-- ★追加ここ -->
-    <div class="history-card">
-      <img src="images/20160617_キャンドルナイト.jpg">
-      <div class="history-content">
-        <h3>主催イベント開催</h3>
-        <ul>
-          <li>吉野地区小学校合同コンサート</li>
-          <li>チャリティーコンサート</li>
-          <li class="no-bullet">西日本豪雨災害支援チャリティーコンサート 主催</li>
-          <li class="no-bullet">被災地支援チャリティーコンサート 主催</li>
-          <li>学生企画・運営による音楽コンサート 主催</li>
-          <li>音楽フェス</li>
-          <li class="no-bullet">海辺deアンサンブル 主催 など</li>
-        </ul>
-      </div>
+```
+<div class="history-card">
+  <img src="images/20251005_IONMALL.jpg">
+  <div class="history-content">
+    <h3>商業施設</h3>
+    <ul>
+      <li>鹿児島中央駅前アミュ広場</li>
+      <li class="no-bullet">桜島・錦江湾ジオパークイベント など</li>
+      <li>イオンモール鹿児島</li>
+      <li class="no-bullet">夏祭り</li>
+      <li class="no-bullet">MALL de Music</li>
+      <li>イオンタウン姶良</li>
+      <li class="no-bullet">サマーコンサート</li>
+      <li class="no-bullet">イルミネーション点灯式</li>
+      <li class="no-bullet">クリスマスコンサート など</li>
+      <li>指宿フラワーパーク</li>
+      <li class="no-bullet">イルミネーション点灯式</li>
+      <li class="no-bullet">ウインターフェスティバル</li>
+      <li>吹上浜フィールドホテル</li>
+      <li class="no-bullet">サンセットライブ</li>
+      <li class="no-bullet">１周年アニバーサリーライブ</li>
+      <li>霧島国際ホテル</li>
+      <li class="no-bullet">霧島まるしぇ</li>
+      <li>ウェルビュー鹿児島</li>
+      <li class="no-bullet">キッズフェスタ など</li>
+    </ul>
+  </div>
 </div>
+
+<div class="history-card">
+  <img src="images/20201101_吉野地区合同コンサート.jpg">
+  <div class="history-content">
+    <h3>地域イベント出演・協力</h3>
+    <ul>
+      <li>地域イベント出演</li>
+      <li class="no-bullet">鹿児島マラソン</li>
+      <li class="no-bullet">吉野公園さくらまつり</li>
+      <li class="no-bullet">霧島国分夏まつり</li>
+      <li class="no-bullet">オロシティー夏祭り</li>
+      <li class="no-bullet">武岡ハイランド50周年夏祭り</li>
+      <li class="no-bullet">鴨池ワールドフェス</li>
+      <li class="no-bullet">鴨池地区夏まつり など</li>
+      <li>地域イベントへのステージ関係の協力</li>
+      <li class="no-bullet">いちき串木野市 くるくるMOMIJIバス Live</li>
+      <li class="no-bullet">霧島クラフト展 など</li>
+    </ul>
+  </div>
+</div>
+
+<div class="history-card">
+  <img src="images/20170826_BigBand.jpg">
+  <div class="history-content">
+    <h3>レストラン・貸切イベント演奏</h3>
+    <ul>
+      <li>ディナーライブ</li>
+      <li class="no-bullet">Beer Bar YOKABITO ライブ</li>
+      <li class="no-bullet">ウェルビュー鹿児島ディナーライブ</li>
+      <li class="no-bullet">レンブラントホテル鹿児島ディナーライブ</li>
+      <li class="no-bullet">ポルトカーサビアライブ</li>
+      <li>ランチタイムライブ</li>
+      <li class="no-bullet">石窯cafe kunkun ライブ など</li>
+      <li>貸切イベント</li>
+      <li class="no-bullet">桜島納涼観光船</li>
+    </ul>
+  </div>
+</div>
+
+<div class="history-card">
+  <img src="images/20250816_パーティー.jpg">
+  <div class="history-content">
+    <h3>ブライダル・式典</h3>
+    <ul>
+      <li>結婚式演奏</li>
+      <li class="no-bullet">城山観光ホテル</li>
+      <li class="no-bullet">ザ・ピークプレミアムテラス</li>
+      <li class="no-bullet">THE GRAND HOUSE</li>
+      <li class="no-bullet">旧 ベイサイド迎賓館 など</li>
+      <li>パーティー・企業イベント演奏</li>
+      <li class="no-bullet">おぎおんさぁ 六番神輿葵連 設立二十周年記念祝賀会</li>
+      <li class="no-bullet">濱田酒造１５０周年新酒まつり など</li>
+    </ul>
+  </div>
+</div>
+
+<div class="history-card">
+  <img src="images/20191001_赤い羽根共同募金.jpg">
+  <div class="history-content">
+    <h3>福祉関連イベント</h3>
+    <ul>
+      <li>福祉関係</li>
+      <li class="no-bullet">赤い羽根共同募金セレモニー</li>
+      <li class="no-bullet">鹿児島市制130周年記念第8回わくわく福祉交流フェア</li>
+      <li class="no-bullet">SMILE PROJECT</li>
+      <li class="no-bullet">福祉施設クリスマスコンサート</li>
+      <li class="no-bullet">高齢者福祉施設慰問演奏</li>
+      <li class="no-bullet">病院慰問演奏 など</li>
+    </ul>
+  </div>
+</div>
+
+<div class="history-card">
+  <img src="images/20250307_キャリアデザイン専門学校.jpg">
+  <div class="history-content">
+    <h3>教育関連イベント</h3>
+    <ul>
+      <li>学校コンサート</li>
+      <li class="no-bullet">キャリアデザイン専門学校ライブ</li>
+      <li class="no-bullet">ユーススコラ鹿児島ライブ</li>
+      <li>子ども向けイベント</li>
+      <li class="no-bullet">ファミリーサポートセンター全体交流会</li>
+    </ul>
+  </div>
+</div>
+
+<div class="history-card">
+  <img src="images/20160617_キャンドルナイト.jpg">
+  <div class="history-content">
+    <h3>主催イベント開催</h3>
+    <ul>
+      <li>吉野地区小学校合同コンサート</li>
+      <li>チャリティーコンサート</li>
+      <li class="no-bullet">西日本豪雨災害支援チャリティーコンサート 主催</li>
+      <li class="no-bullet">被災地支援チャリティーコンサート 主催</li>
+      <li>学生企画・運営による音楽コンサート 主催</li>
+      <li>音楽フェス</li>
+      <li class="no-bullet">海辺deアンサンブル 主催 など</li>
+    </ul>
+  </div>
+</div>
+
   </div>
 </section>
 
 <section id="contact" class="fade-in">
   <h2>Contact</h2>
-<p>
-  Email: 
-  <a href="mailto:tabaska.band@gmail.com" class="email-link">
-    <i class="fa-solid fa-envelope"></i>
-    tabaska.band@gmail.com
-  </a>
-</p>
+  <p>
+    Email:
+    <a href="mailto:tabaska.band@gmail.com" class="email-link">
+      <i class="fa-solid fa-envelope"></i>
+      tabaska.band@gmail.com
+    </a>
+  </p>
 </section>
 
 <section id="instagram" class="fade-in">
   <h2>Instagram</h2>
-  <p></p>
-  <a href="https://www.instagram.com/tabaskaband/" target="_blank" style="display:inline-block; padding:12px 20px; border-radius:999px; background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); color:white; text-decoration:none; font-weight:bold; transition:0.3s;">
+  <a href="https://www.instagram.com/tabaskaband/" target="_blank"
+     style="display:inline-block; padding:12px 20px; border-radius:999px;
+     background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+     color:white; text-decoration:none; font-weight:bold;">
     <i class="fa-brands fa-instagram"></i> Instagram
   </a>
 </section>
 
 <section id="youtube" class="fade-in">
   <h2>YouTube</h2>
-  <p></p>
-  <a href="https://www.youtube.com/@tabaska2025" target="_blank" style="display:inline-block; padding:12px 20px; border-radius:999px; background:#ff0000; color:white; text-decoration:none; font-weight:bold; transition:0.3s;">
+  <a href="https://www.youtube.com/@tabaska2025" target="_blank"
+     style="display:inline-block; padding:12px 20px; border-radius:999px;
+     background:#ff0000; color:white; text-decoration:none; font-weight:bold;">
     <i class="fa-brands fa-youtube"></i> YouTube
   </a>
-
 </section>
-  
-
-  
-
 
 <a href="https://tabaskaband.github.io/TABASKA/request.html" class="cta-btn">出演依頼</a>
 
 <script>
 const elements = document.querySelectorAll('.fade-in');
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('active');
-    }
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('active');
+      }
+    });
   });
-});
-elements.forEach(el=>observer.observe(el));
+  elements.forEach(el=>observer.observe(el));
+} else {
+  elements.forEach(el => el.classList.add('active'));
+}
 </script>
 
 <div class="sns-fixed">
@@ -469,6 +334,7 @@ elements.forEach(el=>observer.observe(el));
     <i class="fa-brands fa-facebook-f"></i>
   </a>
 </div>
-  
+
 </body>
 </html>
+
