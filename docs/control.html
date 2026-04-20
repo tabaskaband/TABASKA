@@ -90,17 +90,21 @@ const scenes = [
 
 let timers = [];
 let isRunning = false;
+let runVersion = 0; // ⭐追加
 
 function startShow() {
   if (isRunning) return;
   isRunning = true;
-  runScenes();
+  runVersion++; // ⭐新しいセッション開始
+  runScenes(runVersion);
 }
 
-function runScenes() {
+function runScenes(version) {
   scenes.forEach(scene => {
     const t = setTimeout(() => {
-      if (isRunning) scene.action();
+      if (isRunning && version === runVersion) {
+        scene.action();
+      }
     }, scene.time);
     timers.push(t);
   });
@@ -108,7 +112,9 @@ function runScenes() {
   const loopTime = scenes[scenes.length - 1].time + 8000;
 
   const loop = setTimeout(() => {
-    if (isRunning) runScenes();
+    if (isRunning && version === runVersion) {
+      runScenes(version);
+    }
   }, loopTime);
 
   timers.push(loop);
@@ -116,6 +122,8 @@ function runScenes() {
 
 function stopShow() {
   isRunning = false;
+  runVersion++; // ⭐これで過去ループを完全無効化
+
   timers.forEach(t => clearTimeout(t));
   timers = [];
 }
