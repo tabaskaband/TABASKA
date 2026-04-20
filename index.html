@@ -73,6 +73,7 @@ nav a {
   transition: 0.3s;
 }
 
+/* マウスオーバーだけ光る */
 nav a:hover {
   background: rgba(56, 189, 248, 0.15);
   color: #38bdf8;
@@ -80,9 +81,16 @@ nav a:hover {
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
   transform: translateY(-2px);
 }
-nav a.active {
-  color: #38bdf8;
-  text-shadow: 0 0 10px #38bdf8;
+nav a:active,
+nav a:focus {
+  background: transparent;
+  box-shadow: none;
+  text-shadow: none;
+  color: white;
+  transform: none;
+}
+nav a {
+  -webkit-tap-highlight-color: transparent;
 }
     section {
       padding: 80px 20px;
