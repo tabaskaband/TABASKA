@@ -20,6 +20,19 @@
       color: var(--text);
       line-height: 1.7;
       -webkit-text-size-adjust: 100%;
+      padding-bottom: 90px;
+    }
+
+    /* ===== FADE IN ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ===== HERO VIDEO BACKGROUND ===== */
@@ -42,10 +55,8 @@
       transform: translate(-50%, -50%);
       min-width: 100%;
       min-height: 100%;
-      width: auto;
-      height: auto;
-      z-index: 0;
       object-fit: cover;
+      z-index: 0;
       filter: brightness(0.45) contrast(1.1);
     }
 
@@ -64,7 +75,6 @@
 
     header h1 {
       font-size: clamp(2rem, 6vw, 3.2rem);
-      letter-spacing: 2px;
       margin: 0;
     }
 
@@ -72,7 +82,6 @@
       margin-top: 16px;
       font-size: clamp(0.95rem, 3.5vw, 1.2rem);
       opacity: 0.9;
-      max-width: 90%;
     }
 
     section {
@@ -98,7 +107,6 @@
       background: var(--card);
       padding: 16px;
       border-radius: 12px;
-      font-size: 0.95rem;
     }
 
     .btn {
@@ -110,11 +118,7 @@
       font-size: 1rem;
       text-decoration: none;
       display: inline-block;
-      width: fit-content;
       transition: 0.25s;
-      text-align: center;
-      position: relative;
-      z-index: 2;
     }
 
     .btn:hover {
@@ -142,74 +146,100 @@
       background: #0a0a0a;
     }
 
-    /* ===== MOBILE ===== */
+    /* ===== FIXED CTA ===== */
+    .fixed-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10,10,15,0.95);
+      backdrop-filter: blur(10px);
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      z-index: 999;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .fixed-cta a {
+      width: 90%;
+      text-align: center;
+      padding: 14px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      animation: pulseGlow 1.8s infinite;
+      box-shadow: 0 0 0 rgba(255,0,85,0.4);
+    }
+
+    /* ===== PULSE ANIMATION ===== */
+    @keyframes pulseGlow {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255,0,85,0.5);
+      }
+      50% {
+        transform: scale(1.03);
+        box-shadow: 0 0 18px 6px rgba(255,0,85,0.25);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255,0,85,0);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .fixed-cta {
+        display: none;
+      }
+    }
+
     @media (max-width: 600px) {
-      header {
-        min-height: 70vh;
-        padding: 30px 14px;
-      }
-
-      section {
-        padding: 40px 14px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      iframe {
-        height: 85vh;
-      }
+      section { padding: 40px 14px; }
+      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <!-- ★ TABASKA感を出す動画背景（差し替え必須） -->
+<header class="fade-in">
   <video autoplay muted loop playsinline>
     <source src="tabaska_live.mp4" type="video/mp4">
   </video>
-
   <h1>TABASKA Jr.</h1>
   <p>音楽を“やってみたい”から“ステージへ”</p>
   <a class="btn" href="#apply">メンバー募集はこちら</a>
 </header>
 
-<section>
+<section class="fade-in">
   <h2>TABASKA Jr.とは</h2>
-  <p>
-    TABASKA Jr.は、音楽を愛する子どもたち・学生たちが、実際のステージ経験を通して
-    「本物の音楽表現」を学ぶプロジェクトです。
-  </p>
+  <p>音楽を愛する子どもたち・学生たちが実際のステージ経験を通して学ぶプロジェクトです。</p>
 </section>
 
-<section>
+<section class="fade-in">
   <h2>活動内容</h2>
   <div class="grid">
-    <div class="card">ステージ出演（地域イベント・モールライブ）</div>
-    <div class="card">アンサンブル演奏（仲間との合奏）</div>
-    <div class="card">DTM・音楽制作（PC音楽制作）</div>
+    <div class="card">ステージ出演</div>
+    <div class="card">アンサンブル演奏</div>
+    <div class="card">DTM・音楽制作</div>
   </div>
 </section>
 
-<section>
+<section class="fade-in">
   <h2>こんな人におすすめ</h2>
   <div class="grid">
-    <div class="card">ステージに立ってみたい</div>
-    <div class="card">学校以外でも音楽をやりたい</div>
+    <div class="card">ステージに立ちたい</div>
+    <div class="card">音楽を本気でやりたい</div>
     <div class="card">仲間と演奏したい</div>
-    <div class="card">新しい音楽に挑戦したい</div>
+    <div class="card">新しい挑戦がしたい</div>
   </div>
 </section>
 
-<section id="apply">
+<section id="apply" class="fade-in">
   <h2>応募フォーム</h2>
-  <p>フォームよりご応募ください。確認後ご連絡します。</p>
+  <p>フォームよりご応募ください。</p>
 
   <div class="form-container">
     <iframe src="https://docs.google.com/forms/d/e/REPLACE_FORM_ID/viewform?embedded=true"></iframe>
@@ -218,9 +248,26 @@
   <a class="btn" href="mailto:tabaska.band@gmail.com">メールで応募する</a>
 </section>
 
-<footer>
+<footer class="fade-in">
   © TABASKA Jr. All Rights Reserved.
 </footer>
+
+<!-- 固定CTA -->
+<div class="fixed-cta">
+  <a href="#apply">今すぐ応募する</a>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
