@@ -3,133 +3,261 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>TABASKA Jr. メンバー募集</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      font-family: "Helvetica Neue", sans-serif;
-      background: #f5f7fa;
-      color: #333;
-      line-height: 1.7;
+    body{
+      font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        sans-serif;
+      background:
+        radial-gradient(circle at top,
+        #2b2b2b 0%,
+        #111 45%,
+        #000 100%);
+      color:#fff;
+      line-height:1.9;
+      overflow-x:hidden;
     }
 
-    header {
-      background: linear-gradient(135deg, #222, #444);
-      color: white;
-      text-align: center;
-      padding: 70px 20px;
+    /* 背景の光 */
+
+    body::before{
+      content:"";
+      position:fixed;
+      width:600px;
+      height:600px;
+      background:rgba(0,180,255,0.18);
+      border-radius:50%;
+      filter:blur(120px);
+      top:-200px;
+      left:-150px;
+      z-index:-1;
+      animation:float1 10s ease-in-out infinite;
     }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      letter-spacing: 2px;
+    body::after{
+      content:"";
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:rgba(255,100,200,0.15);
+      border-radius:50%;
+      filter:blur(120px);
+      bottom:-200px;
+      right:-150px;
+      z-index:-1;
+      animation:float2 12s ease-in-out infinite;
     }
 
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+    @keyframes float1{
+      0%{transform:translateY(0);}
+      50%{transform:translateY(40px);}
+      100%{transform:translateY(0);}
     }
 
-    .container {
-      width: 90%;
-      max-width: 1000px;
-      margin: 50px auto;
+    @keyframes float2{
+      0%{transform:translateY(0);}
+      50%{transform:translateY(-40px);}
+      100%{transform:translateY(0);}
     }
 
-    .card {
-      background: white;
-      border-radius: 18px;
-      padding: 35px;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    header{
+      text-align:center;
+      padding:90px 20px 60px;
     }
 
-    .card h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #222;
-      border-left: 6px solid #ff9800;
-      padding-left: 15px;
+    header h1{
+      font-size:4rem;
+      letter-spacing:4px;
+      margin-bottom:20px;
+
+      background:linear-gradient(
+        90deg,
+        #ffffff,
+        #66d9ff,
+        #ffffff
+      );
+
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+
+      animation:shine 4s linear infinite;
+      background-size:200% auto;
+
+      text-shadow:
+        0 0 10px rgba(255,255,255,0.3),
+        0 0 25px rgba(0,180,255,0.5);
     }
 
-    .card p {
-      margin-bottom: 15px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
-    .highlight {
-      color: #ff6600;
-      font-weight: bold;
-    }
-
-    .btn-area {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #ff9800;
-      color: white;
-      text-decoration: none;
-      padding: 18px 40px;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      transition: 0.3s;
-      box-shadow: 0 8px 20px rgba(255,152,0,0.3);
-    }
-
-    .btn:hover {
-      background: #e68900;
-      transform: translateY(-2px);
-    }
-
-    .top-link {
-      text-align: center;
-      margin-top: 25px;
-    }
-
-    .top-link a {
-      color: #666;
-      text-decoration: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: #777;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-
-      .card {
-        padding: 25px;
-      }
-
-      .btn {
-        width: 100%;
-        padding: 18px;
+    @keyframes shine{
+      to{
+        background-position:200% center;
       }
     }
+
+    header p{
+      font-size:1.2rem;
+      color:#ddd;
+      max-width:800px;
+      margin:auto;
+    }
+
+    .container{
+      width:90%;
+      max-width:1000px;
+      margin:auto;
+      padding-bottom:80px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.12);
+      backdrop-filter:blur(12px);
+
+      border-radius:24px;
+
+      padding:40px;
+      margin-bottom:35px;
+
+      box-shadow:
+        0 0 30px rgba(0,180,255,0.08),
+        0 0 60px rgba(255,255,255,0.03);
+
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+
+      box-shadow:
+        0 0 40px rgba(0,180,255,0.18),
+        0 0 80px rgba(255,255,255,0.06);
+    }
+
+    .card h2{
+      font-size:1.7rem;
+      margin-bottom:25px;
+      color:#6fdcff;
+
+      text-shadow:
+        0 0 10px rgba(0,180,255,0.5);
+    }
+
+    .card p{
+      margin-bottom:18px;
+      color:#eee;
+    }
+
+    ul{
+      list-style:none;
+    }
+
+    li{
+      margin-bottom:14px;
+      padding-left:24px;
+      position:relative;
+      color:#eee;
+    }
+
+    li::before{
+      content:"◆";
+      position:absolute;
+      left:0;
+      color:#6fdcff;
+    }
+
+    .highlight{
+      color:#ffd86b;
+      font-weight:bold;
+    }
+
+    .btn-area{
+      text-align:center;
+      margin-top:45px;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+
+      background:linear-gradient(
+        135deg,
+        #00bfff,
+        #0077ff
+      );
+
+      color:#fff;
+
+      padding:18px 50px;
+
+      border-radius:60px;
+
+      font-size:1.15rem;
+      font-weight:bold;
+
+      box-shadow:
+        0 0 20px rgba(0,180,255,0.5),
+        0 0 40px rgba(0,180,255,0.2);
+
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px) scale(1.03);
+
+      box-shadow:
+        0 0 30px rgba(0,180,255,0.7),
+        0 0 60px rgba(0,180,255,0.35);
+    }
+
+    .top-link{
+      text-align:center;
+      margin-top:30px;
+    }
+
+    .top-link a{
+      color:#bbb;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .top-link a:hover{
+      color:#6fdcff;
+    }
+
+    footer{
+      text-align:center;
+      padding:40px 20px;
+      color:#777;
+      font-size:0.9rem;
+    }
+
+    @media(max-width:768px){
+
+      header h1{
+        font-size:2.7rem;
+      }
+
+      .card{
+        padding:28px;
+      }
+
+      .btn{
+        width:100%;
+        padding:18px;
+      }
+
+    }
+
   </style>
 </head>
 
@@ -137,77 +265,119 @@
 
   <header>
     <h1>TABASKA Jr.</h1>
-    <p>次世代の音楽を愛する若い仲間を募集しています</p>
+
+    <p>
+      地域イベントやステージ出演を通して、<br>
+      中高生の表現力・協調性・自主性を育む<br>
+      「地域育成型 音楽プロジェクト」
+    </p>
   </header>
 
   <div class="container">
 
     <section class="card">
+
       <h2>■ TABASKA Jr.とは？</h2>
 
       <p>
-        TABASKA Jr.は、
-        地域イベントやコンサート出演を通して、
-        音楽の楽しさ・表現力・協調性を育てる
-        次世代育成型の音楽プロジェクトです。
+        少人数だからこそ、
+        一人ひとりが“主役”。
       </p>
 
       <p>
-        TABASKAメンバーとの交流や、
-        実際のステージ経験を通して、
-        「本物の演奏体験」を目指します。
+        音楽を通して、
+        “届ける側”の楽しさを
+        体験してみませんか？
       </p>
+
     </section>
 
     <section class="card">
-      <h2>■ 募集内容</h2>
+
+      <h2>■ 対象</h2>
+
+      <p>
+        中学生〜高校生
+      </p>
+
+    </section>
+
+    <section class="card">
+
+      <h2>■ 募集人数</h2>
+
+      <p>
+        5名程度
+      </p>
+
+    </section>
+
+    <section class="card">
+
+      <h2>■ 活動内容</h2>
 
       <ul>
-        <li>対象：小学生〜高校生</li>
-        <li>音楽経験不問（初心者歓迎）</li>
-        <li>管楽器・打楽器など</li>
-        <li>地域イベント出演予定</li>
-        <li>DTM音源を取り入れたステージ演奏</li>
+        <li>地域イベント出演</li>
+        <li>主催イベント出演</li>
+        <li>合同ステージ企画</li>
       </ul>
+
     </section>
 
     <section class="card">
-      <h2>■ こんな方におすすめ</h2>
+
+      <h2>■ 募集条件</h2>
 
       <ul>
-        <li>音楽や演奏が好き</li>
-        <li>ステージに立ってみたい</li>
-        <li>仲間と一緒に演奏したい</li>
-        <li>学校以外でも音楽活動をしてみたい</li>
-        <li>将来、音楽活動に挑戦してみたい</li>
+        <li>楽器経験者</li>
+        <li>ある程度、楽譜を読める方</li>
+        <li>合奏やアンサンブルが好きな方</li>
       </ul>
-    </section>
-
-    <section class="card">
-      <h2>■ 応募について</h2>
-
-      <p>
-        応募フォームより必要事項をご入力ください。
-      </p>
-
-      <p>
-        内容を確認後、担当よりご連絡いたします。
-      </p>
 
       <p class="highlight">
-        ※ 応募フォームは次ページにございます
+        ※ “上手さ”より、“協調性”を重視します
+      </p>
+
+    </section>
+
+    <section class="card">
+
+      <h2>■ 参加費</h2>
+
+      <p>
+        通常活動は無料（実費負担あり）
+      </p>
+
+      <p>
+        ※ イベント出演時のみ、
+        実費の一部ご協力をお願いしています
+      </p>
+
+    </section>
+
+    <section class="card">
+
+      <h2>■ 選考について</h2>
+
+      <p>
+        選考（オーディション等）については、
+        お問い合わせ後、ご案内いたします。
       </p>
 
       <div class="btn-area">
+
         <a href="apply.html" class="btn">
           応募フォームへ進む
         </a>
+
       </div>
 
       <div class="top-link">
+
         <a href="https://tabaskaband.github.io/TABASKA/index.html">
           ← TABASKA TOPへ戻る
         </a>
+
       </div>
 
     </section>
