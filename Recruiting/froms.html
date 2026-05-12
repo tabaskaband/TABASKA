@@ -200,14 +200,17 @@
       section { padding: 40px 14px; }
       .grid { grid-template-columns: 1fr; }
     }
-  </style>
+      /* ===== 修正：スマホでヘッダーCTAを非表示 ===== */
+    @media (max-width: 600px) {
+      header .btn {
+        display: none;
+      }
+    }
+</style>
 </head>
 <body>
 
 <header class="fade-in">
-  <video autoplay muted loop playsinline>
-    <source src="tabaska_live.mp4" type="video/mp4">
-  </video>
   <h1>TABASKA Jr.</h1>
   <p>音楽を“やってみたい”から“ステージへ”</p>
 
