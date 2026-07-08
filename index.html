@@ -317,9 +317,9 @@ nav a {
 
 
 .Jr-img {
-  width: 100%;
-  max-width: 1080px;
-  height: 720px;
+  width: 80%;
+  max-width: 800px;
+  height: 533px;
   object-fit: cover;
   display: block;
   margin: 20px auto 0;
@@ -446,6 +446,14 @@ a.email-link:hover {
   <h2>TABASKA Jr. アンケート</h2>
   <div class="TABASKA_Jr">
     <a href="https://tabaskaband.github.io/TABASKA/TABASKA_Jr.html">
+      <picture>
+      <!-- スマホ用 -->
+      <source media="(max-width: 768px)" srcset="images/title_long.png">
+  
+      <!-- PC用 -->
+      <img src="images/title.png" alt="TABASKA Jr." class="Jr-img">
+    </picture>
+      
       TABASKA Jr. アンケート
     </a>
   </div>
