@@ -353,6 +353,62 @@ nav a {
 body {
   overflow-x: hidden;
   }
+
+/* SNSツールチップ */
+.sns-fixed a {
+  position: relative;
+}
+
+.sns-fixed a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  
+  background: rgba(15, 23, 42, 0.95);
+  color: #fff;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  
+  transition: 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* 吹き出しの三角 */
+.sns-fixed a::before {
+  content: "";
+  position: absolute;
+  right: 61px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  border-width: 6px 0 6px 7px;
+  border-style: solid;
+  border-color: transparent transparent transparent rgba(15, 23, 42, 0.95);
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s ease;
+}
+
+/* マウスを重ねたとき */
+.sns-fixed a:hover::after,
+.sns-fixed a:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sns-fixed a:hover::after {
+  transform: translateY(-50%) translateX(0);
+}
     
 /* ←ここに追加 */
 @media (max-width: 768px) {
@@ -690,25 +746,29 @@ a.email-link:hover {
 
   <a href="https://www.instagram.com/tabaskaband/"
      target="_blank"
-     class="sns-btn instagram">
+     class="sns-btn instagram"
+     data-tooltip="Instagram">
     <i class="fa-brands fa-instagram"></i>
   </a>
 
   <a href="https://www.youtube.com/@tabaska2025"
      target="_blank"
-     class="sns-btn youtube">
+     class="sns-btn youtube"
+     data-tooltip="YouTube">
     <i class="fa-brands fa-youtube"></i>
   </a>
 
   <a href="https://www.youtube.com/@TABASKA_DTM"
      target="_blank"
-     class="sns-btn youtube-DTM">
+     class="sns-btn youtube-DTM"
+     data-tooltip="YouTube-DTM">
     <i class="fa-brands fa-youtube"></i>
   </a>
 
   <a href="https://www.facebook.com/tabaska.band/"
      target="_blank"
-     class="sns-btn facebook">
+     class="sns-btn facebook"
+     data-tooltip="Facebook">
     <i class="fa-brands fa-facebook-f"></i>
   </a>
 
