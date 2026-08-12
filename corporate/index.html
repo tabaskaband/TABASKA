@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TABASKAは、音楽を通して地域と世代をつなぐ鹿児島のNPO法人を目指しています。地域音楽活動、青少年育成、TABASKA Jr.などに取り組みます。">
+  <meta name="theme-color" content="#11110f">
+  <title>TABASKA｜音楽で、地域と世代をつなぐ。</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="TABASKA トップへ"><span>T</span> TABASKA</a>
+    <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false"><i></i><i></i></button>
+    <nav class="nav" aria-label="メインナビゲーション">
+      <div id="navLinks"></div>
+      <a class="nav-cta" href="#contact">参加・協賛する <b>↗</b></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-media"><img id="heroImage" alt="TABASKAの活動イメージ"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">NONPROFIT ORGANIZATION · KAGOSHIMA</p>
+        <h1 id="heroTitle"></h1>
+        <p class="hero-lead" id="heroLead"></p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#about">TABASKAを知る <span>↓</span></a>
+          <a class="text-link light" href="#contact">活動に参加する <span>↗</span></a>
+        </div>
+      </div>
+      <div class="hero-scroll">SCROLL <span></span></div>
+    </section>
+
+    <section class="intro section" id="about">
+      <div class="section-label">01 / ABOUT</div>
+      <div class="intro-grid">
+        <div class="reveal"><p class="kicker">MUSIC × COMMUNITY</p><h2>音楽は、<br><em>人をつなぐ。</em></h2></div>
+        <div class="intro-copy reveal"><p class="large" id="aboutLead"></p><p>TABASKAは、演奏活動だけを目的とするのではなく、音楽を入り口に地域の人々が出会い、子どもたちが挑戦し、世代を超えて交流できる環境を育てます。</p><div class="facts"><div><strong id="orgEstablished"></strong><span>活動開始</span></div><div><strong id="orgArea"></strong><span>活動エリア</span></div></div></div>
+      </div>
+    </section>
+
+    <section class="activities section dark-section" id="activities">
+      <div class="section-head"><div><div class="section-label">02 / ACTIVITIES</div><h2>活動する理由を、<br>かたちにする。</h2></div><p>音楽を軸に、地域・教育・文化の3つの領域から、継続的な活動をつくります。</p></div>
+      <div class="activity-grid" id="activityGrid"></div>
+    </section>
+
+    <section class="junior section" id="junior">
+      <div class="junior-image reveal"><img id="juniorImage" alt="TABASKAの地域音楽活動"></div>
+      <div class="junior-copy reveal"><p class="kicker" id="juniorEyebrow"></p><h2 id="juniorTitle"></h2><p id="juniorText"></p><ul id="juniorPoints"></ul><a class="button button-dark" href="#contact">活動を応援する <span>↗</span></a></div>
+    </section>
+
+    <section class="history section">
+      <div class="section-label">03 / STORY</div><div class="history-intro"><h2>これまで、<br>これから。</h2><p>TABASKAは2015年の活動開始から、地域のさまざまな場所で音楽を届けてきました。これからは、より継続的な社会貢献へ。</p></div>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <section class="support section dark-section" id="support">
+      <div class="section-label">04 / SUPPORT</div><div class="support-heading"><h2>あなたの力が、<br><em>次の音</em>をつくる。</h2><p>企業・団体・個人のみなさまからのご支援を、活動の継続と新しい挑戦につなげます。</p></div>
+      <div class="support-grid" id="supportGrid"></div>
+    </section>
+
+    <section class="contact section" id="contact">
+      <div class="section-label">05 / CONTACT</div><div class="contact-grid"><div><p class="kicker">LET'S MAKE SOMETHING TOGETHER</p><h2>一緒に、<br>地域の音楽を。</h2></div><div class="contact-card"><p>出演・連携・協賛・TABASKA Jr.など、活動についてのお問い合わせはこちらから。</p><a class="mail" id="emailLink"></a><div class="socials"><a id="instagram" target="_blank" rel="noopener">Instagram ↗</a><a id="youtube" target="_blank" rel="noopener">YouTube ↗</a><a id="dtm" target="_blank" rel="noopener">DTM Channel ↗</a></div></div></div>
+    </section>
+  </main>
+
+  <footer><div class="brand"><span>T</span> TABASKA</div><p id="footerType"></p><small>© <span id="year"></span> TABASKA. All rights reserved.</small></footer>
+  <a class="floating-cta" href="#contact">CONTACT <span>↗</span></a>
+  <script src="data.js"></script><script src="script.js"></script>
+</body>
+</html>
