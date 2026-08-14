@@ -1,6 +1,19 @@
 // 出演予定データ
 // 公開の許可が出た予定だけ、以下の配列に追加してください。
-const upcomingEvents = [];
+const upcomingEvents = [
+  {
+    date: "10月上旬",
+    title: "近日公開",
+    venue: "",
+    time: ""
+  },
+  {
+    date: "10月下旬",
+    title: "近日公開",
+    venue: "",
+    time: ""
+  }
+];
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("upcoming-events");
