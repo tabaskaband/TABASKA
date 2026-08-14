@@ -12,6 +12,24 @@ const upcomingEvents = [
     title: "近日公開",
     venue: "",
     time: ""
+  },
+  {
+    date: "12月上旬",
+    title: "予定",
+    venue: "",
+    time: ""
+  },
+  {
+    date: "12月中旬",
+    title: "予定",
+    venue: "",
+    time: ""
+  },
+  {
+    date: "12月下旬",
+    title: "予定",
+    venue: "",
+    time: ""
   }
 ];
 
