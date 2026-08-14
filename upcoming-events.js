@@ -2,13 +2,13 @@
 // 公開の許可が出た予定だけ、以下の配列に追加してください。
 const upcomingEvents = [
   {
-    date: "10月上旬",
+    date: "10月上旬：(Sun)",
     title: "近日公開",
     venue: "",
     time: ""
   },
   {
-    date: "10月下旬",
+    date: "10月下旬：(Sat)",
     title: "近日公開",
     venue: "",
     time: ""
