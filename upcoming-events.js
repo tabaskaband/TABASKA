@@ -16,6 +16,33 @@ const upcomingEvents = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Aboutの直後にTABASKA紹介動画を追加
+  const aboutSection = document.getElementById("about");
+  if (aboutSection && !document.getElementById("tabaska-intro-video")) {
+    const videoSection = document.createElement("section");
+    videoSection.id = "tabaska-intro-video";
+    videoSection.innerHTML = `
+      <h2>TABASKAを動画で紹介</h2>
+      <p style="text-align:center; margin-bottom:20px; color:#94a3b8;">
+        笑って。泣いて。踊って。歌って。<br>
+        音楽で、みんながひとつになる。
+      </p>
+      <div style="width:100%; max-width:1100px; margin:0 auto;">
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          style="display:block; width:100%; height:auto; max-height:75vh; border-radius:12px; background:#000; box-shadow:0 0 20px rgba(56,189,248,.25);"
+          aria-label="TABASKA紹介動画"
+        >
+          <source src="videos/tabaska-intro.mp4" type="video/mp4">
+          お使いのブラウザでは動画を再生できません。
+        </video>
+      </div>
+    `;
+    aboutSection.insertAdjacentElement("afterend", videoSection);
+  }
+
   const container = document.getElementById("upcoming-events");
   if (!container) return;
 
