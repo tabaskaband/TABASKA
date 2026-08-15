@@ -27,12 +27,32 @@ document.addEventListener("DOMContentLoaded", () => {
         笑って。泣いて。踊って。歌って。<br>
         音楽で、みんながひとつになる。
       </p>
-      <div style="width:100%; max-width:1100px; margin:0 auto;">
+      <style>
+        #tabaska-intro-video .tabaska-intro-video-container {
+          width: 70%;
+          margin: 0 auto;
+        }
+        #tabaska-intro-video .tabaska-intro-video-player {
+          display: block;
+          width: 100%;
+          height: auto;
+          max-height: 75vh;
+          border-radius: 12px;
+          background: #000;
+          box-shadow: 0 0 20px rgba(56,189,248,.25);
+        }
+        @media (max-width: 768px) {
+          #tabaska-intro-video .tabaska-intro-video-container {
+            width: 96%;
+          }
+        }
+      </style>
+      <div class="tabaska-intro-video-container">
         <video
           controls
           playsinline
           preload="metadata"
-          style="display:block; width:100%; height:auto; max-height:75vh; border-radius:12px; background:#000; box-shadow:0 0 20px rgba(56,189,248,.25);"
+          class="tabaska-intro-video-player"
           aria-label="TABASKA紹介動画"
         >
           <source src="videos/tabaska-intro.mp4" type="video/mp4">
