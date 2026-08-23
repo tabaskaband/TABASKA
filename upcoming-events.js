@@ -14,6 +14,12 @@ const upcomingEvents = [
     time: ""
   },
   {
+    date: "10月中旬：(Sat)",
+    title: "近日公開",
+    venue: "",
+    time: ""
+  },
+  {
     date: "10月下旬：(Sat)",
     title: "近日公開",
     venue: "",
