@@ -1,12 +1,7 @@
 // 出演予定データ
 // 公開の許可が出た予定だけ、以下の配列に追加してください。
 const upcomingEvents = [
-  {
-    date: "8月30日（日）",
-    title: "イオンモール KAGOSHIMA BAY 水の広場",
-    venue: "",
-    time: "①13:00〜<br>②16:00〜"
-  },
+
   {
     date: "10月上旬：(Sun)",
     title: "近日公開",
