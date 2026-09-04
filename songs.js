@@ -1,39 +1,21 @@
 const songs = [
 
   {
-    title: "",
-    artist: "",
-    lyrics: ""
+    title: "未来へ",
+    artist: "Kiroro",
+    lyrics: "https://www.uta-net.com/song/14476/"
   },
 
-  
+  {
+    title: "糸",
+    artist: "中島みゆき",
+    lyrics: "https://www.uta-net.com/song/2656/"
+  },
+
+  {
+    title: "ハナミズキ",
+    artist: "一青窈",
+    lyrics: "https://www.uta-net.com/song/17878/"
+  }
 
 ];
-
-const songList = document.getElementById("song-list");
-
-songs.forEach(song => {
-
-  const card = document.createElement("div");
-
-  card.className = "song-card";
-
-  card.innerHTML = `
-    <div class="song-title">
-      ${song.title}
-    </div>
-
-    <div class="song-artist">
-      ${song.artist}
-    </div>
-
-    <a
-      href="${song.lyrics}"
-      target="_blank"
-      rel="見る
-    </a>
-  `;
-
-  songList.appendChild(card);
-
-});
