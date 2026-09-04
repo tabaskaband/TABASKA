@@ -1,7 +1,22 @@
+// ========================================
+// コンサート情報
+// ========================================
+const concertDate = "2026年月日（土）";
+const concertTitle = "TABASKA LIVE";
+const concertVenue = "○○○○";
+const concertTime = "14:00";
+// ========================================
+// 曲一覧
+// ========================================
 const songs = [
   {
-    title: "テスト曲",
-    artist: "TABASKA",
-    lyrics: "https://www.google.com"
+    title: "１",
+    artist: "１",
+    lyrics: "歌詞サイトのURL"
+  },
+  {
+    title: "２",
+    artist: "２",
+    lyrics: "歌詞サイトのURL"
   }
 ];
