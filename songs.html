@@ -1,167 +1,298 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
-
   <title>TABASKA 歌詞リンク集</title>
-
+  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap"
-    rel="stylesheetef="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    rel="stylesheet"
   >
-
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
   <style>
-
+    /* =========================
+       全体
+    ========================= */
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: #020617;
       color: #f1f5f9;
     }
-
+    /* =========================
+       ヘッダー
+    ========================= */
     header {
-      height: 40vh;
+      min-height: 35vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      padding: 40px 20px;
+      background:
+        linear-gradient(
+          135deg,
+          #0f172a,
+          #1e293b
+        );
       text-align: center;
     }
-
     header h1 {
-      font-size: 3em;
       margin: 0;
+      font-size: clamp(2.2rem, 8vw, 4rem);
+      font-weight: 600;
+      letter-spacing: 0.08em;
     }
-
     header p {
+      margin: 12px 0 0;
       color: #94a3b8;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
     }
-
+    /* =========================
+       メイン
+    ========================= */
     section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 50px 20px;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
     }
-
+    /* =========================
+       見出し
+    ========================= */
     h2 {
+      margin: 0 0 25px;
+      padding-left: 12px;
       border-left: 5px solid #38bdf8;
-      padding-left: 10px;
+      font-size: 1.5rem;
+      font-weight: 600;
     }
-
+    /* =========================
+       曲一覧
+    ========================= */
     .song-list {
       display: grid;
-      gap: 20px;
+      gap: 15px;
     }
-
+    /* =========================
+       曲カード
+    ========================= */
     .song-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 20px;
       background: #0f172a;
       border-radius: 12px;
-      padding: 20px;
-      transition: .3s;
+      border: 1px solid rgba(148, 163, 184, 0.08);
+      transition: 0.25s ease;
     }
-
     .song-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px #38bdf8;
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3);
     }
-
+    /* =========================
+       曲情報
+    ========================= */
+    .song-info {
+      min-width: 0;
+      flex: 1;
+    }
     .song-title {
-      font-size: 1.2em;
-      font-weight: 600;
-      color: #38bdf8;
       margin-bottom: 5px;
+      color: #38bdf8;
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.4;
     }
-
     .song-artist {
       color: #cbd5e1;
-      margin-bottom: 10px;
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
-
+    /* =========================
+       歌詞ボタン
+    ========================= */
     .song-link {
-      display: inline-block;
-      color: white;
-      text-decoration: none;
-      padding: 8px 15px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 15px;
+      color: #ffffff;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.2);
       border-radius: 8px;
-      background: rgba(56, 189, 248, .15);
-      transition: .3s;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.25s ease;
     }
-
     .song-link:hover {
-      background: rgba(56, 189, 248, .3);
+      background: rgba(56, 189, 248, 0.3);
       color: #38bdf8;
     }
-
+    /* =========================
+       フッター
+    ========================= */
+    footer {
+      padding: 30px 20px;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+    /* =========================
+       スマートフォン
+    ========================= */
+    @media (max-width: 600px) {
+      header {
+        min-height: 30vh;
+        padding: 30px 15px;
+      }
+      header h1 {
+        font-size: 2.5rem;
+      }
+      section {
+        padding: 30px 15px 50px;
+      }
+      h2 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+      }
+      .song-card {
+        padding: 16px;
+        gap: 12px;
+      }
+      .song-title {
+        font-size: 1rem;
+      }
+      .song-artist {
+        font-size: 0.8rem;
+      }
+      .song-link {
+        padding: 9px 11px;
+        font-size: 0.8rem;
+      }
+      .song-link i {
+        font-size: 0.75rem;
+      }
+    }
+    /* =========================
+       さらに小さいスマホ
+    ========================= */
+    @media (max-width: 380px) {
+      .song-card {
+        align-items: flex-start;
+      }
+      .song-link {
+        padding: 8px 9px;
+      }
+      .song-link {
+        font-size: 0;
+      }
+      .song-link i {
+        font-size: 0.9rem;
+        margin: 0;
+      }
+    }
   </style>
-
 </head>
-
 <body>
-
+  <!-- =========================
+       ヘッダー
+  ========================= -->
   <header>
     <h1>TABASKA</h1>
     <p>歌詞リンク集</p>
   </header>
-
+  <!-- =========================
+       曲一覧
+  ========================= -->
   <section>
-
     <h2>曲一覧</h2>
-
     <div
       id="song-list"
       class="song-list"
     ></div>
-
   </section>
-
-  <!-- songs.js を先に読み込む -->
-  songs.jsscript>
-
-  <!-- 画面表示処理 -->
+  <!-- =========================
+       フッター
+  ========================= -->
+  <footer>
+    TABASKA
+  </footer>
+  <!-- =========================
+       songs.js
+  ========================= -->
+  <script src="songs.js"></script>
+  <!-- =========================
+       曲データを表示
+  ========================= -->
   <script>
-
-    const songList = document.getElementById("song-list");
-
-    songs.forEach(song => {
-
-      const card = document.createElement("div");
-
-      card.className = "song-card";
-
-      card.innerHTML = `
-        <div class="song-title">
-          ${song.title}
-        </div>
-
-        <div class="song-artist">
-          ${song.artist}
-        </div>
-
-        <a
-          href="${song.lyrics}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="song-link"
+    const songList =
+      document.getElementById("song-list");
+    // songs.js の songs を確認
+    if (
+      typeof songs !== "undefined" &&
+      Array.isArray(songs)
+    ) {
+      songs.forEach(song => {
+        const card =
+          document.createElement("div");
+        card.className =
+          "song-card";
+        card.innerHTML = `
+          <div class="song-info">
+            <div class="song-title">
+              ${song.title}
+            </div>
+            <div class="song-artist">
+              ${song.artist}
+            </div>
+          </div>
+          <a
+            href="${song.lyrics}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="song-link"
+          >
+            <i class="fa-solid fa-music"></i>
+            <span>歌詞を見る</span>
+          </a>
+        `;
+        songList.appendChild(card);
+      });
+    }
+    // songs.js が読み込めなかった場合
+    else {
+      songList.innerHTML = `
+        <div
+          style="
+            padding: 20px;
+            background: #0f172a;
+            border-radius: 12px;
+            color: #94a3b8;
+          "
         >
-          <i class="fa-solid fa-music"></i>
-          歌詞を見る
-        </a>
+          曲データを読み込めませんでした。
+        </div>
       `;
-
-      songList.appendChild(card);
-
-    });
-
+    }
   </script>
-
 </body>
-
 </html>
