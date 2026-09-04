@@ -3,174 +3,91 @@
 
 <head>
 
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-<title>TABASKA 歌詞</title>
+  <title>TABASKA 歌詞リンク集</title>
 
-<link
-  href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap"
-  rel="stylesheet"
-https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap"
+    rel="stylesheetef="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
 
-<style>
+  <style>
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #020617;
-  color: #f1f5f9;
-}
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #020617;
+      color: #f1f5f9;
+    }
 
-header {
-  height: 40vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  text-align: center;
-}
+    header {
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      text-align: center;
+    }
 
-header h1 {
-  font-size: 3em;
-  margin: 0;
-}
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
 
-header p {
-  color: #94a3b8;
-}
+    header p {
+      color: #94a3b8;
+    }
 
-section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 50px 20px;
-}
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 50px 20px;
+    }
 
-h2 {
-  border-left: 5px solid #38bdf8;
-  padding-left: 10px;
-}
+    h2 {
+      border-left: 5px solid #38bdf8;
+      padding-left: 10px;
+    }
 
-.song-list {
-  display: grid;
-  gap: 20px;
-}
+    .song-list {
+      display: grid;
+      gap: 20px;
+    }
 
-.song-card {
-  background: #0f172a;
-  border-radius: 12px;
-  padding: 20px;
-  transition: .3s;
-}
+    .song-card {
+      background: #0f172a;
+      border-radius: 12px;
+      padding: 20px;
+      transition: .3s;
+    }
 
-.song-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px #38bdf8;
-}
+    .song-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #38bdf8;
+    }
 
-.song-title {
-  font-size: 1.2em;
-  font-weight: 600;
-  color: #38bdf8;
-  margin-bottom: 5px;
-}
+    .song-title {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #38bdf8;
+      margin-bottom: 5px;
+    }
 
-.song-artist {
-  color: #cbd5e1;
-  margin-bottom: 10px;
-}
+    .song-artist {
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
 
-.song-link {
-  display: inline-block;
-  color: white;
-  text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 8px;
-  background: rgba(56,189,248,.15);
-  transition: .3s;
-}
-
-.song-link:hover {
-  background: rgba(56,189,248,.3);
-  color: #38bdf8;
-}
-
-footer {
-  text-align: center;
-  color: #94a3b8;
-  padding: 20px;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<header>
-  <h1>TABASKA</h1>
-  <p>歌詞</p>
-</header>
-
-<section>
-
-  <h2>曲一覧</h2>
-
-  <div
-    id="song-list"
-    class="song-list"
-  ></div>
-
-</section>
-
-<footer>
-
-</footer>
-
-songs.jsscript>
-
-<script>
-
-const songList = document.getElementById("song-list");
-
-songs.forEach(song => {
-
-  const card = document.createElement("div");
-
-  card.className = "song-card";
-
-  card.innerHTML = `
-    <div class="song-title">
-      ${song.title}
-    </div>
-
-    <div class="song-artist">
-      ${song.artist}
-    </div>
-
-    <a
-      href="${song.lyrics}"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="song-link"
-    >
-      <i class="fa-solid fa-music"></i>
-      歌詞を見る
-    </a>
-  `;
-
-  songList.appendChild(card);
-
-});
-
-</script>
-
-</body>
-
-</html>
+    .song-link {
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 8px;
