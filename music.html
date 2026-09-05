@@ -28,13 +28,15 @@
     .concert-time { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; color: #cbd5e1; font-size: 0.95rem; line-height: 1.5; }
     .stage-time { white-space: nowrap; }
 
-    /* --- SNS & オリジナルアイコン用スタイル --- */
-    .header-sns {
+    section { width: 100%; max-width: 900px; margin: 0 auto; padding: 40px 20px 60px; }
+
+    /* --- 曲一覧上部 SNS & ロゴアイコン用スタイル --- */
+    .section-sns {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 15px;
-      margin-top: 20px;
+      margin-bottom: 30px;
     }
     .sns-btn {
       width: 48px;
@@ -58,7 +60,7 @@
     .youtube { background: #ff0000; }
     .facebook { background: #1877f2; }
 
-    /* クマロゴ用スタイル（白背景にしてイラストを見やすく調整） */
+    /* クマロゴアイコン（白背景） */
     .original-icon {
       background: #ffffff;
       padding: 6px;
@@ -69,8 +71,6 @@
       object-fit: contain;
     }
 
-    section { width: 100%; max-width: 900px; margin: 0 auto; padding: 40px 20px 60px; }
-    h2 { margin: 0 0 25px; padding-left: 12px; border-left: 5px solid #38bdf8; font-size: 1.5rem; font-weight: 600; }
     .preparing-message { padding: 50px 25px; background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.18); border-radius: 12px; text-align: center; color: #38bdf8; font-size: 1.25rem; font-weight: 600; }
     .preparing-message span { display: block; margin-top: 10px; color: #cbd5e1; font-size: 1rem; font-weight: 400; }
     .stage-group { margin: 0; }
@@ -97,7 +97,6 @@
       .concert-venue, .concert-time { font-size: 0.85rem; }
       .sns-btn { width: 42px; height: 42px; font-size: 1rem; }
       section { padding: 30px 15px 50px; }
-      h2 { font-size: 1.3rem; margin-bottom: 20px; }
       .preparing-message { padding: 40px 20px; font-size: 1.1rem; }
       .preparing-message span { font-size: 0.9rem; }
       .stage-title { top: 0; font-size: 1.05rem; margin-top: 28px; padding: 10px 12px; }
@@ -118,33 +117,32 @@
       <div id="concert-title" class="concert-title"></div>
       <div id="concert-venue" class="concert-venue"></div>
       <div id="concert-time" class="concert-time"></div>
-
-      <!-- SNS & クマアイコン（横並び） -->
-      <div class="header-sns">
-        <!-- クマロゴアイコン（リンク先URLや画像パスを変更してください） -->
-        <a href="index.html" class="sns-btn original-icon" aria-label="TABASKA Official">
-          <img src="images/bear_logo.png" alt="TABASKA Bear Logo">
-        </a>
-        <a href="https://www.instagram.com/tabaskaband/" target="_blank" rel="noopener noreferrer" class="sns-btn instagram" aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://www.youtube.com/@tabaska2025" target="_blank" rel="noopener noreferrer" class="sns-btn youtube" aria-label="YouTube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-        <a href="https://www.facebook.com/tabaska.band/" target="_blank" rel="noopener noreferrer" class="sns-btn facebook" aria-label="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-      </div>
     </div>
   </header>
 
   <section>
-    <h2>曲一覧</h2>
+    <!-- 「曲一覧」の文字を削除し、SNSアイコンを並べる -->
+    <div class="section-sns">
+      <a href="index.html" class="sns-btn original-icon" aria-label="TABASKA Official">
+        <img src="images/bear_logo.png" alt="TABASKA Bear Logo">
+      </a>
+      <a href="https://www.instagram.com/tabaskaband/" target="_blank" rel="noopener noreferrer" class="sns-btn instagram" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/@tabaska2025" target="_blank" rel="noopener noreferrer" class="sns-btn youtube" aria-label="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+      <a href="https://www.facebook.com/tabaska.band/" target="_blank" rel="noopener noreferrer" class="sns-btn facebook" aria-label="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+    </div>
+
     <div id="song-list"></div>
   </section>
 
   <footer>TABASKA</footer>
 
+  <!-- キャッシュ対策：songs.jsを常に最新バージョンで読み込む -->
   <script src="songs.js?v=20260905-05"></script>
   <script>
     document.getElementById("concert-date").textContent = concertDate;
