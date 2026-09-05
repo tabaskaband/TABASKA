@@ -70,9 +70,7 @@
       font-size: 0.95rem;
       line-height: 1.5;
     }
-    .stage-time {
-      white-space: nowrap;
-    }
+    .stage-time { white-space: nowrap; }
     section {
       width: 100%;
       max-width: 900px;
@@ -97,10 +95,7 @@
       font-weight: 600;
     }
     .stage-title:first-child { margin-top: 0; }
-    .song-list {
-      display: grid;
-      gap: 15px;
-    }
+    .song-list { display: grid; gap: 15px; }
     .song-card {
       display: flex;
       align-items: center;
@@ -117,10 +112,7 @@
       border-color: rgba(56, 189, 248, 0.4);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
-    .song-info {
-      min-width: 0;
-      flex: 1;
-    }
+    .song-info { min-width: 0; flex: 1; }
     .song-title {
       margin-bottom: 5px;
       color: #38bdf8;
@@ -152,6 +144,30 @@
       background: rgba(56, 189, 248, 0.3);
       color: #38bdf8;
     }
+    .medley-list {
+      margin-top: 10px;
+      padding: 12px 14px 4px;
+      border-left: 2px solid rgba(56, 189, 248, 0.35);
+    }
+    .medley-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+      padding: 7px 0 7px 4px;
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .medley-item-title { flex: 1; min-width: 0; }
+    .medley-link {
+      flex-shrink: 0;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
+    .medley-link:hover { text-decoration: underline; }
     footer {
       padding: 30px 20px;
       text-align: center;
@@ -172,10 +188,12 @@
       .song-title { font-size: 1rem; }
       .song-artist { font-size: 0.8rem; }
       .song-link { padding: 9px 11px; font-size: 0.8rem; }
+      .medley-item { font-size: 0.82rem; }
     }
     @media (max-width: 380px) {
       .song-link span { display: none; }
       .song-link { width: 38px; height: 38px; padding: 0; }
+      .medley-link { font-size: 0.75rem; }
     }
   </style>
 </head>
@@ -241,10 +259,33 @@
           `
           : "";
 
+        const medleyList = Array.isArray(song.medley) && song.medley.length
+          ? `
+            <div class="medley-list">
+              ${song.medley.map(item => `
+                <div class="medley-item">
+                  <div class="medley-item-title">・${item.title}</div>
+                  ${item.lyrics ? `
+                    <a
+                      href="${item.lyrics}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="medley-link"
+                    >
+                      歌詞を見る
+                    </a>
+                  ` : ""}
+                </div>
+              `).join("")}
+            </div>
+          `
+          : "";
+
         card.innerHTML = `
           <div class="song-info">
             <div class="song-title">${song.title}</div>
             <div class="song-artist">${song.artist || ""}</div>
+            ${medleyList}
           </div>
           ${lyricsButton}
         `;
