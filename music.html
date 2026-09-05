@@ -30,7 +30,7 @@
 
     section { width: 100%; max-width: 900px; margin: 0 auto; padding: 40px 20px 60px; }
 
-    /* --- 曲一覧上部 SNS & ロゴアイコン用スタイル --- */
+    /* SNS & ロゴアイコン用スタイル */
     .section-sns {
       display: flex;
       justify-content: center;
@@ -60,7 +60,6 @@
     .youtube { background: #ff0000; }
     .facebook { background: #1877f2; }
 
-    /* クマロゴアイコン（白背景） */
     .original-icon {
       background: #ffffff;
       padding: 6px;
@@ -74,7 +73,32 @@
     .preparing-message { padding: 50px 25px; background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.18); border-radius: 12px; text-align: center; color: #38bdf8; font-size: 1.25rem; font-weight: 600; }
     .preparing-message span { display: block; margin-top: 10px; color: #cbd5e1; font-size: 1rem; font-weight: 400; }
     .stage-group { margin: 0; }
-    .stage-title { position: sticky; top: 0; z-index: 20; margin: 35px 0 15px; padding: 12px 14px; border-left: 4px solid #38bdf8; background: rgba(15, 23, 42, 0.96); border-radius: 6px; color: #e0f2fe; font-size: 1.15rem; font-weight: 600; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); backdrop-filter: blur(8px); }
+    
+    /* ステージタイトル基本スタイル（デフォルト：青系） */
+    .stage-title {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: 35px 0 15px;
+      padding: 12px 14px;
+      border-left: 4px solid #38bdf8;
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 6px;
+      color: #e0f2fe;
+      font-size: 1.15rem;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+    }
+    
+    /* STAGE 2用のオレンジ系スタイル */
+    .stage-title.stage-orange {
+      border-left-color: #f97316;
+      color: #ffedd5;
+      background: rgba(30, 16, 10, 0.96);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+    }
+
     .stage-group:first-child .stage-title { margin-top: 0; }
     .stage-songs { display: grid; gap: 15px; }
     .song-card { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 18px 20px; background: #0f172a; border-radius: 12px; border: 1px solid rgba(148, 163, 184, 0.08); transition: 0.25s ease; }
@@ -121,7 +145,6 @@
   </header>
 
   <section>
-    <!-- 「曲一覧」の文字を削除し、SNSアイコンを並べる -->
     <div class="section-sns">
       <a href="index.html" class="sns-btn original-icon" aria-label="TABASKA Official">
         <img src="images/bear_logo.png" alt="TABASKA Bear Logo">
@@ -142,7 +165,6 @@
 
   <footer>TABASKA</footer>
 
-  <!-- キャッシュ対策：songs.jsを常に最新バージョンで読み込む -->
   <script src="songs.js?v=20260905-05"></script>
   <script>
     document.getElementById("concert-date").textContent = concertDate;
@@ -169,7 +191,14 @@
           stageGroup.className = "stage-group";
 
           const stageTitle = document.createElement("div");
-          stageTitle.className = "stage-title";
+          
+          /* 「Stage2」が含まれている場合、オレンジスタイルを追加クラスとして割り当て */
+          if (/2|2nd|STAGE\s*2/i.test(currentStage)) {
+            stageTitle.className = "stage-title stage-orange";
+          } else {
+            stageTitle.className = "stage-title";
+          }
+          
           stageTitle.textContent = currentStage;
 
           stageSongs = document.createElement("div");
