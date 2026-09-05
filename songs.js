@@ -92,10 +92,10 @@ const songs = [
     artist: "昭和歌謡",
     lyrics: "",
     medley: [
-      { title: "悲しみよこんにちは", lyrics: "" },
-      { title: "Stay With Me", lyrics: "" },
-      { title: "悲しみがとまらない", lyrics: "" },
-      { title: "アメリカン・フィーリング", lyrics: "" }
+      { title: "悲しみよこんにちは", lyrics: "https://www.uta-net.com/song/1355/" },
+      { title: "Stay With Me", lyrics: "https://www.uta-net.com/song/6321/" },
+      { title: "悲しみがとまらない", lyrics: "https://www.uta-net.com/song/1341/" },
+      { title: "アメリカン・フィーリング", lyrics: "https://www.uta-net.com/song/400/" }
     ]
   },
 
@@ -108,9 +108,9 @@ const songs = [
     artist: "アンパンマン",
     lyrics: "",
     medley: [
-      { title: "アンパンマンのマーチ", lyrics: "" },
-      { title: "勇気りんりん", lyrics: "" },
-      { title: "アンパンマンたいそう", lyrics: "" }
+      { title: "アンパンマンのマーチ", lyrics: "https://www.uta-net.com/song/7326/" },
+      { title: "勇気りんりん", lyrics: "https://www.uta-net.com/song/9054/" },
+      { title: "アンパンマンたいそう", lyrics: "https://www.uta-net.com/song/5508/" }
     ]
   },
   {
@@ -120,10 +120,10 @@ const songs = [
     lyrics: "",
     medley: [
       { title: "パウ・パトロール", lyrics: "" },
-      { title: "さんぽ", lyrics: "" },
-      { title: "ルージュの伝言", lyrics: "" },
-      { title: "めぐる季節", lyrics: "" },
-      { title: "となりのトトロ", lyrics: "" }
+      { title: "さんぽ", lyrics: "https://www.uta-net.com/song/10772/" },
+      { title: "ルージュの伝言", lyrics: "https://www.uta-net.com/song/4854/" },
+      { title: "めぐる季節", lyrics: "https://www.uta-net.com/song/7525/" },
+      { title: "となりのトトロ", lyrics: "https://www.uta-net.com/song/5064/" }
     ]
   },
   {
@@ -156,9 +156,9 @@ const songs = [
     artist: "サザンオールスターズ",
     lyrics: "",
     medley: [
-      { title: "TSUNAMI", lyrics: "" },
-      { title: "いとしのエリー", lyrics: "" },
-      { title: "波乗りジョニー", lyrics: "" }
+      { title: "TSUNAMI", lyrics: "https://www.uta-net.com/song/12255/" },
+      { title: "いとしのエリー", lyrics: "https://www.uta-net.com/song/702/" },
+      { title: "波乗りジョニー", lyrics: "https://www.uta-net.com/song/13297/" }
     ]
   },
   {
@@ -173,13 +173,13 @@ const songs = [
     artist: "昭和歌謡",
     lyrics: "",
     medley: [
-      { title: "勝手にしやがれ", lyrics: "" },
-      { title: "飛んでイスタンブール", lyrics: "" },
-      { title: "あずさ2号", lyrics: "" },
-      { title: "私鉄沿線", lyrics: "" },
-      { title: "青いリンゴ", lyrics: "" },
-      { title: "時の流れに身をまかせ", lyrics: "" },
-      { title: "かもめが翔んだ日", lyrics: "" }
+      { title: "勝手にしやがれ", lyrics: "https://www.uta-net.com/song/1311/" },
+      { title: "飛んでイスタンブール", lyrics: "https://www.uta-net.com/song/3321/" },
+      { title: "あずさ2号", lyrics: "https://www.uta-net.com/song/247/" },
+      { title: "私鉄沿線", lyrics: "https://www.uta-net.com/song/2429/" },
+      { title: "青いリンゴ", lyrics: "https://www.uta-net.com/song/178/" },
+      { title: "時の流れに身をまかせ", lyrics: "https://www.uta-net.com/song/3251/" },
+      { title: "かもめが翔んだ日", lyrics: "https://www.uta-net.com/song/1379/" }
     ]
   }
 ];
