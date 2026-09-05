@@ -65,7 +65,7 @@ const songs = [
     stage: "STAGE 1",
     title: "ふるさと",
     artist: "童謡・唱歌",
-    lyrics: "https://www.uta-net.com/song/13892/"
+    lyrics: ""
   },
   {
     stage: "STAGE 1",
@@ -98,8 +98,8 @@ const songs = [
   {
     stage: "STAGE 2",
     title: "恋風",
-    artist: "幾田りら",
-    lyrics: "https://www.uta-net.com/song/371553/"
+    artist: "",
+    lyrics: ""
   },
   {
     stage: "STAGE 2",
