@@ -119,7 +119,7 @@ const songs = [
     artist: "パウ・パトロール／ジブリ",
     lyrics: "",
     medley: [
-      { title: "パウ・パトロール", lyrics: "" },
+      { title: "パウ・パトロール", lyrics: "https://www.lyrical-nonsense.com/lyrics/paw-patrol/paw-patrol/" },
       { title: "さんぽ", lyrics: "https://www.uta-net.com/song/10772/" },
       { title: "ルージュの伝言", lyrics: "https://www.uta-net.com/song/4854/" },
       { title: "めぐる季節", lyrics: "https://www.uta-net.com/song/7525/" },
