@@ -26,7 +26,14 @@ const songs = [
     stage: "STAGE 1",
     title: "勇気と冒険のメドレー",
     artist: "",
-    lyrics: ""
+    lyrics: "",
+    medley: [
+      { title: "勇気100%", lyrics: "" },
+      { title: "Super Mario Wind Garden", lyrics: "" },
+      { title: "STAND BY ME ドラえもん 2 主題歌 菅田将暉さん「虹」", lyrics: "" },
+      { title: "LiSA『紅蓮華』", lyrics: "" },
+      { title: "After the Rainの「1・2・3」", lyrics: "" }
+    ]
   },
   {
     stage: "STAGE 1",
