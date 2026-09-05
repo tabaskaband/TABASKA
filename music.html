@@ -20,8 +20,7 @@
     .stage-time { white-space: nowrap; }
     section { width: 100%; max-width: 900px; margin: 0 auto; padding: 40px 20px 60px; }
     h2 { margin: 0 0 25px; padding-left: 12px; border-left: 5px solid #38bdf8; font-size: 1.5rem; font-weight: 600; }
-    .preparing-message { padding: 50px 25px; background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.18); border-radius: 12px; text-align: center; color: #cbd5e1; font-size: 1rem; line-height: 1.8; }
-    .preparing-message strong { display: block; margin-bottom: 10px; color: #38bdf8; font-size: 1.25rem; }
+    .preparing-message { padding: 50px 25px; background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.18); border-radius: 12px; text-align: center; color: #38bdf8; font-size: 1.25rem; font-weight: 600; }
     .stage-group { margin: 0; }
     .stage-title { position: sticky; top: 0; z-index: 20; margin: 35px 0 15px; padding: 12px 14px; border-left: 4px solid #38bdf8; background: rgba(15, 23, 42, 0.96); border-radius: 6px; color: #e0f2fe; font-size: 1.15rem; font-weight: 600; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); backdrop-filter: blur(8px); }
     .stage-group:first-child .stage-title { margin-top: 0; }
@@ -46,8 +45,7 @@
       .concert-venue, .concert-time { font-size: 0.85rem; }
       section { padding: 30px 15px 50px; }
       h2 { font-size: 1.3rem; margin-bottom: 20px; }
-      .preparing-message { padding: 40px 20px; font-size: 0.9rem; }
-      .preparing-message strong { font-size: 1.1rem; }
+      .preparing-message { padding: 40px 20px; font-size: 1.1rem; }
       .stage-title { top: 0; font-size: 1.05rem; margin-top: 28px; padding: 10px 12px; }
       .song-card { padding: 16px; gap: 12px; }
       .song-title { font-size: 1rem; }
@@ -77,7 +75,7 @@
   <footer>TABASKA</footer>
 
   <!-- キャッシュ対策：songs.jsを常に最新バージョンで読み込む -->
-  <script src="songs.js?v=20260905-03"></script>
+  <script src="songs.js?v=20260905-04"></script>
   <script>
     document.getElementById("concert-date").textContent = concertDate;
     document.getElementById("concert-title").textContent = concertTitle;
@@ -152,9 +150,7 @@
     } else {
       songList.innerHTML = `
         <div class="preparing-message">
-          <strong>現在準備中です</strong>
-          曲目・歌詞情報は、現在準備中です。<br>
-          公開までしばらくお待ちください。
+          現在準備中です
         </div>
       `;
     }
