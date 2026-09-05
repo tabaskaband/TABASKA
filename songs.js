@@ -15,7 +15,7 @@ const songs = [
   // ========================================
   {
     stage: "STAGE 1",
-    title: "昭和歌謡曲メドレー② カモメ",
+    title: "昭和歌謡曲メドレー",
     artist: "昭和歌謡",
     lyrics: ""
   },
@@ -69,7 +69,7 @@ const songs = [
   },
   {
     stage: "STAGE 1",
-    title: "昭和歌謡曲メドレー⑤",
+    title: "昭和歌謡曲メドレー",
     artist: "昭和歌謡",
     lyrics: ""
   },
