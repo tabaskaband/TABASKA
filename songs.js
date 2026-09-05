@@ -89,7 +89,7 @@ const songs = [
   {
     stage: "STAGE 1",
     title: "昭和歌謡曲メドレー",
-    artist: "昭和歌謡",
+    artist: "",
     lyrics: "",
     medley: [
       { title: "悲しみよこんにちは", lyrics: "https://www.uta-net.com/song/1355/" },
@@ -105,7 +105,7 @@ const songs = [
   {
     stage: "STAGE 2",
     title: "アンパンマンメドレー",
-    artist: "アンパンマン",
+    artist: "",
     lyrics: "",
     medley: [
       { title: "アンパンマンのマーチ", lyrics: "https://www.uta-net.com/song/7326/" },
@@ -116,7 +116,7 @@ const songs = [
   {
     stage: "STAGE 2",
     title: "パウ・パトロール／ジブリメドレー",
-    artist: "パウ・パトロール／ジブリ",
+    artist: "",
     lyrics: "",
     medley: [
       { title: "パウ・パトロール", lyrics: "https://www.lyrical-nonsense.com/lyrics/paw-patrol/paw-patrol/" },
@@ -170,7 +170,7 @@ const songs = [
   {
     stage: "STAGE 2",
     title: "昭和歌謡曲メドレー",
-    artist: "昭和歌謡",
+    artist: "",
     lyrics: "",
     medley: [
       { title: "勝手にしやがれ", lyrics: "https://www.uta-net.com/song/1311/" },
