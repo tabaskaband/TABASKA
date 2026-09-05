@@ -90,7 +90,13 @@ const songs = [
     stage: "STAGE 1",
     title: "昭和歌謡曲メドレー",
     artist: "昭和歌謡",
-    lyrics: ""
+    lyrics: "",
+    medley: [
+      { title: "悲しみよこんにちは", lyrics: "" },
+      { title: "Stay With Me", lyrics: "" },
+      { title: "悲しみがとまらない", lyrics: "" },
+      { title: "アメリカン・フィーリング", lyrics: "" }
+    ]
   },
 
   // ========================================
@@ -100,13 +106,25 @@ const songs = [
     stage: "STAGE 2",
     title: "アンパンマンメドレー",
     artist: "アンパンマン",
-    lyrics: ""
+    lyrics: "",
+    medley: [
+      { title: "アンパンマンのマーチ", lyrics: "" },
+      { title: "勇気りんりん", lyrics: "" },
+      { title: "アンパンマンたいそう", lyrics: "" }
+    ]
   },
   {
     stage: "STAGE 2",
     title: "パウ・パトロール／ジブリメドレー",
     artist: "パウ・パトロール／ジブリ",
-    lyrics: ""
+    lyrics: "",
+    medley: [
+      { title: "パウ・パトロール", lyrics: "" },
+      { title: "さんぽ", lyrics: "" },
+      { title: "ルージュの伝言", lyrics: "" },
+      { title: "めぐる季節", lyrics: "" },
+      { title: "となりのトトロ", lyrics: "" }
+    ]
   },
   {
     stage: "STAGE 2",
@@ -136,7 +154,12 @@ const songs = [
     stage: "STAGE 2",
     title: "サザンメドレー",
     artist: "サザンオールスターズ",
-    lyrics: ""
+    lyrics: "",
+    medley: [
+      { title: "TSUNAMI", lyrics: "" },
+      { title: "いとしのエリー", lyrics: "" },
+      { title: "波乗りジョニー", lyrics: "" }
+    ]
   },
   {
     stage: "STAGE 2",
@@ -144,10 +167,19 @@ const songs = [
     artist: "中島みゆき",
     lyrics: "https://www.uta-net.com/song/2416/"
   },
-    {
+  {
     stage: "STAGE 2",
     title: "昭和歌謡曲メドレー",
     artist: "昭和歌謡",
-    lyrics: ""
+    lyrics: "",
+    medley: [
+      { title: "勝手にしやがれ", lyrics: "" },
+      { title: "飛んでイスタンブール", lyrics: "" },
+      { title: "あずさ2号", lyrics: "" },
+      { title: "私鉄沿線", lyrics: "" },
+      { title: "青いリンゴ", lyrics: "" },
+      { title: "時の流れに身をまかせ", lyrics: "" },
+      { title: "かもめが翔んだ日", lyrics: "" }
+    ]
   }
 ];
