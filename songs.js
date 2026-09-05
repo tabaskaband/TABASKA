@@ -1,24 +1,25 @@
 // ========================================
 // コンサート情報
 // ========================================
-const concertDate = "2026年◯◯月◯◯日（土）";
-const concertTitle = "TABASKA LIVE";
-const concertVenue = "○○○○";
+const concertDate = "2026年10月04日（日）";
+const concertTitle = "Mall de Music";
+const concertVenue = "イオンモールKagoshima BAY";
 
 // ステージ別 開演時間
-const stage1Time = "00:00";
-const stage2Time = "00:00";
+const stage1Time = "15:30";
+const stage2Time = "17:00";
 
 // ========================================
 // 曲一覧
 // ========================================
 const songs = [
+
   // ========================================
   // STAGE 1
   // ========================================
   {
     stage: "STAGE 1",
-    title: "おジャ魔女カーニバル!!",
+    title: "おジャ魔女カーニバル",
     artist: "MAHO堂",
     lyrics: "https://www.uta-net.com/song/14341/"
   },
@@ -28,26 +29,11 @@ const songs = [
     artist: "",
     lyrics: "",
     medley: [
-      {
-        title: "勇気100%",
-        lyrics: "https://www.uta-net.com/song/7263/"
-      },
-      {
-        title: "Super Mario Wind Garden",
-        lyrics: ""
-      },
-      {
-        title: "「虹」菅田将暉",
-        lyrics: "https://www.uta-net.com/song/293474/"
-      },
-      {
-        title: "『紅蓮華』LiSA",
-        lyrics: "https://www.uta-net.com/song/270036/"
-      },
-      {
-        title: "「1・2・3」After the Rain",
-        lyrics: "https://www.uta-net.com/song/279388/"
-      }
+      { title: "勇気100%", lyrics: "https://www.uta-net.com/song/7263/" },
+      { title: "Super Mario Wind Garden", lyrics: "" },
+      { title: "「虹」菅田将暉", lyrics: "https://www.uta-net.com/song/293474/" },
+      { title: "『紅蓮華』LiSA", lyrics: "https://www.uta-net.com/song/270036/" },
+      { title: "「1・2・3」After the Rain", lyrics: "https://www.uta-net.com/song/279388/" }
     ]
   },
   {
@@ -67,6 +53,12 @@ const songs = [
     title: "逢いたくていま",
     artist: "MISIA",
     lyrics: "https://www.oricon.co.jp/prof/17265/lyrics/171078/"
+  },
+  {
+    stage: "STAGE 1",
+    title: "The Moment",
+    artist: "",
+    lyrics: ""
   },
   {
     stage: "STAGE 1",
@@ -115,7 +107,7 @@ const songs = [
   },
   {
     stage: "STAGE 2",
-    title: "パウ・パトロール／ジブリメドレー",
+    title: "パウ・パトロール・ジブリメドレー",
     artist: "",
     lyrics: "",
     medley: [
@@ -123,7 +115,7 @@ const songs = [
       { title: "さんぽ", lyrics: "https://www.uta-net.com/song/10772/" },
       { title: "ルージュの伝言", lyrics: "https://www.uta-net.com/song/4854/" },
       { title: "めぐる季節", lyrics: "https://www.uta-net.com/song/7525/" },
-      { title: "仕事はじめ", lyrics: "" },      
+      { title: "仕事はじめ", lyrics: "" },
       { title: "となりのトトロ", lyrics: "https://www.uta-net.com/song/5064/" }
     ]
   },
@@ -141,8 +133,8 @@ const songs = [
   },
   {
     stage: "STAGE 2",
-    title: "威風堂々 Brass Rock",
-    artist: "Edward Elgar",
+    title: "The Moment",
+    artist: "",
     lyrics: ""
   },
   {
@@ -182,5 +174,11 @@ const songs = [
       { title: "時の流れに身をまかせ", lyrics: "https://www.uta-net.com/song/3251/" },
       { title: "かもめが翔んだ日", lyrics: "https://www.uta-net.com/song/1379/" }
     ]
+  },
+  {
+    stage: "STAGE 2",
+    title: "威風堂々",
+    artist: "Edward Elgar",
+    lyrics: ""
   }
 ];
