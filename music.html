@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TABASKA Live</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     * { box-sizing: border-box; }
     body {
@@ -98,7 +97,7 @@
     .song-list { display: grid; gap: 15px; }
     .song-card {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 20px;
       padding: 18px 20px;
@@ -125,28 +124,31 @@
       font-size: 0.9rem;
       line-height: 1.4;
     }
-    .song-link {
+    .song-link,
+    .medley-link {
       flex-shrink: 0;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      padding: 10px 15px;
+      padding: 8px 12px;
       color: #ffffff;
       background: rgba(56, 189, 248, 0.15);
-      border: 1px solid rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.35);
       border-radius: 8px;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
+      line-height: 1.2;
+      white-space: nowrap;
       transition: 0.25s ease;
     }
-    .song-link:hover {
+    .song-link:hover,
+    .medley-link:hover {
       background: rgba(56, 189, 248, 0.3);
       color: #38bdf8;
     }
     .medley-list {
-      margin-top: 10px;
-      padding: 12px 14px 4px;
+      margin-top: 12px;
+      padding: 10px 0 2px;
       border-left: 2px solid rgba(56, 189, 248, 0.35);
     }
     .medley-item {
@@ -154,20 +156,13 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 9px;
-      padding: 7px 0 7px 4px;
+      margin-bottom: 8px;
+      padding: 7px 0 7px 12px;
       color: #cbd5e1;
       font-size: 0.9rem;
       line-height: 1.5;
     }
     .medley-item-title { flex: 1; min-width: 0; }
-    .medley-link {
-      flex-shrink: 0;
-      color: #38bdf8;
-      text-decoration: none;
-      font-size: 0.8rem;
-    }
-    .medley-link:hover { text-decoration: underline; }
     footer {
       padding: 30px 20px;
       text-align: center;
@@ -187,13 +182,9 @@
       .song-card { padding: 16px; gap: 12px; }
       .song-title { font-size: 1rem; }
       .song-artist { font-size: 0.8rem; }
-      .song-link { padding: 9px 11px; font-size: 0.8rem; }
-      .medley-item { font-size: 0.82rem; }
-    }
-    @media (max-width: 380px) {
-      .song-link span { display: none; }
-      .song-link { width: 38px; height: 38px; padding: 0; }
-      .medley-link { font-size: 0.75rem; }
+      .song-link,
+      .medley-link { padding: 8px 10px; font-size: 0.75rem; }
+      .medley-item { font-size: 0.82rem; padding-left: 10px; }
     }
   </style>
 </head>
@@ -216,7 +207,8 @@
 
   <footer>TABASKA</footer>
 
-  <script src="songs.js"></script>
+  <!-- キャッシュ対策：songs.jsを常に最新バージョンで読み込む -->
+  <script src="songs.js?v=20260905-02"></script>
   <script>
     document.getElementById("concert-date").textContent = concertDate;
     document.getElementById("concert-title").textContent = concertTitle;
@@ -253,8 +245,7 @@
               rel="noopener noreferrer"
               class="song-link"
             >
-              <i class="fa-solid fa-music"></i>
-              <span>歌詞を見る</span>
+              歌詞を見る
             </a>
           `
           : "";
@@ -265,7 +256,7 @@
               ${song.medley.map(item => `
                 <div class="medley-item">
                   <div class="medley-item-title">・${item.title}</div>
-                  ${item.lyrics ? `
+                  ${item.lyrics && String(item.lyrics).trim() !== "" ? `
                     <a
                       href="${item.lyrics}"
                       target="_blank"
