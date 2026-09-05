@@ -37,15 +37,15 @@ const songs = [
         lyrics: ""
       },
       {
-        title: "STAND BY ME ドラえもん 2 主題歌 菅田将暉さん「虹」",
+        title: "「虹」菅田将暉",
         lyrics: "https://www.uta-net.com/song/293474/"
       },
       {
-        title: "LiSA『紅蓮華』",
+        title: "『紅蓮華』LiSA",
         lyrics: "https://www.uta-net.com/song/270036/"
       },
       {
-        title: "After the Rainの「1・2・3」",
+        title: "「1・2・3」After the Rain",
         lyrics: "https://www.uta-net.com/song/279388/"
       }
     ]
