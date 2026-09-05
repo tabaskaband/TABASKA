@@ -28,15 +28,22 @@
     .concert-time { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; color: #cbd5e1; font-size: 0.95rem; line-height: 1.5; }
     .stage-time { white-space: nowrap; }
 
-    section { width: 100%; max-width: 900px; margin: 0 auto; padding: 40px 20px 60px; }
+    section { width: 100%; max-width: 900px; margin: 0 auto; padding: 20px 20px 60px; }
 
-    /* SNS & ロゴアイコン用スタイル */
+    /* --- SNSアイコンの固定（Sticky）スタイル --- */
     .section-sns {
+      position: sticky;
+      top: 0;
+      z-index: 30; /* Stage見出し(z-index:20)より全面に表示 */
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 15px;
-      margin-bottom: 30px;
+      padding: 15px 0;
+      margin-bottom: 15px;
+      background: rgba(2, 6, 23, 0.85); /* 背後のコンテンツが透ける半透明背景 */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     .sns-btn {
       width: 48px;
@@ -74,10 +81,10 @@
     .preparing-message span { display: block; margin-top: 10px; color: #cbd5e1; font-size: 1rem; font-weight: 400; }
     .stage-group { margin: 0; }
     
-    /* ステージタイトル基本スタイル（デフォルト：青系） */
+    /* ステージタイトル固定位置（SNSアイコンの高さ分、top位置をずらす） */
     .stage-title {
       position: sticky;
-      top: 0;
+      top: 78px; /* SNSアイコンバーの下にぴったり重なる位置 */
       z-index: 20;
       margin: 35px 0 15px;
       padding: 12px 14px;
@@ -102,7 +109,7 @@
     .stage-group:first-child .stage-title { margin-top: 0; }
     .stage-songs { display: grid; gap: 15px; }
     
-    /* 曲カード基本スタイル（デフォルト：青系） */
+    /* 曲カード基本スタイル（青系） */
     .song-card { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 18px 20px; background: #0f172a; border-radius: 12px; border: 1px solid rgba(148, 163, 184, 0.08); transition: 0.25s ease; }
     .song-card:hover { transform: translateY(-3px); border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
     .song-info { min-width: 0; flex: 1; }
@@ -114,7 +121,7 @@
     .medley-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; padding: 7px 0 7px 12px; color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
     .medley-item-title { flex: 1; min-width: 0; }
 
-    /* --- STAGE 2以降用のオレンジ系スタイル（カード要素） --- */
+    /* STAGE 2以降用のオレンジ系スタイル（カード要素） */
     .song-card.card-orange:hover {
       border-color: rgba(249, 115, 22, 0.5);
       box-shadow: 0 8px 25px rgba(249, 115, 22, 0.15);
@@ -145,10 +152,11 @@
       .concert-title { font-size: 1.05rem; }
       .concert-venue, .concert-time { font-size: 0.85rem; }
       .sns-btn { width: 42px; height: 42px; font-size: 1rem; }
-      section { padding: 30px 15px 50px; }
+      .section-sns { padding: 10px 0; margin-bottom: 10px; }
+      section { padding: 15px 15px 50px; }
       .preparing-message { padding: 40px 20px; font-size: 1.1rem; }
       .preparing-message span { font-size: 0.9rem; }
-      .stage-title { top: 0; font-size: 1.05rem; margin-top: 28px; padding: 10px 12px; }
+      .stage-title { top: 62px; font-size: 1.05rem; margin-top: 28px; padding: 10px 12px; }
       .song-card { padding: 16px; gap: 12px; }
       .song-title { font-size: 1rem; }
       .song-artist { font-size: 0.8rem; }
@@ -170,6 +178,7 @@
   </header>
 
   <section>
+    <!-- 画面上部に常時固定されるSNSアイコンバー -->
     <div class="section-sns">
       <a href="index.html" class="sns-btn original-icon" aria-label="TABASKA Official">
         <img src="images/bear_logo.png" alt="TABASKA Bear Logo">
@@ -213,7 +222,6 @@
         if (song.stage && song.stage !== currentStage) {
           currentStage = song.stage;
 
-          // STAGE 2以降（数値の2以上、2nd、STAGE 2等）を判定
           isOrangeStage = /[2-9]|2nd|3rd|STAGE\s*[2-9]/i.test(currentStage);
 
           stageGroup = document.createElement("div");
