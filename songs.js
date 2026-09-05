@@ -64,8 +64,8 @@ const songs = [
   {
     stage: "STAGE 1",
     title: "ふるさと",
-    artist: "童謡・唱歌",
-    lyrics: ""
+    artist: "嵐",
+    lyrics: "https://www.uta-net.com/song/195976/"
   },
   {
     stage: "STAGE 1",
