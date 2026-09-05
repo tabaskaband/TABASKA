@@ -13,12 +13,7 @@ const songs = [
   // ========================================
   // STAGE 1
   // ========================================
-  {
-    stage: "STAGE 1",
-    title: "昭和歌謡曲メドレー",
-    artist: "昭和歌謡",
-    lyrics: ""
-  },
+
   {
     stage: "STAGE 1",
     title: "おジャ魔女カーニバル!!",
@@ -124,5 +119,11 @@ const songs = [
     title: "時代",
     artist: "中島みゆき",
     lyrics: "https://www.uta-net.com/song/2416/"
+  },
+    {
+    stage: "STAGE 1",
+    title: "昭和歌謡曲メドレー",
+    artist: "昭和歌謡",
+    lyrics: ""
   }
 ];
