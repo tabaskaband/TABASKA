@@ -28,11 +28,26 @@ const songs = [
     artist: "",
     lyrics: "",
     medley: [
-      { title: "勇気100%", lyrics: "" },
-      { title: "Super Mario Wind Garden", lyrics: "" },
-      { title: "STAND BY ME ドラえもん 2 主題歌 菅田将暉さん「虹」", lyrics: "" },
-      { title: "LiSA『紅蓮華』", lyrics: "" },
-      { title: "After the Rainの「1・2・3」", lyrics: "" }
+      {
+        title: "勇気100%",
+        lyrics: "https://www.uta-net.com/song/7263/"
+      },
+      {
+        title: "Super Mario Wind Garden",
+        lyrics: ""
+      },
+      {
+        title: "STAND BY ME ドラえもん 2 主題歌 菅田将暉さん「虹」",
+        lyrics: "https://www.uta-net.com/song/293474/"
+      },
+      {
+        title: "LiSA『紅蓮華』",
+        lyrics: "https://www.uta-net.com/song/270036/"
+      },
+      {
+        title: "After the Rainの「1・2・3」",
+        lyrics: "https://www.uta-net.com/song/279388/"
+      }
     ]
   },
   {
