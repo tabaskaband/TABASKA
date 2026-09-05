@@ -91,7 +91,7 @@
       backdrop-filter: blur(8px);
     }
     
-    /* STAGE 2用のオレンジ系スタイル */
+    /* STAGE 2用のオレンジ系スタイル（タイトル） */
     .stage-title.stage-orange {
       border-left-color: #f97316;
       color: #ffedd5;
@@ -101,6 +101,8 @@
 
     .stage-group:first-child .stage-title { margin-top: 0; }
     .stage-songs { display: grid; gap: 15px; }
+    
+    /* 曲カード基本スタイル（デフォルト：青系） */
     .song-card { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 18px 20px; background: #0f172a; border-radius: 12px; border: 1px solid rgba(148, 163, 184, 0.08); transition: 0.25s ease; }
     .song-card:hover { transform: translateY(-3px); border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
     .song-info { min-width: 0; flex: 1; }
@@ -111,6 +113,29 @@
     .medley-list { margin-top: 12px; padding: 10px 0 2px; border-left: 2px solid rgba(56, 189, 248, 0.35); }
     .medley-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; padding: 7px 0 7px 12px; color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
     .medley-item-title { flex: 1; min-width: 0; }
+
+    /* --- STAGE 2以降用のオレンジ系スタイル（カード要素） --- */
+    .song-card.card-orange:hover {
+      border-color: rgba(249, 115, 22, 0.5);
+      box-shadow: 0 8px 25px rgba(249, 115, 22, 0.15);
+    }
+    .song-card.card-orange .song-title {
+      color: #f97316;
+    }
+    .song-card.card-orange .song-link,
+    .song-card.card-orange .medley-link {
+      background: rgba(249, 115, 22, 0.15);
+      border-color: rgba(249, 115, 22, 0.4);
+    }
+    .song-card.card-orange .song-link:hover,
+    .song-card.card-orange .medley-link:hover {
+      background: rgba(249, 115, 22, 0.3);
+      color: #ffedd5;
+    }
+    .song-card.card-orange .medley-list {
+      border-left-color: rgba(249, 115, 22, 0.4);
+    }
+
     footer { padding: 30px 20px; text-align: center; color: #64748b; font-size: 0.8rem; }
     @media (max-width: 600px) {
       header { min-height: 35vh; padding: 35px 15px; }
@@ -182,23 +207,20 @@
       let currentStage = "";
       let stageGroup = null;
       let stageSongs = null;
+      let isOrangeStage = false;
 
       songs.forEach(song => {
         if (song.stage && song.stage !== currentStage) {
           currentStage = song.stage;
 
+          // STAGE 2以降（数値の2以上、2nd、STAGE 2等）を判定
+          isOrangeStage = /[2-9]|2nd|3rd|STAGE\s*[2-9]/i.test(currentStage);
+
           stageGroup = document.createElement("div");
           stageGroup.className = "stage-group";
 
           const stageTitle = document.createElement("div");
-          
-          /* 「Stage2」が含まれている場合、オレンジスタイルを追加クラスとして割り当て */
-          if (/2|2nd|STAGE\s*2/i.test(currentStage)) {
-            stageTitle.className = "stage-title stage-orange";
-          } else {
-            stageTitle.className = "stage-title";
-          }
-          
+          stageTitle.className = isOrangeStage ? "stage-title stage-orange" : "stage-title";
           stageTitle.textContent = currentStage;
 
           stageSongs = document.createElement("div");
@@ -210,7 +232,7 @@
         }
 
         const card = document.createElement("div");
-        card.className = "song-card";
+        card.className = isOrangeStage ? "song-card card-orange" : "song-card";
 
         const lyricsButton = song.lyrics
           ? `
