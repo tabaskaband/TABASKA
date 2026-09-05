@@ -123,6 +123,7 @@ const songs = [
       { title: "さんぽ", lyrics: "https://www.uta-net.com/song/10772/" },
       { title: "ルージュの伝言", lyrics: "https://www.uta-net.com/song/4854/" },
       { title: "めぐる季節", lyrics: "https://www.uta-net.com/song/7525/" },
+      { title: "仕事始め", lyrics: "" },      
       { title: "となりのトトロ", lyrics: "https://www.uta-net.com/song/5064/" }
     ]
   },
