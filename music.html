@@ -62,8 +62,16 @@
       font-size: 0.95rem;
     }
     .concert-time {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 10px;
       color: #cbd5e1;
       font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .stage-time {
+      white-space: nowrap;
     }
     section {
       width: 100%;
@@ -195,7 +203,11 @@
     document.getElementById("concert-date").textContent = concertDate;
     document.getElementById("concert-title").textContent = concertTitle;
     document.getElementById("concert-venue").textContent = concertVenue;
-    document.getElementById("concert-time").textContent = "開演 " + concertTime;
+
+    document.getElementById("concert-time").innerHTML = `
+      <div class="stage-time">【Stage1】 ${stage1Time}〜</div>
+      <div class="stage-time">【Stage2】 ${stage2Time}〜</div>
+    `;
 
     const songList = document.getElementById("song-list");
 
@@ -203,7 +215,6 @@
       let currentStage = "";
 
       songs.forEach(song => {
-        // ステージが変わったら見出しを表示
         if (song.stage && song.stage !== currentStage) {
           currentStage = song.stage;
 
@@ -216,7 +227,6 @@
         const card = document.createElement("div");
         card.className = "song-card";
 
-        // 歌詞URLがある曲だけ「歌詞を見る」を表示
         const lyricsButton = song.lyrics
           ? `
             <a
