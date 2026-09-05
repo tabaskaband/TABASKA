@@ -4,7 +4,10 @@
 const concertDate = "2026年◯◯月◯◯日（土）";
 const concertTitle = "TABASKA LIVE";
 const concertVenue = "○○○○";
-const concertTime = "**:**";
+
+// ステージ別 開演時間
+const stage1Time = "00:00";
+const stage2Time = "00:00";
 
 // ========================================
 // 曲一覧
