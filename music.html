@@ -219,7 +219,7 @@
         if (song.stage && song.stage !== currentStage) {
           currentStage = song.stage;
 
-          isOrangeStage = /[2-9]|2nd|3rd|STAGE\s*[2-9]/i.test(currentStage);
+          isOrangeStage = /STAGE\s*[2-9]/i.test(currentStage);
 
           stageGroup = document.createElement("div");
           stageGroup.className = "stage-group";
