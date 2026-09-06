@@ -61,6 +61,12 @@ const songs = [
                 title: "紅蓮華",
                 artist: "LiSA",
                 lyrics: "https://www.uta-net.com/song/270036/"
+            },
+
+            {
+                title: "１・２・３",
+                artist: "After the Rain",
+                lyrics: "https://www.uta-net.com/song/279388/"
             }
 
         ]
