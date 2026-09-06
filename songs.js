@@ -149,6 +149,7 @@ const songs = [
                 title: "アメリカン・フィーリング",
                 lyrics: "https://www.uta-net.com/song/400/"
             }
+        ]
     },
 
     // ========================================
