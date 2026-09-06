@@ -205,15 +205,19 @@
   <script>
 
 const today = new Date();
-const limitDate = new Date(lyricsAvailableUntil);
 
-if (today > limitDate) {
+const fromDate = new Date(lyricsAvailableFrom + "T15:00:00");
+const untilDate = new Date(lyricsAvailableUntil + "T18:30:00");
+
+if (today < fromDate || today > untilDate) {
+
     document.getElementById("songList").innerHTML =
     `
     <div class="expired-message">
-        この歌詞リンクページの公開期間は終了しました。
+        この歌詞リンクページはイベント開催日のみ閲覧できます。
     </div>
     `;
+
 }
 
 </script>
