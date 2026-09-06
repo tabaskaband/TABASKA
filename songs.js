@@ -197,13 +197,13 @@ const songs = [
         stage: "STAGE 2",
         title: "パウ・パトロール・ジブリメドレー",
         artist: "",
-        lyrics: "https://www.utatime.com/lyrics/paw-patrol/paw-patrol/",
+        lyrics: "",
 
         medley: [
 
             {
                 title: "パウ・パトロール",
-                lyrics: ""
+                lyrics: "https://www.utatime.com/lyrics/paw-patrol/paw-patrol/"
             },
 
             {
