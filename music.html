@@ -201,6 +201,24 @@
   <footer>TABASKA</footer>
 
   <script src="songs.js?v=20260906-01"></script>
+
+  <script>
+
+const today = new Date();
+const limitDate = new Date(lyricsAvailableUntil);
+
+if (today > limitDate) {
+    document.getElementById("songList").innerHTML =
+    `
+    <div class="expired-message">
+        この歌詞リンクページの公開期間は終了しました。
+    </div>
+    `;
+}
+
+</script>
+  
+  
   <script>
 document.getElementById("concert-date").textContent = concertDate;
 document.getElementById("concert-title").textContent = concertTitle;
