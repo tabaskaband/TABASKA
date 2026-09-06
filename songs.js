@@ -133,10 +133,7 @@ const songs = [
         ]
     }
 
-];
 
-
-const stage2Songs = [
 
     {
         order: "0201",
