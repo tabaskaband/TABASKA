@@ -347,3 +347,4 @@ const songs = [
         artist: "Edward Elgar",
         lyrics: ""
     }
+]
