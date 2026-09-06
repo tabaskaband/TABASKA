@@ -205,10 +205,7 @@
     document.getElementById("concert-title").textContent = concert.title;
     document.getElementById("concert-venue").textContent = concert.venue;
 
-    document.getElementById("concert-time").innerHTML = `
-      ${stage1Time ? `<div class="stage-time">【Stage1】 ${stage1Time}〜</div>` : ""}
-      ${stage2Time ? `<div class="stage-time">【Stage2】 ${stage2Time}〜</div>` : ""}
-    `;
+    document.getElementById("concert-time").innerHTML = "";  
 
     const songList = document.getElementById("song-list");
 
