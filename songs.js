@@ -196,7 +196,7 @@ const songs = [
         stage: "STAGE 2",
         title: "パウ・パトロール・ジブリメドレー",
         artist: "",
-        lyrics: "",
+        lyrics: "https://www.utatime.com/lyrics/paw-patrol/paw-patrol/",
 
         medley: [
 
