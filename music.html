@@ -201,9 +201,25 @@
 
   <script src="songs.js?v=20260906-01"></script>
   <script>
-    document.getElementById("concert-date").textContent = concert.date;
-    document.getElementById("concert-title").textContent = concert.title;
-    document.getElementById("concert-venue").textContent = concert.venue;
+document.getElementById("concert-date").textContent = concertDate;
+document.getElementById("concert-title").textContent = concertTitle;
+document.getElementById("concert-venue").textContent = concertVenue;
+
+
+document.getElementById("concert-time").innerHTML = `
+  <div class="stage-time">
+    STAGE 1 開演 ${stage1Time}
+  </div>
+  ${
+    typeof stage2Time !== "undefined"
+      ? `
+        <div class="stage-time">
+          STAGE 2 開演 ${stage2Time}
+        </div>
+      `
+      : ""
+  }
+`;
 
     document.getElementById("concert-time").innerHTML = "";  
 
