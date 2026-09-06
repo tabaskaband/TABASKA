@@ -96,7 +96,7 @@ const songs = [
         stage: "STAGE 1",
         title: "逢いたくていま",
         artist: "MISIA",
-        lyrics: "https://www.uta-net.com/song/171078/"
+        lyrics: "https://www.uta-net.com/song/85467/"
     },
 
 
