@@ -11,7 +11,7 @@ const concertVenue = "イオンモールKagoshima BAY";
 // ステージ別 開演時間
 const stage1Time = "15:30";
 const stage2Time = "17:00";
-const lyricsAvailableFrom = "2026-10-04";
+const lyricsAvailableFrom = "2026-99-06";
 const lyricsAvailableUntil = "2026-10-04";
 
 // ========================================
