@@ -4,6 +4,7 @@
 // 自動生成
 // ========================================
 
+
 const concert = {
     date: "2026年10月04日",
     title: "Mall de Music",
@@ -16,11 +17,12 @@ const songs = [
     {
         order: "0101",
         stage: "STAGE 1",
-        title: "おジャ魔女カーニバル",
-        artist: "",
-        lyrics: "",
+        title: "おジャ魔女カーニバル!!",
+        artist: "MAHO堂",
+        lyrics: "https://www.uta-net.com/song/14341/",
         medley: []
     },
+
     {
         order: "0110",
         stage: "STAGE 1",
@@ -30,40 +32,43 @@ const songs = [
         medley: [
             {
                 title: "悲しみよこんにちは",
-                lyrics: ""
+                lyrics: "https://www.uta-net.com/song/1355/"
             },
             {
                 title: "Stay With Me",
-                lyrics: ""
+                lyrics: "https://www.uta-net.com/song/6321/"
             },
             {
                 title: "悲しみがとまらない",
-                lyrics: ""
+                lyrics: "https://www.uta-net.com/song/1341/"
             },
             {
                 title: "アメリカン・フィーリング",
-                lyrics: ""
+                lyrics: "https://www.uta-net.com/song/400/"
             }
         ]
     },
+
     {
         order: "0207",
         stage: "STAGE 2",
         title: "サザンメドレー",
-        artist: "",
+        artist: "サザンオールスターズ",
         lyrics: "",
         medley: [
             {
                 title: "TSUNAMI",
-                lyrics: ""
+                lyrics: "https://www.uta-net.com/song/12255/"
             },
             {
                 title: "いとしのエリー",
-                lyrics: ""
+                lyrics: "https://www.uta-net.com/song/702/"
             },
             {
                 title: "波乗りジョニー",
-                lyrics: ""
+                lyrics: "https://www.uta-net.com/song/13297/"
             }
         ]
     }
+
+];
