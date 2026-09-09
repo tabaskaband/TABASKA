@@ -220,15 +220,11 @@ if (today < fromDate || today > untilDate) {
 
 }
 
-</script>
-  
-  
+</script>  
   <script>
 document.getElementById("concert-date").textContent = concertDate;
 document.getElementById("concert-title").textContent = concertTitle;
 document.getElementById("concert-venue").textContent = concertVenue;
-
-
 document.getElementById("concert-time").innerHTML = `
   <div class="stage-time">
     STAGE 1 開演 ${stage1Time}
@@ -243,9 +239,7 @@ document.getElementById("concert-time").innerHTML = `
       : ""
   }
 `;
-
     const songList = document.getElementById("song-list");
-
     if (typeof songs !== "undefined" && Array.isArray(songs) && songs.length > 0) {
       let currentStage = "";
       let stageGroup = null;
