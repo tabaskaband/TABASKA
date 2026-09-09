@@ -249,7 +249,6 @@ document.getElementById("concert-time").innerHTML = `
             <a href="${song.lyrics}" target="_blank" rel="noopener noreferrer" class="song-link">歌詞を見る</a>
           `
           : "";
-
         const medleyList = Array.isArray(song.medley) && song.medley.length
           ? `
             <div class="medley-list">
@@ -264,7 +263,6 @@ document.getElementById("concert-time").innerHTML = `
             </div>
           `
           : "";
-
         card.innerHTML = `
           <div class="song-info">
             <div class="song-title">${song.title}</div>
@@ -273,7 +271,6 @@ document.getElementById("concert-time").innerHTML = `
           </div>
           ${lyricsButton}
         `;
-
         stageSongs.appendChild(card);
       });
     } else {
