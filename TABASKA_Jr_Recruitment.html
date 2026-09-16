@@ -10,7 +10,7 @@
         content="TABASKA Jr. メンバー募集。中学生・高校生・大学生を対象に、クラリネットまたはフルート、アルトサックス、テナーサックス、トランペット、トロンボーンを募集しています。定員5名・試行期間会費無料。">
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap"
     rel="stylesheet"
   >
 
@@ -91,32 +91,58 @@
       from {
         text-shadow: 0 0 10px #38bdf8;
       }
+
       to {
         text-shadow: 0 0 30px #0ea5e9;
       }
     }
 
+    /*
+      ========================================
+      TABASKA Jr. メインメッセージ
+      明朝体
+      ========================================
+    */
+
     .jr-title {
       margin: 8px 0 0;
-      font-size: clamp(2rem, 8vw, 4rem);
-      font-weight: 900;
-      letter-spacing: .06em;
+      font-family:
+        'Noto Serif JP',
+        'Yu Mincho',
+        'Hiragino Mincho ProN',
+        serif;
+      font-size: clamp(2.2rem, 8vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: .08em;
       color: #fff;
     }
 
     .lead {
-      margin: 18px 0 0;
-      color: #cbd5e1;
-      font-size: clamp(1rem, 3vw, 1.25rem);
-      line-height: 1.9;
+      margin: 22px 0 0;
+      font-family:
+        'Noto Serif JP',
+        'Yu Mincho',
+        'Hiragino Mincho ProN',
+        serif;
+      color: #f1f5f9;
+      font-size: clamp(1.25rem, 4vw, 1.8rem);
+      font-weight: 600;
+      line-height: 2;
+      letter-spacing: .08em;
     }
 
     .catch {
       margin: 30px auto 0;
       max-width: 760px;
-      font-size: clamp(1.2rem, 4vw, 1.8rem);
-      font-weight: 900;
-      line-height: 1.7;
+      font-family:
+        'Noto Serif JP',
+        'Yu Mincho',
+        'Hiragino Mincho ProN',
+        serif;
+      font-size: clamp(1.25rem, 4vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.9;
+      letter-spacing: .06em;
     }
 
     .catch span {
@@ -243,7 +269,7 @@
       font-size: .85rem;
     }
 
-    /* ===== 特徴 ===== */
+    /* ===== 活動内容 ===== */
 
     .feature-grid {
       display: grid;
@@ -282,7 +308,7 @@
       font-size: .92rem;
     }
 
-    /* ===== 条件 ===== */
+    /* ===== 募集条件 ===== */
 
     .info-grid {
       display: grid;
@@ -324,11 +350,15 @@
       margin-top: 7px;
     }
 
-    /* ===== 応募を考えている人へ ===== */
+    /* ===== メッセージ ===== */
 
     .message {
       background:
-        linear-gradient(135deg, rgba(14,165,233,.13), rgba(15,23,42,.95));
+        linear-gradient(
+          135deg,
+          rgba(14,165,233,.13),
+          rgba(15,23,42,.95)
+        );
       border: 1px solid rgba(56,189,248,.25);
       border-radius: 18px;
       padding: 35px 28px;
@@ -337,7 +367,14 @@
 
     .message h3 {
       margin-top: 0;
+      font-family:
+        'Noto Serif JP',
+        'Yu Mincho',
+        'Hiragino Mincho ProN',
+        serif;
       font-size: clamp(1.7rem, 6vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: .06em;
     }
 
     .message p {
@@ -352,7 +389,7 @@
       font-weight: 900;
     }
 
-    /* ===== CTA ===== */
+    /* ===== 応募 ===== */
 
     .apply {
       text-align: center;
@@ -437,7 +474,10 @@
       background: #ff0000;
     }
 
+    /* ===== スマートフォン ===== */
+
     @media (max-width: 768px) {
+
       header {
         min-height: 78vh;
       }
@@ -475,9 +515,22 @@
         width: 44px;
         height: 44px;
       }
+
+      .jr-title {
+        font-size: clamp(2rem, 10vw, 3.2rem);
+      }
+
+      .lead {
+        font-size: clamp(1.1rem, 5vw, 1.5rem);
+      }
+
+      .catch {
+        font-size: clamp(1.1rem, 5vw, 1.5rem);
+      }
     }
 
     @media (max-width: 430px) {
+
       .parts-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -500,9 +553,15 @@
 
 <body>
 
+  <!-- ===== メインビジュアル ===== -->
+
   <header>
+
     <p class="brand">TABASKA</p>
-    <h1 class="jr-title">TABASKA Jr.</h1>
+
+    <h1 class="jr-title">
+      TABASKA Jr.
+    </h1>
 
     <p class="lead">
       5人だからできること。<br>
@@ -519,232 +578,444 @@
       <strong>5名</strong>
       <span>限定</span>
     </div>
+
   </header>
 
+
+  <!-- ===== ナビゲーション ===== -->
+
   <nav>
-    <a href="#parts">募集パート</a>
-    <a href="#activities">活動内容</a>
-    <a href="#conditions">募集条件</a>
-    <a href="#message">メッセージ</a>
-    <a href="#apply">応募・問い合わせ</a>
+
+    <a href="#parts">
+      募集パート
+    </a>
+
+    <a href="#activities">
+      活動内容
+    </a>
+
+    <a href="#conditions">
+      募集条件
+    </a>
+
+    <a href="#message">
+      メッセージ
+    </a>
+
+    <a href="#apply">
+      応募・問い合わせ
+    </a>
+
   </nav>
+
 
   <main>
 
+    <!-- ===== 募集パート ===== -->
+
     <section id="parts" class="fade-in">
-      <h2>募集パート</h2>
+
+      <h2>
+        募集パート
+      </h2>
 
       <div class="parts-grid">
 
         <div class="part-card">
+
           <div class="part-icon">
             <i class="fa-solid fa-music"></i>
           </div>
-          <h3>クラリネット<br>または フルート</h3>
-          <p>1名</p>
+
+          <h3>
+            クラリネット<br>
+            または<br>
+            フルート
+          </h3>
+
+          <p>
+            1名
+          </p>
+
         </div>
 
-        <div class="part-card">
-          <div class="part-icon">
-            <i class="fa-solid fa-music"></i>
-          </div>
-          <h3>アルトサックス</h3>
-          <p>1名</p>
-        </div>
 
         <div class="part-card">
+
           <div class="part-icon">
             <i class="fa-solid fa-music"></i>
           </div>
-          <h3>テナーサックス</h3>
-          <p>1名</p>
+
+          <h3>
+            アルトサックス
+          </h3>
+
+          <p>
+            1名
+          </p>
+
         </div>
 
-        <div class="part-card">
-          <div class="part-icon">
-            <i class="fa-solid fa-music"></i>
-          </div>
-          <h3>トランペット</h3>
-          <p>1名</p>
-        </div>
 
         <div class="part-card">
+
           <div class="part-icon">
             <i class="fa-solid fa-music"></i>
           </div>
-          <h3>トロンボーン</h3>
-          <p>1名</p>
+
+          <h3>
+            テナーサックス
+          </h3>
+
+          <p>
+            1名
+          </p>
+
+        </div>
+
+
+        <div class="part-card">
+
+          <div class="part-icon">
+            <i class="fa-solid fa-music"></i>
+          </div>
+
+          <h3>
+            トランペット
+          </h3>
+
+          <p>
+            1名
+          </p>
+
+        </div>
+
+
+        <div class="part-card">
+
+          <div class="part-icon">
+            <i class="fa-solid fa-music"></i>
+          </div>
+
+          <h3>
+            トロンボーン
+          </h3>
+
+          <p>
+            1名
+          </p>
+
         </div>
 
       </div>
+
     </section>
 
+
+    <!-- ===== 活動内容 ===== -->
+
     <section id="activities" class="fade-in">
-      <h2>どんな活動をするの？</h2>
+
+      <h2>
+        活動内容
+      </h2>
 
       <div class="feature-grid">
 
         <div class="feature">
-          <i class="fa-solid fa-microphone-lines"></i>
-          <h3>イベント出演</h3>
+
+          <i class="fa-solid fa-music"></i>
+
+          <h3>
+            音楽活動
+          </h3>
+
+          <p>
+            TABASKAと一緒に演奏しながら、
+            アンサンブルやステージでの演奏を
+            経験していきます。
+          </p>
+
+        </div>
+
+
+        <div class="feature">
+
+          <i class="fa-solid fa-stage"></i>
+
+          <h3>
+            ステージ出演
+          </h3>
+
           <p>
             地域イベントやコンサートなど、
-            実際のステージで演奏します。
+            実際のステージに立って
+            演奏する機会があります。
           </p>
+
         </div>
 
-        <div class="feature">
-          <i class="fa-solid fa-hand-holding-heart"></i>
-          <h3>慰問演奏</h3>
-          <p>
-            地域の施設などへ音楽を届け、
-            演奏を通して交流します。
-          </p>
-        </div>
 
         <div class="feature">
-          <i class="fa-solid fa-users"></i>
-          <h3>音楽仲間との活動</h3>
+
+          <i class="fa-solid fa-heart"></i>
+
+          <h3>
+            慰問・地域活動
+          </h3>
+
           <p>
-            学校や学年を超えて、
-            一緒に練習し、音楽を作ります。
+            音楽を通して地域の方々と交流し、
+            演奏で誰かを笑顔にする活動にも
+            取り組みます。
           </p>
+
         </div>
 
       </div>
+
     </section>
 
+
+    <!-- ===== 募集条件 ===== -->
+
     <section id="conditions" class="fade-in">
-      <h2>募集条件</h2>
+
+      <h2>
+        募集条件
+      </h2>
 
       <div class="info-grid">
 
         <div class="info-card">
-          <div class="label">対象</div>
-          <div class="value">中学生・高校生・大学生</div>
-          <div class="note">音楽経験者を対象とし、オーディションがあります。</div>
+
+          <div class="label">
+            対象
+          </div>
+
+          <div class="value">
+            中学生・高校生・大学生
+          </div>
+
         </div>
 
-        <div class="info-card">
-          <div class="label">募集人数</div>
-          <div class="value">5名限定</div>
-          <div class="note">各募集パート1名です。</div>
-        </div>
 
         <div class="info-card">
-          <div class="label">試行期間</div>
-          <div class="value free">会費無料</div>
-          <div class="note">TABASKA Jr.の試行期間中は会費無料です。</div>
+
+          <div class="label">
+            募集人数
+          </div>
+
+          <div class="value">
+            最大5名
+          </div>
+
+          <div class="note">
+            各パート1名
+          </div>
+
         </div>
 
-        <div class="info-card">
-          <div class="label">楽器</div>
-          <div class="value">各自で楽器をご用意ください</div>
-          <div class="note">楽器の貸し出しはありません。</div>
-        </div>
 
         <div class="info-card">
-          <div class="label">練習</div>
-          <div class="value">毎週1回</div>
-          <div class="note">練習場所・曜日は現在調整中です。</div>
+
+          <div class="label">
+            経験
+          </div>
+
+          <div class="value">
+            楽器経験者
+          </div>
+
+          <div class="note required">
+            初心者は対象外です
+          </div>
+
         </div>
 
-        <div class="info-card">
-          <div class="label">保護者の同意</div>
-          <div class="value required">必要</div>
-          <div class="note">未成年者は保護者の同意が必要です。</div>
-        </div>
 
         <div class="info-card">
-          <div class="label">選考</div>
-          <div class="value">オーディションあり</div>
-          <div class="note">一定の基準により選考を行います。</div>
+
+          <div class="label">
+            オーディション
+          </div>
+
+          <div class="value">
+            あり
+          </div>
+
+          <div class="note">
+            演奏経験・適性などを確認します
+          </div>
+
         </div>
 
+
         <div class="info-card">
-          <div class="label">活動</div>
-          <div class="value">イベント出演・慰問演奏など</div>
-          <div class="note">実際の演奏活動への参加があります。</div>
+
+          <div class="label">
+            楽器
+          </div>
+
+          <div class="value">
+            自分の楽器を持参
+          </div>
+
+          <div class="note">
+            楽器の貸し出しはありません
+          </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <div class="label">
+            練習
+          </div>
+
+          <div class="value">
+            毎週1回
+          </div>
+
+          <div class="note">
+            曜日は調整中です
+          </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <div class="label">
+            試行期間
+          </div>
+
+          <div class="value free">
+            会費無料
+          </div>
+
+          <div class="note">
+            試行期間中
+          </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <div class="label">
+            保護者の同意
+          </div>
+
+          <div class="value">
+            必要
+          </div>
+
+          <div class="note">
+            未成年者は保護者の同意が必要です
+          </div>
+
         </div>
 
       </div>
+
     </section>
+
+
+    <!-- ===== メッセージ ===== -->
 
     <section id="message" class="fade-in">
+
       <div class="message">
-        <h3>こんな人を待っています！</h3>
+
+        <h3>
+          5人だからできること。
+        </h3>
 
         <p>
-          楽器をもっと楽しみたい。<br>
-          人前で演奏してみたい。<br>
-          学校以外でも音楽仲間を作りたい。<br>
-          新しいことに挑戦したい。
-        </p>
-
-        <p class="highlight">
-          そんな気持ちを持っている人を歓迎します。
+          TABASKA Jr.は、少人数だからこそ
+          一人ひとりが音楽に向き合い、
+          自分の音を大切にできる活動を目指しています。
         </p>
 
         <p>
-          TABASKA Jr.は、まずは<span class="highlight">5人</span>からスタート。
-          少人数だからこそ、一人ひとりが演奏に関わり、
-          一緒に音楽を作っていくことを目指します。
+          ただ演奏するだけではなく、
+          <span class="highlight">
+            一緒に考え、一緒に練習し、一緒にステージを作る。
+          </span>
+          そんな経験を大切にします。
         </p>
 
-        <p class="highlight">
-          TABASKA Jr.の最初の5人になりませんか？
+        <p>
+          音楽が好きで、楽器を続けていて、
+          もっとステージで演奏してみたい人。
         </p>
+
+        <p>
+          <span class="highlight">
+            一緒に音楽を作りませんか？
+          </span>
+        </p>
+
       </div>
+
     </section>
 
+
+    <!-- ===== 応募・問い合わせ ===== -->
+
     <section id="apply" class="fade-in">
-      <h2>応募・問い合わせ</h2>
 
       <div class="apply">
+
+        <h2>
+          応募・問い合わせ
+        </h2>
+
         <p>
-          TABASKA Jr.への参加に興味のある方は、<br>
-          まずはお気軽にお問い合わせください。
+          TABASKA Jr.への応募・お問い合わせは
+          メールで受け付けています。
         </p>
 
         <a
-          href="mailto:tabaska.band@gmail.com?subject=TABASKA%20Jr.%20応募・問い合わせ"
           class="apply-btn"
+          href="mailto:tabaska.band@gmail.com"
         >
           <i class="fa-solid fa-envelope"></i>
-          TABASKA Jr.について問い合わせる
+          応募・問い合わせ
         </a>
 
         <p class="contact-note">
-          ※オーディションの詳細・練習曜日などについてもお問い合わせください。
+          tabaska.band@gmail.com
         </p>
+
       </div>
+
     </section>
 
   </main>
 
-  <footer>
-    <strong>TABASKA Jr.</strong>
-    <p>音楽でつながる、新しい仲間。</p>
-    <p>&copy; TABASKA</p>
-  </footer>
+
+  <!-- ===== SNS ===== -->
 
   <div class="sns-fixed">
 
     <a
-      href="https://www.instagram.com/tabaskaband/"
+      class="sns-btn instagram"
+      href="https://www.instagram.com/"
       target="_blank"
       rel="noopener noreferrer"
-      class="sns-btn instagram"
       aria-label="Instagram"
     >
       <i class="fa-brands fa-instagram"></i>
     </a>
 
     <a
+      class="sns-btn youtube"
       href="https://www.youtube.com/@tabaska2025"
       target="_blank"
       rel="noopener noreferrer"
-      class="sns-btn youtube"
       aria-label="YouTube"
     >
       <i class="fa-brands fa-youtube"></i>
@@ -752,21 +1023,59 @@
 
   </div>
 
-  <script>
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
 
-    document.querySelectorAll('.fade-in').forEach((el) => {
-      observer.observe(el);
-    });
+  <!-- ===== Footer ===== -->
+
+  <footer>
+
+    <strong>
+      TABASKA
+    </strong>
+
+    <p>
+      TABASKA Jr.
+    </p>
+
+    <p>
+      © TABASKA
+    </p>
+
+  </footer>
+
+
+  <!-- ===== JavaScript ===== -->
+
+  <script>
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("active");
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+
+    document
+      .querySelectorAll(".fade-in")
+      .forEach(el => {
+
+        observer.observe(el);
+
+      });
+
   </script>
 
 </body>
