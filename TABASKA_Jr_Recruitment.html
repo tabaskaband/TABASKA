@@ -1,1 +1,797 @@
+はい。HTMLとしてそのまま使える形に修正しました。
+
+主な修正点は以下です。
+
+* `\<html>` や `\*` など、不要なバックスラッシュをすべて除去
+* Google Fonts / Font Awesome のURLを正しいHTMLに修正
+* Instagram / YouTube のURLを正しい形式に修正
+* SNSアイコンが正しく表示されるよう修正
+* **「練習場所・曜日は現在調整中です。」**に変更
+* `mailto:` の記述を正しい形式に修正
+* CSSの `:hover` / `:first-child` などの不要なエスケープを修正
+* HTMLとして直接保存できる完全なコードに整理
+
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TABASKA Jr.｜メンバー募集</title>
+
+<meta name="description"
+     content="TABASKA Jr. メンバー募集。中学生・高校生・大学生を対象に、クラリネットまたはフルート、アルトサックス、テナーサックス、トランペット、トロンボーンを募集しています。定員5名・試行期間会費無料。">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 70px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+      background: #020617;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* ===== TABASKA共通イメージ ===== */
+
+    header {
+      min-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 25%, rgba(14,165,233,.20), transparent 35%),
+        linear-gradient(135deg, #0f172a, #020617 75%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "♫";
+      position: absolute;
+      left: 7%;
+      top: 15%;
+      font-size: 5rem;
+      color: rgba(56,189,248,.08);
+      transform: rotate(-12deg);
+    }
+
+    header::after {
+      content: "♪";
+      position: absolute;
+      right: 8%;
+      bottom: 15%;
+      font-size: 6rem;
+      color: rgba(56,189,248,.08);
+      transform: rotate(12deg);
+    }
+
+    .brand {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.8rem, 12vw, 5.5rem);
+      font-weight: 600;
+      letter-spacing: .08em;
+      margin: 0;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #38bdf8;
+      }
+      to {
+        text-shadow: 0 0 30px #0ea5e9;
+      }
+    }
+
+    .jr-title {
+      margin: 8px 0 0;
+      font-size: clamp(2rem, 8vw, 4rem);
+      font-weight: 900;
+      letter-spacing: .06em;
+      color: #fff;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      color: #cbd5e1;
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      line-height: 1.9;
+    }
+
+    .catch {
+      margin: 30px auto 0;
+      max-width: 760px;
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      font-weight: 900;
+      line-height: 1.7;
+    }
+
+    .catch span {
+      color: #38bdf8;
+    }
+
+    .limited {
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 25px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0ea5e9, #2563eb);
+      box-shadow: 0 0 25px rgba(56,189,248,.35);
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+
+    .limited strong {
+      font-size: 1.8rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: rgba(15, 23, 42, .92);
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 7px 13px;
+      border-radius: 8px;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      background: rgba(56,189,248,.15);
+      color: #38bdf8;
+      text-shadow: 0 0 10px #38bdf8;
+      box-shadow: 0 0 12px rgba(56,189,248,.35);
+      transform: translateY(-2px);
+    }
+
+    section {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 75px 20px;
+    }
+
+    h2 {
+      border-left: 5px solid #38bdf8;
+      padding-left: 12px;
+      margin-bottom: 30px;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== 募集パート ===== */
+
+    .parts-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .part-card {
+      background: #0f172a;
+      border: 1px solid rgba(56,189,248,.15);
+      border-radius: 14px;
+      padding: 22px 12px;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .part-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 18px rgba(56,189,248,.35);
+      border-color: #38bdf8;
+    }
+
+    .part-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(56,189,248,.12);
+      color: #38bdf8;
+      font-size: 1.9rem;
+    }
+
+    .part-card h3 {
+      margin: 5px 0;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .part-card p {
+      margin: 0;
+      color: #94a3b8;
+      font-size: .85rem;
+    }
+
+    /* ===== 特徴 ===== */
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature {
+      background: #0f172a;
+      border-radius: 14px;
+      padding: 28px 22px;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(56,189,248,.3);
+    }
+
+    .feature i {
+      color: #38bdf8;
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .feature h3 {
+      margin: 5px 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .feature p {
+      margin: 0;
+      color: #cbd5e1;
+      line-height: 1.8;
+      font-size: .92rem;
+    }
+
+    /* ===== 条件 ===== */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .info-card {
+      background: #0f172a;
+      border-radius: 14px;
+      padding: 22px;
+      border-left: 4px solid #38bdf8;
+    }
+
+    .info-card .label {
+      color: #94a3b8;
+      font-size: .9rem;
+      margin-bottom: 7px;
+    }
+
+    .info-card .value {
+      font-size: 1.15rem;
+      font-weight: 800;
+      line-height: 1.7;
+    }
+
+    .free {
+      color: #facc15;
+      font-size: 1.35rem !important;
+    }
+
+    .required {
+      color: #fb7185;
+    }
+
+    .note {
+      color: #94a3b8;
+      font-size: .85rem;
+      margin-top: 7px;
+    }
+
+    /* ===== 応募を考えている人へ ===== */
+
+    .message {
+      background:
+        linear-gradient(135deg, rgba(14,165,233,.13), rgba(15,23,42,.95));
+      border: 1px solid rgba(56,189,248,.25);
+      border-radius: 18px;
+      padding: 35px 28px;
+      text-align: center;
+    }
+
+    .message h3 {
+      margin-top: 0;
+      font-size: clamp(1.35rem, 4vw, 1.8rem);
+    }
+
+    .message p {
+      max-width: 760px;
+      margin: 14px auto;
+      line-height: 2;
+      color: #cbd5e1;
+    }
+
+    .message .highlight {
+      color: #38bdf8;
+      font-weight: 900;
+    }
+
+    /* ===== CTA ===== */
+
+    .apply {
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    .apply-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 260px;
+      padding: 17px 30px;
+      border-radius: 999px;
+      background: #38bdf8;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.1rem;
+      box-shadow: 0 0 20px rgba(56,189,248,.35);
+      transition: .3s;
+    }
+
+    .apply-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 30px rgba(56,189,248,.55);
+    }
+
+    .contact-note {
+      color: #94a3b8;
+      margin-top: 15px;
+      font-size: .9rem;
+    }
+
+    footer {
+      padding: 45px 20px;
+      text-align: center;
+      background: #0f172a;
+      color: #94a3b8;
+    }
+
+    footer strong {
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: .08em;
+    }
+
+    /* ===== 固定SNS ===== */
+
+    .sns-fixed {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .sns-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,.3);
+      transition: .3s;
+    }
+
+    .sns-btn:hover {
+      transform: scale(1.12);
+    }
+
+    .instagram {
+      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+    }
+
+    .youtube {
+      background: #ff0000;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        min-height: 78vh;
+      }
+
+      .parts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .part-card:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 16px;
+      }
+
+      nav a {
+        font-size: .82rem;
+      }
+
+      .sns-fixed {
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .sns-btn {
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .parts-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .part-card:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .limited {
+        padding: 12px 18px;
+        font-size: 1rem;
+      }
+
+      .limited strong {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <p class="brand">TABASKA</p>
+    <h1 class="jr-title">TABASKA Jr.</h1>
+
+```
+<p class="lead">
+  5人だからできること。<br>
+  5人だから作れる音楽。
+</p>
+
+<p class="catch">
+  一緒に演奏して、<span>ステージに立って、</span><br>
+  音楽で誰かを笑顔にしよう！
+</p>
+
+<div class="limited">
+  <span>定員</span>
+  <strong>5名</strong>
+  <span>限定</span>
+</div>
+```
+
+  </header>
+
+  <nav>
+    <a href="#parts">募集パート</a>
+    <a href="#activities">活動内容</a>
+    <a href="#conditions">募集条件</a>
+    <a href="#message">メッセージ</a>
+    <a href="#apply">応募・問い合わせ</a>
+  </nav>
+
+  <main>
+
+```
+<section id="parts" class="fade-in">
+  <h2>募集パート</h2>
+
+  <div class="parts-grid">
+
+    <div class="part-card">
+      <div class="part-icon">
+        <i class="fa-solid fa-music"></i>
+      </div>
+      <h3>クラリネット<br>または フルート</h3>
+      <p>1名</p>
+    </div>
+
+    <div class="part-card">
+      <div class="part-icon">
+        <i class="fa-solid fa-music"></i>
+      </div>
+      <h3>アルトサックス</h3>
+      <p>1名</p>
+    </div>
+
+    <div class="part-card">
+      <div class="part-icon">
+        <i class="fa-solid fa-music"></i>
+      </div>
+      <h3>テナーサックス</h3>
+      <p>1名</p>
+    </div>
+
+    <div class="part-card">
+      <div class="part-icon">
+        <i class="fa-solid fa-music"></i>
+      </div>
+      <h3>トランペット</h3>
+      <p>1名</p>
+    </div>
+
+    <div class="part-card">
+      <div class="part-icon">
+        <i class="fa-solid fa-music"></i>
+      </div>
+      <h3>トロンボーン</h3>
+      <p>1名</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="activities" class="fade-in">
+  <h2>どんな活動をするの？</h2>
+
+  <div class="feature-grid">
+
+    <div class="feature">
+      <i class="fa-solid fa-microphone-lines"></i>
+      <h3>イベント出演</h3>
+      <p>
+        地域イベントやコンサートなど、
+        実際のステージで演奏します。
+      </p>
+    </div>
+
+    <div class="feature">
+      <i class="fa-solid fa-hand-holding-heart"></i>
+      <h3>慰問演奏</h3>
+      <p>
+        地域の施設などへ音楽を届け、
+        演奏を通して交流します。
+      </p>
+    </div>
+
+    <div class="feature">
+      <i class="fa-solid fa-users"></i>
+      <h3>音楽仲間との活動</h3>
+      <p>
+        学校や学年を超えて、
+        一緒に練習し、音楽を作ります。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="conditions" class="fade-in">
+  <h2>募集条件</h2>
+
+  <div class="info-grid">
+
+    <div class="info-card">
+      <div class="label">対象</div>
+      <div class="value">中学生・高校生・大学生</div>
+      <div class="note">音楽経験者を対象とし、オーディションがあります。</div>
+    </div>
+
+    <div class="info-card">
+      <div class="label">募集人数</div>
+      <div class="value">5名限定</div>
+      <div class="note">各募集パート1名です。</div>
+    </div>
+
+    <div class="info-card">
+      <div class="label">試行期間</div>
+      <div class="value free">会費無料</div>
+      <div class="note">TABASKA Jr.の試行期間中は会費無料です。</div>
+    </div>
+
+    <div class="info-card">
+      <div class="label">楽器</div>
+      <div class="value">各自で楽器をご用意ください</div>
+      <div class="note">楽器の貸し出しはありません。</div>
+    </div>
+
+    <div class="info-card">
+      <div class="label">練習</div>
+      <div class="value">毎週1回</div>
+      <div class="note">練習場所・曜日は現在調整中です。</div>
+    </div>
+
+    <div class="info-card">
+      <div class="label">保護者の同意</div>
+      <div class="value required">必要</div>
+      <div class="note">未成年者は保護者の同意が必要です。</div>
+    </div>
+
+    <div class="info-card">
+      <div class="label">選考</div>
+      <div class="value">オーディションあり</div>
+      <div class="note">一定の基準により選考を行います。</div>
+    </div>
+
+    <div class="info-card">
+      <div class="label">活動</div>
+      <div class="value">イベント出演・慰問演奏など</div>
+      <div class="note">実際の演奏活動への参加があります。</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="message" class="fade-in">
+  <div class="message">
+    <h3>こんな人を待っています！</h3>
+
+    <p>
+      楽器をもっと楽しみたい。<br>
+      人前で演奏してみたい。<br>
+      学校以外でも音楽仲間を作りたい。<br>
+      新しいことに挑戦したい。
+    </p>
+
+    <p class="highlight">
+      そんな気持ちを持っている人を歓迎します。
+    </p>
+
+    <p>
+      TABASKA Jr.は、まずは<span class="highlight">5人</span>からスタート。
+      少人数だからこそ、一人ひとりが演奏に関わり、
+      一緒に音楽を作っていくことを目指します。
+    </p>
+
+    <p class="highlight">
+      TABASKA Jr.の最初の5人になりませんか？
+    </p>
+  </div>
+</section>
+
+<section id="apply" class="fade-in">
+  <h2>応募・問い合わせ</h2>
+
+  <div class="apply">
+    <p>
+      TABASKA Jr.への参加に興味のある方は、<br>
+      まずはお気軽にお問い合わせください。
+    </p>
+
+    <a
+      href="mailto:tabaska.band@gmail.com?subject=TABASKA%20Jr.%20応募・問い合わせ"
+      class="apply-btn">
+      <i class="fa-solid fa-envelope"></i>
+      TABASKA Jr.について問い合わせる
+    </a>
+
+    <p class="contact-note">
+      ※オーディションの詳細・練習場所・曜日などについてもお問い合わせください。
+    </p>
+  </div>
+</section>
+```
+
+  </main>
+
+  <footer>
+    <strong>TABASKA Jr.</strong>
+    <p>音楽でつながる、新しい仲間。</p>
+    <p>&copy; TABASKA</p>
+  </footer>
+
+  <!-- ===== 固定SNS ===== -->
+
+  <div class="sns-fixed">
+
+```
+<a
+  href="https://www.instagram.com/tabaskaband/"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="sns-btn instagram"
+  aria-label="Instagram">
+  <i class="fa-brands fa-instagram"></i>
+</a>
+
+<a
+  href="https://www.youtube.com/@tabaska2025"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="sns-btn youtube"
+  aria-label="YouTube">
+  <i class="fa-brands fa-youtube"></i>
+</a>
+```
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll('.fade-in').forEach((el) => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
+
+この状態なら、**`TABASKA_Jr_Recruitment.html` としてそのまま保存して使用できます。**
+
+特に今回問題になっていたSNS部分は、`href` にMarkdown形式の `[URL](URL)` が入っていたため、正しいURLだけに直しています。
 
