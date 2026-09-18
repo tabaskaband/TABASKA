@@ -1,69 +1,423 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TABASKA Jr.｜メンバー募集</title>
-  <meta name="description" content="TABASKA Jr. メンバー募集。中学生・高校生・大学生を対象に、クラリネットまたはフルート、アルトサックス、テナーサックス、トランペット、トロンボーンを募集しています。定員5名・試行期間会費無料。">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <style>
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:70px}
-    body{margin:0;font-family:'Noto Sans JP','Poppins',sans-serif;background:#020617;color:#f1f5f9;overflow-x:hidden}
-    a{color:inherit}
-    header{min-height:82vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:60px 20px;text-align:center;background:radial-gradient(circle at 50% 25%,rgba(14,165,233,.20),transparent 35%),linear-gradient(135deg,#0f172a,#020617 75%);position:relative;overflow:hidden}
-    header::before{content:"♫";position:absolute;left:7%;top:15%;font-size:5rem;color:rgba(56,189,248,.08);transform:rotate(-12deg)}
-    header::after{content:"♪";position:absolute;right:8%;bottom:15%;font-size:6rem;color:rgba(56,189,248,.08);transform:rotate(12deg)}
-    .brand{font-family:'Poppins',sans-serif;font-size:clamp(2.8rem,12vw,5.5rem);font-weight:600;letter-spacing:.08em;margin:0;animation:glow 2s infinite alternate}@keyframes 
-    glow{from{text-shadow:0 0 10px #38bdf8}to{text-shadow:0 0 30px #0ea5e9}}
-    .jr-title{margin:8px 0 0;font-family:'Noto Serif JP','Yu Mincho','Hiragino Mincho ProN',serif;font-size:clamp(1.6rem,6vw,3rem);font-weight:700;letter-spacing:.08em;color:#fff}.
-    lead{margin:22px 0 0;font-family:'Noto Serif JP','Yu Mincho','Hiragino Mincho ProN',serif;color:#f1f5f9;font-size:clamp(1.25rem,4vw,1.8rem);font-weight:600;line-height:2;letter-spacing:.08em}.
-    catch{margin:30px auto 0;max-width:760px;font-family:'Noto Serif JP','Yu Mincho','Hiragino Mincho ProN',serif;font-size:clamp(1.25rem,4vw,1.9rem);font-weight:700;line-height:1.9;letter-spacing:.06em}.
-    catch span{color:#38bdf8}.
-    limited{margin-top:28px;display:inline-flex;align-items:center;gap:12px;padding:14px 25px;border-radius:999px;background:linear-gradient(135deg,#0ea5e9,#2563eb);box-shadow:0 0 25px rgba(56,189,248,.35);font-size:1.15rem;font-weight:900}.
-    limited strong{font-size:1.8rem}
-    nav{position:sticky;top:0;z-index:999;padding:10px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;background:rgba(15,23,42,.92);backdrop-filter:blur(10px)}
-    nav a{color:#fff;text-decoration:none;font-weight:700;padding:7px 13px;border-radius:8px;transition:.3s}
-    nav a:hover{background:rgba(56,189,248,.15);color:#38bdf8;text-shadow:0 0 10px #38bdf8;box-shadow:0 0 12px rgba(56,189,248,.35);transform:translateY(-2px)}
-    section{width:100%;max-width:1100px;margin:auto;padding:75px 20px}
-    h2{border-left:5px solid #38bdf8;padding-left:12px;margin-bottom:30px;font-size:clamp(1.6rem,5vw,2.2rem)}.
-    fade-in{opacity:0;transform:translateY(30px);transition:all 1s ease}.
-    fade-in.active{opacity:1;transform:translateY(0)}
-    .jr-image-section{padding-top:30px;padding-bottom:20px;text-align:center}.
-    jr-image{display:block;width:100%;max-width:900px;height:auto;margin:0 auto;border-radius:12px}
-    .parts-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.
-    part-card{background:#0f172a;border:1px solid rgba(56,189,248,.15);border-radius:14px;padding:22px 12px;text-align:center;transition:.3s}.part-card:hover{transform:translateY(-5px);box-shadow:0 0 18px rgba(56,189,248,.35);border-color:#38bdf8}.part-icon{width:68px;height:68px;margin:0 auto 12px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(56,189,248,.12);color:#38bdf8;font-size:1.9rem}.part-card h3{margin:5px 0;font-size:1rem;line-height:1.5}.part-card p{margin:0;color:#94a3b8;font-size:.85rem}
-    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.
-    feature{background:#0f172a;border-radius:14px;padding:28px 22px;text-align:center;transition:.3s}.
-    feature:hover{transform:translateY(-5px);box-shadow:0 0 15px rgba(56,189,248,.3)}.
-    feature i{color:#38bdf8;font-size:2rem;margin-bottom:14px}.
-    feature h3{margin:5px 0 10px;font-size:1.15rem}.
-    feature p{margin:0;color:#cbd5e1;line-height:1.8;font-size:.92rem}
-    .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.
-    info-card{background:#0f172a;border-radius:14px;padding:22px;border-left:4px solid #38bdf8}.
-    info-card .
-    label{color:#94a3b8;font-size:.9rem;margin-bottom:7px}.
-    info-card .value{font-size:1.15rem;font-weight:800;line-height:1.7}.
-    free{color:#facc15;font-size:1.35rem!important}.
-    required{color:#fb7185}.
-    note{color:#94a3b8;font-size:.85rem;margin-top:7px}
-    .message{background:linear-gradient(135deg,rgba(14,165,233,.13),rgba(15,23,42,.95));border:1px solid rgba(56,189,248,.25);border-radius:18px;padding:35px 28px;text-align:center}.
-    message h3{margin-top:0;font-family:'Noto Serif JP','Yu Mincho','Hiragino Mincho ProN',serif;font-size:clamp(1.7rem,6vw,3.2rem);font-weight:700;letter-spacing:.06em}.
-    message p{max-width:760px;margin:14px auto;line-height:2;color:#cbd5e1}.
-    message .highlight{color:#38bdf8;font-weight:900}
-    .apply{text-align:center;padding-top:20px}.
-    apply-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:260px;padding:17px 30px;border-radius:999px;background:#38bdf8;color:#fff;text-decoration:none;font-weight:900;font-size:1.1rem;box-shadow:0 0 20px rgba(56,189,248,.35);transition:.3s}.
-    apply-btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 0 30px rgba(56,189,248,.55)}.
-    contact-note{color:#94a3b8;margin-top:15px;font-size:.9rem}
-    footer{padding:45px 20px;text-align:center;background:#0f172a;color:#94a3b8}
-    footer strong{color:#fff;font-family:'Poppins',sans-serif;letter-spacing:.08em}
-    .sns-fixed{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:1000}.
-    sns-fixed a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#0f172a;border:1px solid rgba(56,189,248,.25);color:#fff;text-decoration:none;box-shadow:0 0 12px rgba(0,0,0,.35);transition:.3s}.
-    sns-fixed a:hover{transform:translateY(-3px);color:#38bdf8;border-color:#38bdf8;box-shadow:0 0 18px rgba(56,189,248,.35)}.
-    sns-fixed svg{width:24px;height:24px;display:block;fill:currentColor}
-    @media(max-width:800px){.parts-grid{grid-template-columns:repeat(2,1fr)}.
-                            feature-grid,.info-grid{grid-template-columns:1fr}}@media(max-width:500px){.sns-fixed{right:12px;bottom:12px}.sns-fixed a{width:42px;height:42px}.parts-grid{grid-template-columns:1fr 1fr}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TABASKA Jr.｜メンバー募集</title>
+
+<meta name="description" content="TABASKA Jr. メンバー募集。中学生・高校生・大学生を対象に、クラリネットまたはフルート、アルトサックス、テナーサックス、トランペット、トロンボーンを募集しています。">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Noto+Sans+JP:wght@400;500;700;900&familyJP:wght@400;500;600;700;900&display=swap
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:70px;
+}
+
+body{
+    margin:0;
+    font-family:'Noto Sans JP','Poppins',sans-serif;
+    background:#020617;
+    color:#f1f5f9;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+}
+
+header{
+    min-height:82vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:60px 20px;
+    text-align:center;
+    background:
+        radial-gradient(circle at 50% 25%,rgba(14,165,233,.20),transparent 35%),
+        linear-gradient(135deg,#0f172a,#020617 75%);
+    position:relative;
+    overflow:hidden;
+}
+
+header::before{
+    content:"♫";
+    position:absolute;
+    left:7%;
+    top:15%;
+    font-size:5rem;
+    color:rgba(56,189,248,.08);
+    transform:rotate(-12deg);
+}
+
+header::after{
+    content:"♪";
+    position:absolute;
+    right:8%;
+    bottom:15%;
+    font-size:6rem;
+    color:rgba(56,189,248,.08);
+    transform:rotate(12deg);
+}
+
+.brand{
+    font-family:'Poppins',sans-serif;
+    font-size:clamp(2.8rem,12vw,5.5rem);
+    font-weight:600;
+    letter-spacing:.08em;
+    margin:0;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #38bdf8;
+    }
+    to{
+        text-shadow:0 0 30px #0ea5e9;
+    }
+}
+
+.jr-title{
+    margin:8px 0 0;
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(1.6rem,6vw,3rem);
+    font-weight:700;
+    letter-spacing:.08em;
+}
+
+.lead{
+    margin:22px 0 0;
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(1.25rem,4vw,1.8rem);
+    line-height:2;
+    letter-spacing:.08em;
+}
+
+.catch{
+    margin:30px auto 0;
+    max-width:760px;
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(1.25rem,4vw,1.9rem);
+    font-weight:700;
+    line-height:1.9;
+}
+
+.catch span{
+    color:#38bdf8;
+}
+
+.limited{
+    margin-top:28px;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 25px;
+    border-radius:999px;
+    background:linear-gradient(135deg,#0ea5e9,#2563eb);
+    box-shadow:0 0 25px rgba(56,189,248,.35);
+    font-size:1.15rem;
+    font-weight:900;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:999;
+    padding:10px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    background:rgba(15,23,42,.92);
+    backdrop-filter:blur(10px);
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    padding:7px 13px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+nav a:hover{
+    background:rgba(56,189,248,.15);
+    color:#38bdf8;
+}
+
+section{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    padding:75px 20px;
+}
+
+h2{
+    border-left:5px solid #38bdf8;
+    padding-left:12px;
+    margin-bottom:30px;
+    font-size:clamp(1.6rem,5vw,2.2rem);
+}
+
+.fade-in{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all 1s ease;
+}
+
+.fade-in.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.jr-image-section{
+    text-align:center;
+    padding-top:30px;
+}
+
+.jr-image{
+    width:100%;
+    max-width:900px;
+    height:auto;
+    border-radius:12px;
+}
+
+.parts-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:14px;
+}
+
+.part-card{
+    background:#0f172a;
+    border:1px solid rgba(56,189,248,.15);
+    border-radius:14px;
+    padding:22px 12px;
+    text-align:center;
+    transition:.3s;
+}
+
+.part-card:hover{
+    transform:translateY(-5px);
+    border-color:#38bdf8;
+    box-shadow:0 0 18px rgba(56,189,248,.35);
+}
+
+.part-icon{
+    width:68px;
+    height:68px;
+    margin:0 auto 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:rgba(56,189,248,.12);
+    color:#38bdf8;
+    font-size:1.9rem;
+}
+
+.part-card h3{
+    margin:5px 0;
+    font-size:1rem;
+    line-height:1.5;
+}
+
+.part-card p{
+    margin:0;
+    color:#94a3b8;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    background:#0f172a;
+    border-radius:14px;
+    padding:28px 22px;
+    text-align:center;
+}
+
+.feature:hover{
+    box-shadow:0 0 15px rgba(56,189,248,.3);
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.info-card{
+    background:#0f172a;
+    border-radius:14px;
+    padding:22px;
+    border-left:4px solid #38bdf8;
+}
+
+.label{
+    color:#94a3b8;
+    font-size:.9rem;
+    margin-bottom:7px;
+}
+
+.value{
+    font-size:1.15rem;
+    font-weight:800;
+}
+
+.free{
+    color:#facc15;
+}
+
+.required{
+    color:#fb7185;
+}
+
+.note{
+    color:#94a3b8;
+    font-size:.85rem;
+    margin-top:7px;
+}
+
+.message{
+    background:linear-gradient(135deg,rgba(14,165,233,.13),rgba(15,23,42,.95));
+    border:1px solid rgba(56,189,248,.25);
+    border-radius:18px;
+    padding:35px 28px;
+    text-align:center;
+}
+
+.message h3{
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(1.7rem,6vw,3.2rem);
+}
+
+.message p{
+    line-height:2;
+}
+
+.highlight{
+    color:#38bdf8;
+    font-weight:900;
+}
+
+.apply{
+    text-align:center;
+}
+
+.apply-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:260px;
+    padding:17px 30px;
+    border-radius:999px;
+    background:#38bdf8;
+    color:#fff;
+    text-decoration:none;
+    font-weight:900;
+}
+
+.contact-note{
+    margin-top:15px;
+    color:#94a3b8;
+}
+
+footer{
+    padding:45px 20px;
+    text-align:center;
+    background:#0f172a;
+}
+
+.sns-fixed{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:1000;
+}
+
+.sns-fixed a{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0f172a;
+    border:1px solid rgba(56,189,248,.25);
+}
+
+.sns-fixed svg{
+    width:24px;
+    height:24px;
+    fill:currentColor;
+}
+
+@media (max-width:768px){
+
+    header{
+        min-height:auto;
+        padding:40px 15px;
+    }
+
+    section{
+        padding:55px 15px;
+    }
+
+    .feature-grid,
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .parts-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .apply-btn{
+        width:100%;
+        max-width:340px;
+    }
+
+    .sns-fixed{
+        right:12px;
+        bottom:12px;
+    }
+}
+
+@media (max-width:500px){
+
+    .parts-grid{
+        grid-template-columns:1fr;
+    }
+
+    nav a{
+        font-size:.9rem;
+        padding:6px 10px;
+    }
+
+    .brand{
+        font-size:3rem;
+    }
+
+    .jr-title{
+        font-size:1.8rem;
+    }
+}
+</style>
 </head>
 <body>
 <header>
