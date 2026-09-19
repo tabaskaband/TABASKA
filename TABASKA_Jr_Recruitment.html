@@ -254,6 +254,30 @@
     .activity-sns .fa-instagram { color: #e1306c; } 
     /* スマートフォン */ 
     @media (max-width: 600px) { .activity-sns { font-size: 25px; gap: 12px; } }
+
+.activity-sns-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 24px;
+}
+
+.activity-sns-icons .fa-youtube {
+  color: #ff0000;
+}
+
+.activity-sns-icons .fa-instagram {
+  color: #e1306c;
+}
+
+
+@media (max-width: 600px) {
+  .activity-sns-icons {
+    font-size: 22px;
+    gap: 10px;
+  }
+}
     
     /* ===== 特徴 ===== */
 
@@ -697,13 +721,17 @@
     </div>
 
   </div>
-<div class="activity-item"> <div class="activity-icon"> <i class="fa-solid fa-share-nodes"></i> 
-</div> <div class="activity-content"> 
-  <h3>SNSで活動を発信</h3> 
-  <p> 演奏会やイベント、練習風景など、 TABASKA Jr.の活動の様子を YouTubeやInstagram等のSNSで配信します。 </p>
-  <div class="activity-sns"> <i class="fa-brands fa-youtube"></i> <i class="fa-brands fa-instagram"></i>
+<div class="activity-item"> 
+  <div class="activity-icon"> 
+    <i class="fa-solid fa-share-nodes"></i>
   </div>
-</div> 
+  <div class="activity-content"> 
+    <h3>SNSで活動を発信</h3> 
+    <p> 演奏会やイベント、練習風景など、 TABASKA Jr.の活動の様子を YouTubeやInstagram等のSNSで配信します。 </p>
+  <div class="activity-sns-icons"> <i class="fa-brands fa-youtube"></i> 
+    <i class="fa-brands fa-instagram"></i> 
+  </div> 
+  </div> 
 </div>
   
 </section>
