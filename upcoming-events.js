@@ -19,7 +19,22 @@ const upcomingEvents = [
     title: "近日公開",
     venue: "",
     time: ""
-  }
+  },
+  {
+    date: "11月中旬：(Sat)",
+    title: "近日公開",
+    venue: "",
+    time: ""
+  },
+  {
+    date: "11月中旬：(Sun)",
+    title: "近日公開",
+    venue: "",
+    time: ""
+  },
+
+
+  
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
