@@ -520,29 +520,26 @@
 /* ===== 固定応募ボタン ===== */
 
 .apply-fixed {
-  position: fixed;
-  right: 20px;
-  bottom: 242px;
-  z-index: 1001;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-width: 150px;
-  padding: 12px 18px;
+  width: 150px;
+  height: 48px;
   border-radius: 999px;
   background: #f97316;
   color: #fff;
   text-decoration: none;
   font-weight: 900;
   font-size: .95rem;
-  box-shadow: 0 0 20px rgba(249, 115, 22, .45);
+  box-shadow: 0 4px 10px rgba(0,0,0,.3);
   transition: .3s;
+  overflow: hidden;
 }
 
 .apply-fixed:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 30px rgba(249, 115, 22, .6);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(249, 115, 22, .55);
 }
 
     /* ===== 固定SNS ===== */
@@ -643,10 +640,8 @@
 
 
       .apply-fixed {
-        right: 12px;
-        bottom: 222px;
-        min-width: 132px;
-        padding: 10px 15px;
+        width: 132px;
+        height: 44px;
         font-size: .88rem;
       }
 
@@ -1082,17 +1077,7 @@
 
   <!-- ===== 固定応募ボタン ===== -->
 
-  <a
-    href="https://forms.gle/BvPdZovgqzd64GS3A"
-    class="apply-fixed"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="TABASKA Jr.に応募する">
-    <i class="fa-solid fa-file-pen"></i>
-    応募する
-  </a>
-
-  <!-- ===== 固定SNS・TABASKA公式サイト ===== -->
+    <!-- ===== 固定SNS・TABASKA公式サイト ===== -->
 
   <div class="sns-fixed">
 
@@ -1149,6 +1134,18 @@
 
   <i class="fa-brands fa-facebook-f"></i>
 
+</a>
+
+<!-- 固定応募ボタン -->
+
+<a
+  href="https://forms.gle/BvPdZovgqzd64GS3A"
+  class="apply-fixed"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="TABASKA Jr.に応募する">
+  <i class="fa-solid fa-file-pen"></i>
+  応募する
 </a>
 
 
