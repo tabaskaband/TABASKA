@@ -516,6 +516,35 @@
 .part-card.orange-card .part-icon i {
   color: #f97316 !important;
 }
+
+/* ===== 固定応募ボタン ===== */
+
+.apply-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 242px;
+  z-index: 1001;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 150px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #f97316;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: .95rem;
+  box-shadow: 0 0 20px rgba(249, 115, 22, .45);
+  transition: .3s;
+}
+
+.apply-fixed:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 30px rgba(249, 115, 22, .6);
+}
+
     /* ===== 固定SNS ===== */
 
     .sns-fixed {
@@ -610,6 +639,15 @@
 
       nav a {
         font-size: .82rem;
+      }
+
+
+      .apply-fixed {
+        right: 12px;
+        bottom: 222px;
+        min-width: 132px;
+        padding: 10px 15px;
+        font-size: .88rem;
       }
 
       .sns-fixed {
@@ -1040,6 +1078,19 @@
 
 
   </footer>
+
+
+  <!-- ===== 固定応募ボタン ===== -->
+
+  <a
+    href="https://forms.gle/BvPdZovgqzd64GS3A"
+    class="apply-fixed"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="TABASKA Jr.に応募する">
+    <i class="fa-solid fa-file-pen"></i>
+    応募する
+  </a>
 
   <!-- ===== 固定SNS・TABASKA公式サイト ===== -->
 
