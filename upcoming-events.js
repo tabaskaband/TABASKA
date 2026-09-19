@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     videoSection.innerHTML = `
       <h2>TABASKAを動画で紹介</h2>
       <p style="text-align:center; margin-bottom:20px; color:#94a3b8;">
-        「笑って。」「泣いて。」「踊って。」「歌って。」　音楽で、みんながひとつになる。<br>
+        音楽で、みんながひとつになる。<br>
         
       </p>
       <style>
