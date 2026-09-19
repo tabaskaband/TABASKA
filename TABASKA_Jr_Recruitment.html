@@ -422,18 +422,48 @@
       text-decoration: none;
       box-shadow: 0 4px 10px rgba(0,0,0,.3);
       transition: .3s;
+      overflow: hidden;
     }
 
     .sns-btn:hover {
       transform: scale(1.12);
     }
 
-    .instagram {
-      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+    /* TABASKA公式サイト */
+
+    .official {
+      background: #fff;
+      padding: 5px;
     }
+
+    .official img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    /* Instagram */
+
+    .instagram {
+      background: linear-gradient(
+        45deg,
+        #833ab4,
+        #fd1d1d,
+        #fcb045
+      );
+    }
+
+    /* YouTube */
 
     .youtube {
       background: #ff0000;
+    }
+
+    /* Facebook */
+
+    .facebook {
+      background: #1877f2;
     }
 
     @media (max-width: 768px) {
@@ -501,9 +531,11 @@
 <body>
 
   <header>
-    <p class="brand">TABASKA</p>
-    <h1 class="jr-title">TABASKA Jr.</h1>
 
+```
+<p class="brand">TABASKA</p>
+
+<h1 class="jr-title">TABASKA Jr.</h1>
 
 <p class="lead">
   5人だからできること。<br>
@@ -511,7 +543,8 @@
 </p>
 
 <p class="catch">
-  一緒に演奏して、<span>ステージに立って、</span><br>
+  一緒に演奏して、
+  <span>ステージに立って、</span><br>
   音楽で誰かを笑顔にしよう！
 </p>
 
@@ -520,6 +553,7 @@
   <strong>5名</strong>
   <span>限定</span>
 </div>
+```
 
   </header>
 
@@ -533,7 +567,9 @@
 
   <main>
 
+```
 <section id="parts" class="fade-in">
+
   <h2>募集パート</h2>
 
   <div class="parts-grid">
@@ -542,7 +578,10 @@
       <div class="part-icon">
         <i class="fa-solid fa-music"></i>
       </div>
-      <h3>クラリネット<br>または フルート</h3>
+      <h3>
+        クラリネット<br>
+        または フルート
+      </h3>
       <p>１名</p>
     </div>
 
@@ -559,7 +598,7 @@
         <i class="fa-solid fa-music"></i>
       </div>
       <h3>テナーサックス</h3>
-      <p>1名</p>
+      <p>１名</p>
     </div>
 
     <div class="part-card">
@@ -577,33 +616,41 @@
       <h3>トロンボーン</h3>
       <p>１名</p>
     </div>
-    
+
     <div class="part-card">
       <div class="part-icon">
-        <i class="fa-solid fa-music"></i>
+        <i class="fa-solid fa-video"></i>
       </div>
-      <h3>動画クリエーター・ＳＮＳ担当</h3>
+      <h3>
+        動画クリエーター・<br>
+        ＳＮＳ担当
+      </h3>
       <p>１～２名</p>
     </div>
-    
+
     <div class="part-card">
       <div class="part-icon">
-        <i class="fa-solid fa-music"></i>
+        <i class="fa-solid fa-plus"></i>
       </div>
-      <h3>その他の楽器はお問い合わせください。</h3>
+      <h3>その他の楽器は<br>お問い合わせください。</h3>
       <p></p>
     </div>
+
   </div>
+
 </section>
 
 <section id="activities" class="fade-in">
+
   <h2>どんな活動をするの？</h2>
 
   <div class="feature-grid">
 
     <div class="feature">
       <i class="fa-solid fa-microphone-lines"></i>
+
       <h3>イベント出演</h3>
+
       <p>
         地域イベントやコンサートなど、
         実際のステージで演奏します。
@@ -612,7 +659,9 @@
 
     <div class="feature">
       <i class="fa-solid fa-hand-holding-heart"></i>
+
       <h3>慰問演奏</h3>
+
       <p>
         地域の施設などへ音楽を届け、
         演奏を通して交流します。
@@ -621,7 +670,9 @@
 
     <div class="feature">
       <i class="fa-solid fa-users"></i>
+
       <h3>音楽仲間との活動</h3>
+
       <p>
         学校や学年を超えて、
         一緒に練習し、音楽を作ります。
@@ -629,66 +680,93 @@
     </div>
 
   </div>
+
 </section>
 
 <section id="conditions" class="fade-in">
+
   <h2>募集条件</h2>
 
   <div class="info-grid">
 
     <div class="info-card">
       <div class="label">対象</div>
-      <div class="value">中学生・高校生・大学生</div>
-      <div class="note">音楽経験者を対象とし、オーディションがあります。</div>
+      <div class="value">
+        中学生・高校生・大学生
+      </div>
+      <div class="note">
+        音楽経験者を対象とし、オーディションがあります。
+      </div>
     </div>
 
     <div class="info-card">
       <div class="label">募集人数</div>
       <div class="value">５名限定</div>
-      <div class="note">各募集パート1名です。また、動画クリエーター・ＳＮＳ配信の担当も募集します。</div>
+      <div class="note">
+        各募集パート1名です。また、動画クリエーター・ＳＮＳ配信の担当も募集します。
+      </div>
     </div>
 
     <div class="info-card">
       <div class="label">試行期間</div>
       <div class="value free">会費無料</div>
-      <div class="note">TABASKA Jr.の試行期間中は会費無料です。</div>
+      <div class="note">
+        TABASKA Jr.の試行期間中は会費無料です。
+      </div>
     </div>
 
     <div class="info-card">
       <div class="label">楽器</div>
-      <div class="value">各自で楽器をご用意ください</div>
-      <div class="note">楽器の貸し出しはありません。</div>
+      <div class="value">
+        各自で楽器をご用意ください
+      </div>
+      <div class="note">
+        楽器の貸し出しはありません。
+      </div>
     </div>
 
     <div class="info-card">
       <div class="label">練習</div>
       <div class="value">毎週１回</div>
-      <div class="note">練習場所・曜日は現在調整中です。</div>
+      <div class="note">
+        練習場所・曜日は現在調整中です。
+      </div>
     </div>
 
     <div class="info-card">
       <div class="label">保護者の同意</div>
       <div class="value required">必要</div>
-      <div class="note">未成年者は保護者の同意が必要です。</div>
+      <div class="note">
+        未成年者は保護者の同意が必要です。
+      </div>
     </div>
 
     <div class="info-card">
       <div class="label">選考</div>
       <div class="value">オーディションあり</div>
-      <div class="note">一定の基準により選考を行います。</div>
+      <div class="note">
+        一定の基準により選考を行います。
+      </div>
     </div>
 
     <div class="info-card">
       <div class="label">活動</div>
-      <div class="value">イベント出演・慰問演奏など</div>
-      <div class="note">実際の演奏活動への参加があります。</div>
+      <div class="value">
+        イベント出演・慰問演奏など
+      </div>
+      <div class="note">
+        実際の演奏活動への参加があります。
+      </div>
     </div>
 
   </div>
+
 </section>
 
 <section id="message" class="fade-in">
+
   <div class="message">
+
     <h3>こんな人を待っています！</h3>
 
     <p>
@@ -703,7 +781,8 @@
     </p>
 
     <p>
-      TABASKA Jr.は、まずは<span class="highlight">５人</span>からスタート。
+      TABASKA Jr.は、まずは
+      <span class="highlight">５人</span>からスタート。
       少人数だからこそ、一人ひとりが演奏に関わり、
       一緒に音楽を作っていくことを目指します。
     </p>
@@ -711,13 +790,17 @@
     <p class="highlight">
       TABASKA Jr.の最初の５人になりませんか？
     </p>
+
   </div>
+
 </section>
 
 <section id="apply" class="fade-in">
+
   <h2>応募・問い合わせ</h2>
 
   <div class="apply">
+
     <p>
       TABASKA Jr.への参加に興味のある方は、<br>
       まずはお気軽にお問い合わせください。
@@ -726,29 +809,61 @@
     <a
       href="mailto:tabaska.band@gmail.com?subject=TABASKA%20Jr.%20応募・問い合わせ"
       class="apply-btn">
+
       <i class="fa-solid fa-envelope"></i>
+
       TABASKA Jr.について問い合わせる
+
     </a>
 
     <p class="contact-note">
       ※オーディションの詳細・練習場所・曜日などについてもお問い合わせください。
     </p>
-  </div>
-</section>
 
+  </div>
+
+</section>
+```
 
   </main>
 
   <footer>
-    <strong>TABASKA Jr.</strong>
-    <p>音楽でつながる、新しい仲間。</p>
-    <p>&copy; TABASKA</p>
+
+```
+<strong>TABASKA Jr.</strong>
+
+<p>
+  音楽でつながる、新しい仲間。
+</p>
+
+<p>
+  &copy; TABASKA
+</p>
+```
+
   </footer>
 
-  <!-- ===== 固定SNS ===== -->
+  <!-- ===== 固定SNS・TABASKA公式サイト ===== -->
 
   <div class="sns-fixed">
 
+```
+<!-- TABASKA公式サイト -->
+
+<a
+  href="https://tabaskaband.github.io/TABASKA/index.html"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="sns-btn official"
+  aria-label="TABASKA Official">
+
+  <img
+    src="https://tabaskaband.github.io/TABASKA/images/bear_logo.png"
+    alt="TABASKA Official">
+
+</a>
+
+<!-- Instagram -->
 
 <a
   href="https://www.instagram.com/tabaskaband/"
@@ -756,8 +871,12 @@
   rel="noopener noreferrer"
   class="sns-btn instagram"
   aria-label="Instagram">
+
   <i class="fa-brands fa-instagram"></i>
+
 </a>
+
+<!-- YouTube -->
 
 <a
   href="https://www.youtube.com/@tabaska2025"
@@ -765,31 +884,53 @@
   rel="noopener noreferrer"
   class="sns-btn youtube"
   aria-label="YouTube">
+
   <i class="fa-brands fa-youtube"></i>
+
 </a>
 
+<!-- Facebook -->
+
+<a
+  href="https://www.facebook.com/tabaska.band/"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="sns-btn facebook"
+  aria-label="Facebook">
+
+  <i class="fa-brands fa-facebook-f"></i>
+
+</a>
+```
 
   </div>
 
   <script>
+
     const observer = new IntersectionObserver(
       (entries) => {
+
         entries.forEach((entry) => {
+
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
           }
+
         });
+
       },
-      { threshold: 0.12 }
+      {
+        threshold: 0.12
+      }
     );
 
-    document.querySelectorAll('.fade-in').forEach((el) => {
-      observer.observe(el);
-    });
+    document
+      .querySelectorAll('.fade-in')
+      .forEach((el) => {
+        observer.observe(el);
+      });
+
   </script>
 
 </body>
 </html>
-
-
-
