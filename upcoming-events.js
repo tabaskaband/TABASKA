@@ -3,15 +3,15 @@
 const upcomingEvents = [
 
   {
-    date: "10月上旬：(Sun)",
-    title: "近日公開",
-    venue: "",
-    time: ""
+    date: "10月4日：(Sun)",
+    title: "Mall de Music",
+    venue: "イオンモール KAGOSHIMA Bay",
+    time: "①15:30〜　②17:00〜"
   },
   {
-    date: "10月中旬：(Sat)",
-    title: "近日公開",
-    venue: "",
+    date: "10月17日：(Sat)",
+    title: "鴨池校区秋まつり",
+    venue: "真砂本町公園",
     time: ""
   },
   {
