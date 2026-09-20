@@ -174,7 +174,7 @@ const songs = [
     {
         order: "0202",
         stage: "STAGE 2",
-        title: "パウ・パトロール_ジブリメドレー",
+        title: "パウ・パトロール　ジブリメドレー",
         artist: "",
         lyrics: "",
         medley: [
