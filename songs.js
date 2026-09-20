@@ -158,15 +158,15 @@ const songs = [
         lyrics: "",
         medley: [
             {
-                title: "アンパンマンのマーチ 『ドリーミング』",
+                title: "アンパンマンのマーチ",
                 lyrics: "https://www.uta-net.com/song/7326/"
             },
             {
-                title: "勇気りんりん 『ドリーミング』",
+                title: "勇気りんりん",
                 lyrics: "https://www.uta-net.com/song/9054/"
             },
             {
-                title: "アンパンマンたいそう 『ドリーミング』",
+                title: "アンパンマンたいそう",
                 lyrics: "https://www.uta-net.com/song/5508/"
             }
         ]
