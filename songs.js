@@ -42,7 +42,7 @@ const songs = [
         lyrics: "",
         medley: [
             {
-                title: "勇気100％",
+                title: "勇気100％ 『光GENJI』",
                 lyrics: "https://www.uta-net.com/song/7263/"
             },
             {
