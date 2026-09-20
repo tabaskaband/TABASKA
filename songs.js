@@ -154,19 +154,19 @@ const songs = [
         order: "0201",
         stage: "STAGE 2",
         title: "アンパンマンメドレー",
-        artist: "",
+        artist: "ドリーミング",
         lyrics: "",
         medley: [
             {
-                title: "アンパンマンのマーチ",
+                title: "アンパンマンのマーチ 『ドリーミング』",
                 lyrics: "https://www.uta-net.com/song/7326/"
             },
             {
-                title: "勇気りんりん",
+                title: "勇気りんりん 『ドリーミング』",
                 lyrics: "https://www.uta-net.com/song/9054/"
             },
             {
-                title: "アンパンマンたいそう",
+                title: "アンパンマンたいそう 『ドリーミング』",
                 lyrics: "https://www.uta-net.com/song/5508/"
             }
         ]
@@ -183,11 +183,11 @@ const songs = [
                 lyrics: "https://www.utatime.com/lyrics/paw-patrol/paw-patrol/"
             },
             {
-                title: "さんぽ",
+                title: "さんぽ 『井上あずみ』",
                 lyrics: "https://www.uta-net.com/movie/10772/"
             },
             {
-                title: "ルージュの伝言",
+                title: "ルージュの伝言 『松任谷由実』",
                 lyrics: "https://www.uta-net.com/movie/4854/"
             },
             {
@@ -199,7 +199,7 @@ const songs = [
                 lyrics: ""
             },
             {
-                title: "となりのトトロ",
+                title: "となりのトトロ 『井上あずみ』",
                 lyrics: "https://www.uta-net.com/song/5064/"
             }
         ]
