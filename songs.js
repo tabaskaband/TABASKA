@@ -11,147 +11,133 @@ const concertVenue = "イオンモールKagoshima BAY";
 // ステージ別 開演時間
 const stage1Time = "15:30";
 const stage2Time = "17:00";
-const lyricsAvailableFrom = "2026-99-06";
+const lyricsAvailableFrom = "2026-9-20";
 const lyricsAvailableUntil = "2026-10-04";
 
 // ========================================
 // 曲一覧
 // ========================================
 
-const songs = [
+
 
     // ========================================
     // STAGE 1
     // ========================================
 
+const songs = [
+
     {
         order: "0101",
         stage: "STAGE 1",
-        title: "おジャ魔女カーニバル!!",
-        artist: "MAHO堂",
-        lyrics: "https://www.uta-net.com/song/14341/"
+        title: "おジャ魔女カーニバル",
+        artist: "",
+        lyrics: "https://www.uta-net.com/song/14341/",
+        medley: []
     },
-
-
     {
         order: "0102",
         stage: "STAGE 1",
         title: "勇気と冒険のメドレー",
         artist: "",
         lyrics: "",
-
         medley: [
-
             {
-                title: "勇気100%",
+                title: "勇気100％",
                 lyrics: "https://www.uta-net.com/song/7263/"
             },
-
             {
                 title: "Super Mario Wind Garden",
                 lyrics: ""
             },
-
             {
                 title: "虹",
-                artist: "菅田将暉",
                 lyrics: "https://www.uta-net.com/song/293474/"
             },
-
             {
                 title: "紅蓮華",
-                artist: "LiSA",
                 lyrics: "https://www.uta-net.com/song/270036/"
             },
-
             {
-                title: "１・２・３",
-                artist: "After the Rain",
+                title: "1・2・3",
                 lyrics: "https://www.uta-net.com/song/279388/"
             }
-
         ]
     },
-
-
     {
         order: "0103",
         stage: "STAGE 1",
         title: "A Whole New World",
-        artist: "Disney",
-        lyrics: "https://www.uta-net.com/song/76296/"
+        artist: "",
+        lyrics: "https://www.uta-net.com/movie/273558/",
+        medley: []
     },
-
-
     {
         order: "0104",
         stage: "STAGE 1",
         title: "優しい彗星",
-        artist: "YOASOBI",
-        lyrics: "https://www.uta-net.com/song/296725/"
+        artist: "",
+        lyrics: "https://www.uta-net.com/song/296725/",
+        medley: []
     },
-
-
     {
         order: "0105",
         stage: "STAGE 1",
         title: "逢いたくていま",
-        artist: "MISIA",
-        lyrics: "https://www.uta-net.com/song/85467/"
+        artist: "",
+        lyrics: "https://www.uta-net.com/song/85467/",
+        medley: []
     },
-
-
+    {
+        order: "0106",
+        stage: "STAGE 1",
+        title: "情熱大陸",
+        artist: "",
+        lyrics: "",
+        medley: []
+    },
     {
         order: "0107",
         stage: "STAGE 1",
-        title: "夢をあきらめないで",
-        artist: "岡村孝子",
-        lyrics: "https://www.uta-net.com/song/4712/"
+        title: "異邦人",
+        artist: "",
+        lyrics: "https://www.uta-net.com/movie/728/",
+        medley: []
     },
-
-
     {
         order: "0108",
         stage: "STAGE 1",
-        title: "情熱大陸",
-        artist: "葉加瀬太郎",
-        lyrics: ""
+        title: "夢をあきらめないで",
+        artist: "",
+        lyrics: "https://www.uta-net.com/song/4712/",
+        medley: []
     },
-
-
     {
         order: "0109",
         stage: "STAGE 1",
         title: "ふるさと",
-        artist: "嵐",
-        lyrics: "https://www.uta-net.com/song/195976/"
+        artist: "",
+        lyrics: "https://www.uta-net.com/song/195976/",
+        medley: []
     },
-
-
     {
         order: "0110",
         stage: "STAGE 1",
         title: "昭和歌謡曲メドレー",
         artist: "",
         lyrics: "",
-
         medley: [
-
             {
                 title: "悲しみよこんにちは",
                 lyrics: "https://www.uta-net.com/song/1355/"
             },
-
             {
                 title: "Stay With Me",
                 lyrics: "https://www.uta-net.com/song/6321/"
             },
-
             {
                 title: "悲しみがとまらない",
                 lyrics: "https://www.uta-net.com/song/1341/"
             },
-
             {
                 title: "アメリカン・フィーリング",
                 lyrics: "https://www.uta-net.com/song/400/"
@@ -170,188 +156,157 @@ const songs = [
         title: "アンパンマンメドレー",
         artist: "",
         lyrics: "",
-
         medley: [
-
             {
                 title: "アンパンマンのマーチ",
                 lyrics: "https://www.uta-net.com/song/7326/"
             },
-
             {
                 title: "勇気りんりん",
                 lyrics: "https://www.uta-net.com/song/9054/"
             },
-
             {
                 title: "アンパンマンたいそう",
                 lyrics: "https://www.uta-net.com/song/5508/"
             }
-
         ]
     },
-
-
     {
         order: "0202",
         stage: "STAGE 2",
-        title: "パウ・パトロール・ジブリメドレー",
+        title: "パウ・パトロール_ジブリメドレー",
         artist: "",
         lyrics: "",
-
         medley: [
-
             {
                 title: "パウ・パトロール",
-                lyrics: "https://www.utatime.com/lyrics/paw-patrol/paw-patrol/"
+                lyrics: ""
             },
-
             {
                 title: "さんぽ",
-                lyrics: "https://www.uta-net.com/song/10772/"
+                lyrics: "https://www.uta-net.com/movie/10772/"
             },
-
             {
                 title: "ルージュの伝言",
-                lyrics: "https://www.uta-net.com/song/4854/"
+                lyrics: "https://www.uta-net.com/movie/4854/"
             },
-
             {
                 title: "海の見える街",
                 lyrics: ""
             },
-
             {
                 title: "仕事はじめ",
                 lyrics: ""
             },
-
             {
                 title: "となりのトトロ",
                 lyrics: "https://www.uta-net.com/song/5064/"
             }
-
         ]
     },
-
-
     {
         order: "0203",
         stage: "STAGE 2",
         title: "もののけ姫",
-        artist: "米良美一",
-        lyrics: "https://www.uta-net.com/song/10104/"
+        artist: "",
+        lyrics: "https://www.uta-net.com/song/10104/",
+        medley: []
     },
-
-
     {
         order: "0204",
         stage: "STAGE 2",
         title: "恋風",
-        artist: "幾田りら",
-        lyrics: "https://www.uta-net.com/song/371553/"
+        artist: "",
+        lyrics: "https://www.uta-net.com/song/371553/",
+        medley: []
     },
-
-
+    {
+        order: "0205",
+        stage: "STAGE 2",
+        title: "元気を出して",
+        artist: "",
+        lyrics: "https://www.uta-net.com/song/1769/",
+        medley: []
+    },
     {
         order: "0206",
         stage: "STAGE 2",
-        title: "元気を出して",
-        artist: "竹内まりや",
-        lyrics: "https://www.uta-net.com/song/1769/"
-    },
-
-
-    {
-        order: "0207",
-        stage: "STAGE 2",
         title: "サザンメドレー",
-        artist: "サザンオールスターズ",
+        artist: "",
         lyrics: "",
-
         medley: [
-
             {
                 title: "TSUNAMI",
                 lyrics: "https://www.uta-net.com/song/12255/"
             },
-
             {
                 title: "いとしのエリー",
                 lyrics: "https://www.uta-net.com/song/702/"
             },
-
             {
                 title: "波乗りジョニー",
                 lyrics: "https://www.uta-net.com/song/13297/"
             }
-
         ]
     },
-
-
+    {
+        order: "0207",
+        stage: "STAGE 2",
+        title: "川の流れのように",
+        artist: "",
+        lyrics: "https://www.uta-net.com/song/1420/",
+        medley: []
+    },
     {
         order: "0208",
         stage: "STAGE 2",
         title: "時代",
-        artist: "中島みゆき",
-        lyrics: "https://www.uta-net.com/song/2416/"
+        artist: "",
+        lyrics: "https://www.uta-net.com/song/2416/",
+        medley: []
     },
-
-
     {
         order: "0209",
         stage: "STAGE 2",
         title: "昭和歌謡曲メドレー",
         artist: "",
         lyrics: "",
-
         medley: [
-
             {
                 title: "勝手にしやがれ",
                 lyrics: "https://www.uta-net.com/song/1311/"
             },
-
             {
                 title: "飛んでイスタンブール",
                 lyrics: "https://www.uta-net.com/song/3321/"
             },
-
             {
-                title: "あずさ2号",
+                title: "あずさ２号",
                 lyrics: "https://www.uta-net.com/song/247/"
             },
-
             {
                 title: "私鉄沿線",
                 lyrics: "https://www.uta-net.com/song/2429/"
             },
-
             {
                 title: "青いリンゴ",
                 lyrics: "https://www.uta-net.com/song/178/"
             },
-
             {
                 title: "時の流れに身をまかせ",
                 lyrics: "https://www.uta-net.com/song/3251/"
             },
-
             {
                 title: "かもめが翔んだ日",
                 lyrics: "https://www.uta-net.com/song/1379/"
-            }
-
+            },
         ]
-    },
-
-
-    {
-        order: "0210",
-        stage: "STAGE 2",
-        title: "威風堂々",
-        artist: "Edward Elgar",
-        lyrics: ""
-    }
-]
+      },
+        {
+            order: "0210",
+            stage: "STAGE 2",
+            title: "威風堂々",
+            artist: "Edward Elgar",
+            lyrics: ""
+        }
+    ]
