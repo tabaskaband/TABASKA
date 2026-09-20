@@ -180,7 +180,7 @@ const songs = [
         medley: [
             {
                 title: "パウ・パトロール",
-                lyrics: ""
+                lyrics: "https://www.utatime.com/lyrics/paw-patrol/paw-patrol/"
             },
             {
                 title: "さんぽ",
