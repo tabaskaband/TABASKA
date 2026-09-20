@@ -50,15 +50,15 @@ const songs = [
                 lyrics: ""
             },
             {
-                title: "虹",
+                title: "虹 『菅田将暉』",
                 lyrics: "https://www.uta-net.com/song/293474/"
             },
             {
-                title: "紅蓮華",
+                title: "紅蓮華 『LiSA』",
                 lyrics: "https://www.uta-net.com/song/270036/"
             },
             {
-                title: "1・2・3",
+                title: "1・2・3 『after the rain』",
                 lyrics: "https://www.uta-net.com/song/279388/"
             }
         ]
@@ -127,19 +127,19 @@ const songs = [
         lyrics: "",
         medley: [
             {
-                title: "悲しみよこんにちは",
+                title: "悲しみよこんにちは 『斉藤由貴』",
                 lyrics: "https://www.uta-net.com/song/1355/"
             },
             {
-                title: "Stay With Me",
+                title: "真夜中のドア 〜 stay with me 『松原 みき』",
                 lyrics: "https://www.uta-net.com/song/6321/"
             },
             {
-                title: "悲しみがとまらない",
+                title: "悲しみがとまらない 『杏里』",
                 lyrics: "https://www.uta-net.com/song/1341/"
             },
             {
-                title: "アメリカン・フィーリング",
+                title: "アメリカン・フィーリング 『サーカス』",
                 lyrics: "https://www.uta-net.com/song/400/"
             }
         ]
@@ -273,31 +273,31 @@ const songs = [
         lyrics: "",
         medley: [
             {
-                title: "勝手にしやがれ",
+                title: "勝手にしやがれ 『沢田研二』",
                 lyrics: "https://www.uta-net.com/song/1311/"
             },
             {
-                title: "飛んでイスタンブール",
+                title: "飛んでイスタンブール 『庄野真代』",
                 lyrics: "https://www.uta-net.com/song/3321/"
             },
             {
-                title: "あずさ２号",
+                title: "あずさ２号 『狩人』",
                 lyrics: "https://www.uta-net.com/song/247/"
             },
             {
-                title: "私鉄沿線",
+                title: "私鉄沿線 『野口五郎』",
                 lyrics: "https://www.uta-net.com/song/2429/"
             },
             {
-                title: "青いリンゴ",
+                title: "青いリンゴ 『野口五郎』",
                 lyrics: "https://www.uta-net.com/song/178/"
             },
             {
-                title: "時の流れに身をまかせ",
+                title: "時の流れに身をまかせ 『テレサ・テン』",
                 lyrics: "https://www.uta-net.com/song/3251/"
             },
             {
-                title: "かもめが翔んだ日",
+                title: "かもめが翔んだ日 『渡辺真知子』",
                 lyrics: "https://www.uta-net.com/song/1379/"
             },
         ]
