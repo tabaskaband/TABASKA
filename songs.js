@@ -30,7 +30,7 @@ const songs = [
         order: "0101",
         stage: "STAGE 1",
         title: "おジャ魔女カーニバル",
-        artist: "",
+        artist: "MAHO堂",
         lyrics: "https://www.uta-net.com/song/14341/",
         medley: []
     },
@@ -75,7 +75,7 @@ const songs = [
         order: "0104",
         stage: "STAGE 1",
         title: "優しい彗星",
-        artist: "",
+        artist: "YOASOBI",
         lyrics: "https://www.uta-net.com/song/296725/",
         medley: []
     },
@@ -83,7 +83,7 @@ const songs = [
         order: "0105",
         stage: "STAGE 1",
         title: "逢いたくていま",
-        artist: "",
+        artist: "MISIA",
         lyrics: "https://www.uta-net.com/song/85467/",
         medley: []
     },
@@ -99,7 +99,7 @@ const songs = [
         order: "0107",
         stage: "STAGE 1",
         title: "異邦人",
-        artist: "",
+        artist: "久保田早紀",
         lyrics: "https://www.uta-net.com/movie/728/",
         medley: []
     },
@@ -107,7 +107,7 @@ const songs = [
         order: "0108",
         stage: "STAGE 1",
         title: "夢をあきらめないで",
-        artist: "",
+        artist: "岡村孝子",
         lyrics: "https://www.uta-net.com/song/4712/",
         medley: []
     },
@@ -115,7 +115,7 @@ const songs = [
         order: "0109",
         stage: "STAGE 1",
         title: "ふるさと",
-        artist: "",
+        artist: "嵐",
         lyrics: "https://www.uta-net.com/song/195976/",
         medley: []
     },
@@ -208,7 +208,7 @@ const songs = [
         order: "0203",
         stage: "STAGE 2",
         title: "もののけ姫",
-        artist: "",
+        artist: "米良美一",
         lyrics: "https://www.uta-net.com/song/10104/",
         medley: []
     },
@@ -216,7 +216,7 @@ const songs = [
         order: "0204",
         stage: "STAGE 2",
         title: "恋風",
-        artist: "",
+        artist: "幾田りら",
         lyrics: "https://www.uta-net.com/song/371553/",
         medley: []
     },
@@ -224,7 +224,7 @@ const songs = [
         order: "0205",
         stage: "STAGE 2",
         title: "元気を出して",
-        artist: "",
+        artist: "竹内 まりや",
         lyrics: "https://www.uta-net.com/song/1769/",
         medley: []
     },
@@ -232,7 +232,7 @@ const songs = [
         order: "0206",
         stage: "STAGE 2",
         title: "サザンメドレー",
-        artist: "",
+        artist: "サザンオールスターズ",
         lyrics: "",
         medley: [
             {
@@ -253,7 +253,7 @@ const songs = [
         order: "0207",
         stage: "STAGE 2",
         title: "川の流れのように",
-        artist: "",
+        artist: "美空ひばり",
         lyrics: "https://www.uta-net.com/song/1420/",
         medley: []
     },
@@ -261,7 +261,7 @@ const songs = [
         order: "0208",
         stage: "STAGE 2",
         title: "時代",
-        artist: "",
+        artist: "中島みゆき",
         lyrics: "https://www.uta-net.com/song/2416/",
         medley: []
     },
