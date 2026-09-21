@@ -6,11 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+
 body {
   margin: 0;
   height: 100vh;
   background: black;
 }
+
 </style>
 </head>
 
@@ -26,31 +28,35 @@ body {
 
 
 /* ==================================================
-   通常の演出
+   🎨 通常の演出
    ================================================== */
 
-// 1色を表示する時間
-// 500 = 0.5秒
-const EFFECT_DISPLAY = 200;
+// 1色を表示しておく時間
+// 1000 = 1秒
+const EFFECT_DISPLAY = 250;
 
 // 次の色へ変化する時間
 // 0 = 一瞬で切り替え
 // 50 = 0.05秒かけて変化
-const EFFECT_TRANSITION = 500;
+const EFFECT_TRANSITION = 100;
 
 
 /* ==================================================
-   フラッシュ
+   ⚡ フラッシュ
    ================================================== */
 
-// 1色を表示する時間
-// 300 = 0.3秒
-const FLASH_DISPLAY = 200;
+// ランダムカラーを表示しておく時間
+// 1000 = 1秒
+const FLASH_DISPLAY = 300;
 
-// 次の色へ変化する時間
+// 白を表示しておく時間
+// 1000 = 1秒
+const FLASH_WHITE_DISPLAY = 50;
+
+// 色が変化する時間
 // 0 = 一瞬で切り替え
 // 10 = 0.01秒かけて変化
-const FLASH_TRANSITION = 15;
+const FLASH_TRANSITION = 0;
 
 
 /* ==================================================
@@ -114,15 +120,14 @@ socket.on("connect", () => {
 
 
 /* ==================================================
-   🎨 演出スタート
+   🎨 通常の色変更
    ================================================== */
 
 socket.on("colorUpdate", (color) => {
 
-  // フラッシュ中は通常演出を無視
+  // フラッシュ中は無視
   if (flashing) return;
 
-  // サーバーから送られた色を表示
   changeColor(
     color,
     EFFECT_TRANSITION
@@ -140,38 +145,52 @@ function runEffectLoop() {
   if (flashing) return;
 
 
-  // ランダムカラーを表示
+  // 新しいランダムカラー
+  const color = getRandomColor();
+
+
+  // 色を変更
   changeColor(
-    getRandomColor(),
+    color,
     EFFECT_TRANSITION
   );
 
 
-  // 指定時間表示した後、次の色へ
-  effectTimer = setTimeout(
-    runEffectLoop,
-    EFFECT_DISPLAY
-  );
+  /*
+   * 色の変化が終わってから
+   * 指定した時間だけ表示
+   */
+
+  effectTimer = setTimeout(() => {
+
+    if (flashing) return;
+
+    runEffectLoop();
+
+  }, EFFECT_TRANSITION + EFFECT_DISPLAY);
 
 }
 
 
 /* ==================================================
-   🎬 演出開始
-   ==================================================
-
-   サーバーから "effect" が来た場合
-   ランダムカラー演出を開始
+   🎬 演出スタート
    ================================================== */
 
 socket.on("effect", () => {
 
   if (flashing) return;
 
+
+  // 既存のタイマーを停止
   if (effectTimer) {
+
     clearTimeout(effectTimer);
+    effectTimer = null;
+
   }
 
+
+  // ランダムカラー演出開始
   runEffectLoop();
 
 });
@@ -183,7 +202,7 @@ socket.on("effect", () => {
 
 socket.on("flash", () => {
 
-  // 演出を停止
+  // 通常演出を停止
   if (effectTimer) {
 
     clearTimeout(effectTimer);
@@ -210,31 +229,55 @@ function runFlashLoop() {
   if (!flashing) return;
 
 
-  // ランダムカラー
+  /*
+   * ------------------------------------------
+   * ランダムカラー
+   * ------------------------------------------
+   */
+
   changeColor(
     getRandomColor(),
     FLASH_TRANSITION
   );
 
 
+  /*
+   * 色の変化が終わった後、
+   * ランダムカラーを表示する
+   */
+
   flashTimer = setTimeout(() => {
 
     if (!flashing) return;
 
 
-    // 白
+    /*
+     * ------------------------------------------
+     * 白
+     * ------------------------------------------
+     */
+
     changeColor(
       "#ffffff",
       FLASH_TRANSITION
     );
 
 
-    flashTimer = setTimeout(
-      runFlashLoop,
-      FLASH_DISPLAY
-    );
+    /*
+     * 白への変化が終わった後、
+     * 指定時間だけ白を表示
+     */
 
-  }, FLASH_DISPLAY);
+    flashTimer = setTimeout(() => {
+
+      if (!flashing) return;
+
+      runFlashLoop();
+
+    }, FLASH_TRANSITION + FLASH_WHITE_DISPLAY);
+
+
+  }, FLASH_TRANSITION + FLASH_DISPLAY);
 
 }
 
@@ -288,6 +331,7 @@ socket.on("stopEffect", () => {
   }
 
 });
+
 
 </script>
 
