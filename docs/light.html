@@ -24,21 +24,31 @@ body {
    ライト演出 設定
    ================================================== */
 
-// 演出：色が切り替わる時間
-// 20 = 0.02秒
-const EFFECT_COLOR_TRANSITION = 50;
 
-// フラッシュ：色が切り替わる間隔
-// 250 = 0.25秒
-const FLASH_INTERVAL = 150;
+/* ---------- 通常の演出 ---------- */
+
+// 色が変わる間隔
+// 100 = 0.1秒
+const EFFECT_INTERVAL = 100;
+
+// 色が変わる瞬間の滑らかさ
+// 0  = 一瞬で切り替え
+// 20 = 0.02秒かけて変化
+// 100 = 0.1秒かけて変化
+const EFFECT_TRANSITION = 20;
 
 
-/* ==================================================
-   色転換時間をCSSに反映
-   ================================================== */
+/* ---------- フラッシュ ---------- */
 
-document.body.style.transition =
-  `background ${EFFECT_COLOR_TRANSITION}ms linear`;
+// 白 ↔ ランダムカラーの切り替え間隔
+// 300 = 0.3秒
+const FLASH_INTERVAL = 300;
+
+// 色が変わる瞬間の滑らかさ
+// 0  = 一瞬で切り替え
+// 20 = 0.02秒かけて変化
+// 100 = 0.1秒かけて変化
+const FLASH_TRANSITION = 10;
 
 
 /* ==================================================
@@ -58,6 +68,19 @@ let showWhite = false;
 
 
 /* ==================================================
+   色変更
+   ================================================== */
+
+function changeColor(color, transitionTime) {
+
+  document.body.style.transition =
+    `background ${transitionTime}ms linear`;
+
+  document.body.style.background = color;
+}
+
+
+/* ==================================================
    接続確認
    ================================================== */
 
@@ -67,15 +90,16 @@ socket.on("connect", () => {
 
 
 /* ==================================================
-   通常色
+   通常色・演出
    ================================================== */
 
 socket.on("colorUpdate", (color) => {
 
-  // フラッシュ中は通常色を無視
+  // フラッシュ中は通常の演出を無視
   if (flashing) return;
 
-  document.body.style.background = color;
+  changeColor(color, EFFECT_TRANSITION);
+
 });
 
 
@@ -90,6 +114,7 @@ function getRandomColor() {
   const b = Math.floor(Math.random() * 256);
 
   return `rgb(${r}, ${g}, ${b})`;
+
 }
 
 
@@ -105,35 +130,43 @@ socket.on("flash", () => {
   showWhite = false;
 
   runFlashLoop();
+
 });
 
 
 /* ==================================================
-   🔁 ランダムカラー ↔ 白
+   🔁 フラッシュ
    ================================================== */
 
 function runFlashLoop() {
 
   if (!flashing) return;
 
+
   if (showWhite) {
 
     // 白
-    document.body.style.background = "#ffffff";
+    changeColor("#ffffff", FLASH_TRANSITION);
 
   } else {
 
     // ランダムカラー
-    document.body.style.background = getRandomColor();
+    changeColor(
+      getRandomColor(),
+      FLASH_TRANSITION
+    );
 
   }
 
+
   showWhite = !showWhite;
+
 
   flashTimer = setTimeout(
     runFlashLoop,
     FLASH_INTERVAL
   );
+
 }
 
 
@@ -146,6 +179,7 @@ socket.on("stopFlash", () => {
   flashing = false;
   showWhite = false;
 
+
   if (flashTimer) {
 
     clearTimeout(flashTimer);
@@ -153,7 +187,10 @@ socket.on("stopFlash", () => {
 
   }
 
-  document.body.style.background = "black";
+
+  // 黒へ戻す
+  changeColor("#000000", FLASH_TRANSITION);
+
 });
 
 </script>
