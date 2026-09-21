@@ -25,29 +25,31 @@ body {
    ================================================== */
 
 
-/* ---------- 通常の演出 ---------- */
+/* ==================================================
+   通常の演出
+   ================================================== */
 
-// 色が変わる間隔
-// 100 = 0.1秒
-const EFFECT_INTERVAL = 100;
+// 1色を表示する時間
+// 500 = 0.5秒
+const EFFECT_DISPLAY = 500;
 
-// 色が変わる瞬間の滑らかさ
-// 0  = 一瞬で切り替え
-// 20 = 0.02秒かけて変化
-// 100 = 0.1秒かけて変化
-const EFFECT_TRANSITION = 20;
+// 次の色へ変化する時間
+// 0 = 一瞬で切り替え
+// 50 = 0.05秒かけて変化
+const EFFECT_TRANSITION = 50;
 
 
-/* ---------- フラッシュ ---------- */
+/* ==================================================
+   フラッシュ
+   ================================================== */
 
-// 白 ↔ ランダムカラーの切り替え間隔
+// 1色を表示する時間
 // 300 = 0.3秒
-const FLASH_INTERVAL = 300;
+const FLASH_DISPLAY = 300;
 
-// 色が変わる瞬間の滑らかさ
-// 0  = 一瞬で切り替え
-// 20 = 0.02秒かけて変化
-// 100 = 0.1秒かけて変化
+// 次の色へ変化する時間
+// 0 = 一瞬で切り替え
+// 10 = 0.01秒かけて変化
 const FLASH_TRANSITION = 10;
 
 
@@ -63,12 +65,13 @@ const socket = io("https://tabaska.onrender.com");
    ================================================== */
 
 let flashing = false;
+
+let effectTimer = null;
 let flashTimer = null;
-let showWhite = false;
 
 
 /* ==================================================
-   色変更
+   色を変更
    ================================================== */
 
 function changeColor(color, transitionTime) {
@@ -77,30 +80,8 @@ function changeColor(color, transitionTime) {
     `background ${transitionTime}ms linear`;
 
   document.body.style.background = color;
+
 }
-
-
-/* ==================================================
-   接続確認
-   ================================================== */
-
-socket.on("connect", () => {
-  console.log("light connected:", socket.id);
-});
-
-
-/* ==================================================
-   通常色・演出
-   ================================================== */
-
-socket.on("colorUpdate", (color) => {
-
-  // フラッシュ中は通常の演出を無視
-  if (flashing) return;
-
-  changeColor(color, EFFECT_TRANSITION);
-
-});
 
 
 /* ==================================================
@@ -119,15 +100,101 @@ function getRandomColor() {
 
 
 /* ==================================================
+   接続確認
+   ================================================== */
+
+socket.on("connect", () => {
+
+  console.log(
+    "light connected:",
+    socket.id
+  );
+
+});
+
+
+/* ==================================================
+   🎨 演出スタート
+   ================================================== */
+
+socket.on("colorUpdate", (color) => {
+
+  // フラッシュ中は通常演出を無視
+  if (flashing) return;
+
+  // サーバーから送られた色を表示
+  changeColor(
+    color,
+    EFFECT_TRANSITION
+  );
+
+});
+
+
+/* ==================================================
+   🎨 ランダムカラー演出
+   ================================================== */
+
+function runEffectLoop() {
+
+  if (flashing) return;
+
+
+  // ランダムカラーを表示
+  changeColor(
+    getRandomColor(),
+    EFFECT_TRANSITION
+  );
+
+
+  // 指定時間表示した後、次の色へ
+  effectTimer = setTimeout(
+    runEffectLoop,
+    EFFECT_DISPLAY
+  );
+
+}
+
+
+/* ==================================================
+   🎬 演出開始
+   ==================================================
+
+   サーバーから "effect" が来た場合
+   ランダムカラー演出を開始
+   ================================================== */
+
+socket.on("effect", () => {
+
+  if (flashing) return;
+
+  if (effectTimer) {
+    clearTimeout(effectTimer);
+  }
+
+  runEffectLoop();
+
+});
+
+
+/* ==================================================
    ⚡ フラッシュ開始
    ================================================== */
 
 socket.on("flash", () => {
 
+  // 演出を停止
+  if (effectTimer) {
+
+    clearTimeout(effectTimer);
+    effectTimer = null;
+
+  }
+
+
   if (flashing) return;
 
   flashing = true;
-  showWhite = false;
 
   runFlashLoop();
 
@@ -135,7 +202,7 @@ socket.on("flash", () => {
 
 
 /* ==================================================
-   🔁 フラッシュ
+   ⚡ フラッシュ
    ================================================== */
 
 function runFlashLoop() {
@@ -143,29 +210,31 @@ function runFlashLoop() {
   if (!flashing) return;
 
 
-  if (showWhite) {
+  // ランダムカラー
+  changeColor(
+    getRandomColor(),
+    FLASH_TRANSITION
+  );
+
+
+  flashTimer = setTimeout(() => {
+
+    if (!flashing) return;
+
 
     // 白
-    changeColor("#ffffff", FLASH_TRANSITION);
-
-  } else {
-
-    // ランダムカラー
     changeColor(
-      getRandomColor(),
+      "#ffffff",
       FLASH_TRANSITION
     );
 
-  }
 
+    flashTimer = setTimeout(
+      runFlashLoop,
+      FLASH_DISPLAY
+    );
 
-  showWhite = !showWhite;
-
-
-  flashTimer = setTimeout(
-    runFlashLoop,
-    FLASH_INTERVAL
-  );
+  }, FLASH_DISPLAY);
 
 }
 
@@ -177,7 +246,6 @@ function runFlashLoop() {
 socket.on("stopFlash", () => {
 
   flashing = false;
-  showWhite = false;
 
 
   if (flashTimer) {
@@ -188,8 +256,36 @@ socket.on("stopFlash", () => {
   }
 
 
-  // 黒へ戻す
-  changeColor("#000000", FLASH_TRANSITION);
+  changeColor(
+    "#000000",
+    FLASH_TRANSITION
+  );
+
+});
+
+
+/* ==================================================
+   🛑 演出停止
+   ================================================== */
+
+socket.on("stopEffect", () => {
+
+  if (effectTimer) {
+
+    clearTimeout(effectTimer);
+    effectTimer = null;
+
+  }
+
+
+  if (!flashing) {
+
+    changeColor(
+      "#000000",
+      EFFECT_TRANSITION
+    );
+
+  }
 
 });
 
