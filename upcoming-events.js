@@ -15,14 +15,14 @@ const upcomingEvents = [
     time: ""
   },
   {
-    date: "10月下旬：(Sat)",
+    date: "10月24日：(Sat)",
     title: "近日公開",
     venue: "",
     time: ""
   },
   
   {
-    date: "10月下旬：(Sat)",
+    date: "10月31日：(Sat)",
     title: "近日公開",
     venue: "",
     time: ""
