@@ -12,20 +12,20 @@ const upcomingEvents = [
     date: "10月17日：(Sat)",
     title: "鴨池校区秋まつり",
     venue: "真砂本町公園",
-    time: ""
+    time: "17:00～【TABASKA 20:25～】"
   },
   {
     date: "10月24日：(Sat)",
-    title: "近日公開",
-    venue: "",
-    time: ""
+    title: "清和地区星空コンサート",
+    venue: "清和小学校校庭特設ステージ",
+    time: "17:30～【TABASKA 時間未定】"
   },
   
   {
     date: "10月31日：(Sat)",
-    title: "近日公開",
-    venue: "",
-    time: ""
+    title: "HALLOWEEN LIVE 2026",
+    venue: "枕崎シェルター",
+    time: "Open 18:00／Start 19:00　【TABASKA 19:00～】"
   },
   {
     date: "11月中旬：(Sat)",
