@@ -39,9 +39,6 @@ const upcomingEvents = [
     venue: "",
     time: ""
   },
-
-
-  
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
