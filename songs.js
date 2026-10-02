@@ -12,7 +12,7 @@ const stage1Time = "15:30";
 const stage2Time = "17:00";
 
 // 歌詞リンク公開期間
-const lyricsAvailableFrom = "2026-10-04";
+const lyricsAvailableFrom = "2026-10-01";
 const lyricsAvailableUntil = "2026-10-04";
 
 
