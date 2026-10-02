@@ -329,5 +329,4 @@ const songs = [
         lyrics: "",
         medley: []
     }
-];
-```
+]
