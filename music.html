@@ -208,8 +208,8 @@ footer { padding: 30px 20px; text-align: center; color: #64748b; font-size: 0.8r
   <script src="songs.js?v=20260906-01"></script>
   <script>
 const today = new Date();
-const fromDate = new Date(lyricsAvailableFrom + "T15:00:00");
-const untilDate = new Date(lyricsAvailableUntil + "T19:00:00");
+const fromDate = new Date(lyricsAvailableFrom);
+const untilDate = new Date(lyricsAvailableUntil);
 if (today < fromDate && today > untilDate) {
     document.getElementById("songList").innerHTML =
     `
