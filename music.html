@@ -211,7 +211,7 @@ const today = new Date();
 const fromDate = new Date(lyricsAvailableFrom);
 const untilDate = new Date(lyricsAvailableUntil);
 if (today < fromDate || today > untilDate) {
-    document.getElementById("songList").innerHTML =
+    document.getElementById("song-list").innerHTML =
     `
     <div class="expired-message">
         この歌詞リンクページはイベント開催日のみ閲覧できます。
