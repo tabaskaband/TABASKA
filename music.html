@@ -250,7 +250,7 @@ footer { padding: 30px 20px; text-align: center; color: #64748b; font-size: 0.8r
       songs.forEach(song => {
         if (song.stage && song.stage !== currentStage) {
           currentStage = song.stage;
-          isOrangeStage = /STAGE\\s[2-9]/i.test(currentStage);
+          isOrangeStage = /STAGE\s[2-9]/i.test(currentStage);
 
           stageGroup = document.createElement("div");
           stageGroup.className = "stage-group";
