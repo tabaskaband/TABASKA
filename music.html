@@ -130,7 +130,6 @@ gtag('config', 'G-6D7JMXL1LD');
 .song-link:hover, .medley-link:hover { background: rgba(56, 189, 248, 0.3); color: #38bdf8; }
 .medley-list { margin-top: 12px; padding: 10px 0 2px; border-left: 2px solid rgba(56, 189, 248, 0.35); }
 .medley-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; padding: 7px 0 7px 12px; color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
-.medley-item-title { flex: 1; min-width: 0; }
 /* STAGE 2以降用のオレンジ系スタイル（カード要素） */
 .song-card.card-orange:hover {
   border-color: rgba(249, 115, 22, 0.5);
@@ -215,7 +214,7 @@ footer { padding: 30px 20px; text-align: center; color: #64748b; font-size: 0.8r
     document.getElementById("concert-venue").textContent = concertVenue;
     document.getElementById("concert-time").innerHTML = `
       <div class="stage-time">
-        STAGE 1  ${stage1Time}
+        STAGE 1  ${stage1Time} 〜
       </div>
       ${
         typeof stage2Time !== "undefined"
@@ -251,7 +250,7 @@ footer { padding: 30px 20px; text-align: center; color: #64748b; font-size: 0.8r
       songs.forEach(song => {
         if (song.stage && song.stage !== currentStage) {
           currentStage = song.stage;
-          isOrangeStage = /STAGE\s[2-9]/i.test(currentStage);
+          isOrangeStage = /STAGE\\s[2-9]/i.test(currentStage);
 
           stageGroup = document.createElement("div");
           stageGroup.className = "stage-group";
