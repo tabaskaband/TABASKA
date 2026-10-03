@@ -92,6 +92,8 @@ gtag('config', 'G-6D7JMXL1LD');
 }
 .preparing-message { padding: 50px 25px; background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.18); border-radius: 12px; text-align: center; color: #38bdf8; font-size: 1.25rem; font-weight: 600; }
 .preparing-message span { display: block; margin-top: 10px; color: #cbd5e1; font-size: 1rem; font-weight: 400; }
+.expired-message { padding: 50px 25px; background: #0f172a; border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 12px; text-align: center; color: #cbd5e1; font-size: 1.1rem; font-weight: 600; }
+.expired-message span { display: block; margin-top: 10px; color: #94a3b8; font-size: 0.95rem; font-weight: 400; }
 .stage-group { margin: 0; }  
 /* ステージタイトル固定位置（SNSアイコンの高さ分、top位置をずらす） */
 .stage-title {
@@ -207,104 +209,138 @@ footer { padding: 30px 20px; text-align: center; color: #64748b; font-size: 0.8r
   <footer>TABASKA</footer>
   <script src="songs.js?v=20261001-01"></script>
   <script>
-const today = new Date();
-const fromDate = new Date(lyricsAvailableFrom);
-const untilDate = new Date(lyricsAvailableUntil);
-if (today < fromDate || today > untilDate) {
-    document.getElementById("song-list").innerHTML =
-    `
-    <div class="expired-message">
-        この歌詞リンクページはイベント開催日のみ閲覧できます。
-    </div>
+    // コンサート情報の反映
+    document.getElementById("concert-date").textContent = concertDate;
+    document.getElementById("concert-title").textContent = concertTitle;
+    document.getElementById("concert-venue").textContent = concertVenue;
+    document.getElementById("concert-time").innerHTML = `
+      <div class="stage-time">
+        STAGE 1 開演 ${stage1Time}
+      </div>
+      ${
+        typeof stage2Time !== "undefined"
+          ? `<div class="stage-time">STAGE 2 開演 ${stage2Time}</div>`
+          : ""
+      }
     `;
-}
-</script>  
-  <script>
-document.getElementById("concert-date").textContent = concertDate;
-document.getElementById("concert-title").textContent = concertTitle;
-document.getElementById("concert-venue").textContent = concertVenue;
-document.getElementById("concert-time").innerHTML = `
-  <div class="stage-time">
-    STAGE 1 開演 ${stage1Time}
-  </div>
-  ${
-    typeof stage2Time !== "undefined"
-      ? `
-        <div class="stage-time">
-          STAGE 2 開演 ${stage2Time}
-        </div>
-      `
-      : ""
-  }
-`;
+
+    // 公開期間チェックと曲一覧表示
     const songList = document.getElementById("song-list");
-    if (typeof songs !== "undefined" && Array.isArray(songs) && songs.length > 0) {
+    const today = new Date();
+    const fromDate = new Date(lyricsAvailableFrom);
+    const untilDate = new Date(lyricsAvailableUntil);
+
+    if (today < fromDate || today >= untilDate) {
+      // 期間外のメッセージ表示
+      songList.innerHTML = `
+        <div class="expired-message">
+          この歌詞リンクページはイベント開催日時のみ閲覧できます。
+          <span>（公開期間: 10/4 15:00 ～ 19:00）</span>
+        </div>
+      `;
+    } else if (
+      typeof songs !== "undefined" &&
+      Array.isArray(songs) &&
+      songs.length > 0
+    ) {
+      // 期間内の曲リスト描画
       let currentStage = "";
       let stageGroup = null;
       let stageSongs = null;
       let isOrangeStage = false;
+
       songs.forEach(song => {
         if (song.stage && song.stage !== currentStage) {
           currentStage = song.stage;
           isOrangeStage = /STAGE\s[2-9]/i.test(currentStage);
+
           stageGroup = document.createElement("div");
           stageGroup.className = "stage-group";
+
           const stageTitle = document.createElement("div");
-          stageTitle.className = isOrangeStage ? "stage-title stage-orange" : "stage-title";
+          stageTitle.className =
+            isOrangeStage
+              ? "stage-title stage-orange"
+              : "stage-title";
           stageTitle.textContent = currentStage;
+
           stageSongs = document.createElement("div");
           stageSongs.className = "stage-songs";
+
           stageGroup.appendChild(stageTitle);
           stageGroup.appendChild(stageSongs);
           songList.appendChild(stageGroup);
         }
+
         const card = document.createElement("div");
-        card.className = isOrangeStage ? "song-card card-orange" : "song-card";
+        card.className =
+          isOrangeStage
+            ? "song-card card-orange"
+            : "song-card";
 
-    const lyricsButton = song.lyrics
-      ? `
-        <a href="${song.lyrics}" target="_blank" rel="noopener noreferrer" class="song-link">歌詞を見る</a>
-      `
-      : "";
-    const medleyList = Array.isArray(song.medley) && song.medley.length
-      ? `
+        const lyricsButton = song.lyrics
+          ? `
+            <a
+              href="${song.lyrics}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="song-link"
+            >
+              歌詞を見る
+            </a>
+          `
+          : "";
 
-        <div class="medley-list">
-          ${song.medley.map(item => `
-            <div class="medley-item">
-              <div class="medley-item-title">・${item.title}</div>
-              ${item.lyrics && String(item.lyrics).trim() !== "" ? `
-                <a href="${item.lyrics}" target="_blank" rel="noopener noreferrer" class="medley-link">歌詞を見る</a>
-              ` : ""}
-            </div>
-          `).join("")}
+        const medleyList =
+          Array.isArray(song.medley) && song.medley.length
+            ? `
+              <div class="medley-list">
+                ${song.medley.map(item => `
+                  <div class="medley-item">
+                    <div class="medley-item-title">
+                      ・${item.title}
+                    </div>
+                    ${
+                      item.lyrics &&
+                      String(item.lyrics).trim() !== ""
+                        ? `
+                          <a
+                            href="${item.lyrics}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="medley-link"
+                          >
+                            歌詞を見る
+                          </a>
+                        `
+                        : ""
+                    }
+                  </div>
+                `).join("")}
+              </div>
+            `
+            : "";
+
+        card.innerHTML = `
+          <div class="song-info">
+            <div class="song-title">${song.title}</div>
+            <div class="song-artist">${song.artist || ""}</div>
+            ${medleyList}
+          </div>
+          ${lyricsButton}
+        `;
+
+        stageSongs.appendChild(card);
+      });
+    } else {
+      // 期間内だがデータがない場合
+      songList.innerHTML = `
+        <div class="preparing-message">
+          現在準備中です
+          <span>公開までしばらくお待ちください。</span>
         </div>
-
-    
-    
-    
-
-      `
-      : "";
-    card.innerHTML = `
-      <div class="song-info">
-        <div class="song-title">${song.title}</div>
-        <div class="song-artist">${song.artist || ""}</div>
-        ${medleyList}
-      </div>
-      ${lyricsButton}
-    `;
-    stageSongs.appendChild(card);
-  });
-} else {
-  songList.innerHTML = `
-    <div class="preparing-message">
-      現在準備中です
-      <span>公開までしばらくお待ちください。</span>
-    </div>
-  `;
-}
-
+      `;
+    }
   </script>
 </body>
 </html>
