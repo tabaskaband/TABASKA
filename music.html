@@ -215,11 +215,11 @@ footer { padding: 30px 20px; text-align: center; color: #64748b; font-size: 0.8r
     document.getElementById("concert-venue").textContent = concertVenue;
     document.getElementById("concert-time").innerHTML = `
       <div class="stage-time">
-        STAGE 1 開演 ${stage1Time}
+        STAGE 1  ${stage1Time}
       </div>
       ${
         typeof stage2Time !== "undefined"
-          ? `<div class="stage-time">STAGE 2 開演 ${stage2Time}</div>`
+          ? `<div class="stage-time">STAGE 2  ${stage2Time}</div>`
           : ""
       }
     `;
