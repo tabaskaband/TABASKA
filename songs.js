@@ -13,7 +13,7 @@ const stage2Time = "17:00";
 
 // 歌詞リンク公開期間
 // 2026年10月04日 15:00 ～ 19:00
-const lyricsAvailableFrom = "2026-10-04T14:00:00";
+const lyricsAvailableFrom = "2026-10-02T14:00:00";
 const lyricsAvailableUntil = "2026-10-04T19:00:00";
 
 
