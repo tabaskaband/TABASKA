@@ -5,7 +5,7 @@
 
 const concertDate = "2026年10月04日（日）";
 const concertTitle = "Mall de Music";
-const concertVenue = "イオンモールKagoshima BAY";
+const concertVenue = "イオンモール Kagoshima BAY";
 
 // ステージ別 開演時間
 const stage1Time = "15:30";
