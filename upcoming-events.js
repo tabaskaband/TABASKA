@@ -2,12 +2,7 @@
 // 公開の許可が出た予定だけ、以下の配列に追加してください。
 const upcomingEvents = [
 
-  {
-    date: "10月4日：(Sun)",
-    title: "Mall de Music",
-    venue: "イオンモール KAGOSHIMA Bay",
-    time: "①15:30〜　②17:00〜"
-  },
+
   {
     date: "10月17日：(Sat)",
     title: "鴨池校区秋まつり",
