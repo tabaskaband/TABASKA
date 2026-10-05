@@ -3,13 +3,13 @@
 // コンサート情報
 // ========================================
 
-const concertDate = "2026年10月04日（日）";
-const concertTitle = "Mall de Music";
-const concertVenue = "イオンモール Kagoshima BAY 1F 風の広場";
+const concertDate = "";
+const concertTitle = "";
+const concertVenue = "";
 
 // ステージ別 開演時間
-const stage1Time = "15:30";
-const stage2Time = "17:00";
+const stage1Time = "";
+const stage2Time = "";
 
 // 歌詞リンク公開期間
 // 2026年10月04日 15:00 ～ 19:00
