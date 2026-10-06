@@ -208,20 +208,54 @@ footer { padding: 30px 20px; text-align: center; color: #64748b; font-size: 0.8r
   <footer>TABASKA</footer>
   <script src="songs.js?v=20261001-01"></script>
   <script>
-    // コンサート情報の反映
-    document.getElementById("concert-date").textContent = concertDate;
-    document.getElementById("concert-title").textContent = concertTitle;
-    document.getElementById("concert-venue").textContent = concertVenue;
-    document.getElementById("concert-time").innerHTML = `
-      <div class="stage-time">
-        【 STAGE 1 】   ${stage1Time} 〜
-      </div>
-      ${
-        typeof stage2Time !== "undefined"
-          ? `<div class="stage-time">【 STAGE 2 】  ${stage2Time} 〜</div>`
-          : ""
-      }
-    `;
+  // コンサート情報の反映
+const dateElement = document.getElementById("concert-date");
+const titleElement = document.getElementById("concert-title");
+const venueElement = document.getElementById("concert-venue");
+const timeElement = document.getElementById("concert-time");
+
+dateElement.textContent = concertDate || "";
+titleElement.textContent = concertTitle || "";
+venueElement.textContent = concertVenue || "";
+
+const hasDate = concertDate && concertDate.trim() !== "";
+const hasTitle = concertTitle && concertTitle.trim() !== "";
+const hasVenue = concertVenue && concertVenue.trim() !== "";
+
+// 空なら非表示
+dateElement.style.display = hasDate ? "block" : "none";
+titleElement.style.display = hasTitle ? "block" : "none";
+venueElement.style.display = hasVenue ? "block" : "none";
+
+// 日付とタイトルの両方がある場合のみSTAGE表示
+if (hasDate && hasTitle) {
+  timeElement.style.display = "flex";
+
+  timeElement.innerHTML = `
+    ${
+      stage1Time && stage1Time.trim() !== ""
+        ? `
+        <div class="stage-time">
+          【 STAGE 1 】 ${stage1Time} 〜
+        </div>
+      `
+        : ""
+    }
+
+    ${
+      stage2Time &&
+      stage2Time.trim() !== ""
+        ? `
+        <div class="stage-time">
+          【 STAGE 2 】 ${stage2Time} 〜
+        </div>
+      `
+        : ""
+    }
+  `;
+} else {
+  timeElement.style.display = "none";
+}
 
     // 公開期間チェックと曲一覧表示
     const songList = document.getElementById("song-list");
