@@ -208,7 +208,7 @@ footer { padding: 30px 20px; text-align: center; color: #64748b; font-size: 0.8r
   <footer>TABASKA</footer>
   <script src="songs.js?v=20261001-01"></script>
   <script>
-  // コンサート情報の反映
+// コンサート情報の反映
 const dateElement = document.getElementById("concert-date");
 const titleElement = document.getElementById("concert-title");
 const venueElement = document.getElementById("concert-venue");
@@ -218,43 +218,48 @@ dateElement.textContent = concertDate || "";
 titleElement.textContent = concertTitle || "";
 venueElement.textContent = concertVenue || "";
 
-const hasDate = concertDate && concertDate.trim() !== "";
-const hasTitle = concertTitle && concertTitle.trim() !== "";
-const hasVenue = concertVenue && concertVenue.trim() !== "";
+const hasDate = (concertDate || "").trim() !== "";
+const hasTitle = (concertTitle || "").trim() !== "";
+const hasVenue = (concertVenue || "").trim() !== "";
+
+const hasStage1 = (stage1Time || "").trim() !== "";
+const hasStage2 = (stage2Time || "").trim() !== "";
 
 // 空なら非表示
 dateElement.style.display = hasDate ? "block" : "none";
 titleElement.style.display = hasTitle ? "block" : "none";
 venueElement.style.display = hasVenue ? "block" : "none";
 
-// 日付とタイトルの両方がある場合のみSTAGE表示
-if (hasDate && hasTitle) {
+// STAGE表示
+if (hasDate && hasTitle && (hasStage1 || hasStage2)) {
   timeElement.style.display = "flex";
 
-  timeElement.innerHTML = `
-    ${
-      stage1Time && stage1Time.trim() !== ""
-        ? `
-        <div class="stage-time">
-          【 STAGE 1 】 ${stage1Time} 〜
-        </div>
-      `
-        : ""
-    }
+  let stageHtml = "";
 
-    ${
-      stage2Time &&
-      stage2Time.trim() !== ""
-        ? `
-        <div class="stage-time">
-          【 STAGE 2 】 ${stage2Time} 〜
-        </div>
-      `
-        : ""
-    }
-  `;
+  if (hasStage1) {
+    stageHtml += `
+      <div class="stage-time">
+        【 STAGE 1 】 ${stage1Time} 〜
+      </div>
+    `;
+  }
+
+  if (hasStage2) {
+    stageHtml += `
+      <div class="stage-time">
+        【 STAGE 2 】 ${stage2Time} 〜
+      </div>
+    `;
+  }
+
+  timeElement.innerHTML = stageHtml;
 } else {
   timeElement.style.display = "none";
+}
+
+// コンサート情報が全て空ならコンテナ自体を非表示
+if (!hasDate && !hasTitle && !hasVenue && !hasStage1 && !hasStage2) {
+  document.querySelector(".concert-info").style.display = "none";
 }
 
     // 公開期間チェックと曲一覧表示
