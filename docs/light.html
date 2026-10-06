@@ -31,13 +31,7 @@ body {
    🎨 通常の演出
    ================================================== */
 
-// 1色を表示しておく時間
-// 1000 = 1秒
 const EFFECT_DISPLAY = 250;
-
-// 次の色へ変化する時間
-// 0 = 一瞬で切り替え
-// 50 = 0.05秒かけて変化
 const EFFECT_TRANSITION = 100;
 
 
@@ -45,17 +39,8 @@ const EFFECT_TRANSITION = 100;
    ⚡ フラッシュ
    ================================================== */
 
-// ランダムカラーを表示しておく時間
-// 1000 = 1秒
 const FLASH_DISPLAY = 150;
-
-// 白を表示しておく時間
-// 1000 = 1秒
 const FLASH_WHITE_DISPLAY = 30;
-
-// 色が変化する時間
-// 0 = 一瞬で切り替え
-// 10 = 0.01秒かけて変化
 const FLASH_TRANSITION = 7;
 
 
@@ -63,7 +48,12 @@ const FLASH_TRANSITION = 7;
    Socket.IO
    ================================================== */
 
-const socket = io("https://tabaska.onrender.com");
+const socket = io(
+  "https://tabaska.onrender.com",
+  {
+    transports: ["websocket"]
+  }
+);
 
 
 /* ==================================================
@@ -118,6 +108,14 @@ socket.on("connect", () => {
 
 });
 
+socket.on("disconnect", () => {
+
+  console.log(
+    "light disconnected"
+  );
+
+});
+
 
 /* ==================================================
    🎨 通常の色変更
@@ -125,8 +123,15 @@ socket.on("connect", () => {
 
 socket.on("colorUpdate", (color) => {
 
-  // フラッシュ中は無視
   if (flashing) return;
+
+  // 演出中なら停止して手動色を優先
+  if (effectTimer) {
+
+    clearTimeout(effectTimer);
+    effectTimer = null;
+
+  }
 
   changeColor(
     color,
@@ -144,22 +149,12 @@ function runEffectLoop() {
 
   if (flashing) return;
 
-
-  // 新しいランダムカラー
   const color = getRandomColor();
 
-
-  // 色を変更
   changeColor(
     color,
     EFFECT_TRANSITION
   );
-
-
-  /*
-   * 色の変化が終わってから
-   * 指定した時間だけ表示
-   */
 
   effectTimer = setTimeout(() => {
 
@@ -180,8 +175,6 @@ socket.on("effect", () => {
 
   if (flashing) return;
 
-
-  // 既存のタイマーを停止
   if (effectTimer) {
 
     clearTimeout(effectTimer);
@@ -189,8 +182,6 @@ socket.on("effect", () => {
 
   }
 
-
-  // ランダムカラー演出開始
   runEffectLoop();
 
 });
@@ -202,14 +193,12 @@ socket.on("effect", () => {
 
 socket.on("flash", () => {
 
-  // 通常演出を停止
   if (effectTimer) {
 
     clearTimeout(effectTimer);
     effectTimer = null;
 
   }
-
 
   if (flashing) return;
 
@@ -228,45 +217,19 @@ function runFlashLoop() {
 
   if (!flashing) return;
 
-
-  /*
-   * ------------------------------------------
-   * ランダムカラー
-   * ------------------------------------------
-   */
-
   changeColor(
     getRandomColor(),
     FLASH_TRANSITION
   );
 
-
-  /*
-   * 色の変化が終わった後、
-   * ランダムカラーを表示する
-   */
-
   flashTimer = setTimeout(() => {
 
     if (!flashing) return;
-
-
-    /*
-     * ------------------------------------------
-     * 白
-     * ------------------------------------------
-     */
 
     changeColor(
       "#ffffff",
       FLASH_TRANSITION
     );
-
-
-    /*
-     * 白への変化が終わった後、
-     * 指定時間だけ白を表示
-     */
 
     flashTimer = setTimeout(() => {
 
@@ -275,7 +238,6 @@ function runFlashLoop() {
       runFlashLoop();
 
     }, FLASH_TRANSITION + FLASH_WHITE_DISPLAY);
-
 
   }, FLASH_TRANSITION + FLASH_DISPLAY);
 
@@ -290,7 +252,6 @@ socket.on("stopFlash", () => {
 
   flashing = false;
 
-
   if (flashTimer) {
 
     clearTimeout(flashTimer);
@@ -298,6 +259,12 @@ socket.on("stopFlash", () => {
 
   }
 
+  if (effectTimer) {
+
+    clearTimeout(effectTimer);
+    effectTimer = null;
+
+  }
 
   changeColor(
     "#000000",
@@ -320,7 +287,6 @@ socket.on("stopEffect", () => {
 
   }
 
-
   if (!flashing) {
 
     changeColor(
@@ -331,7 +297,6 @@ socket.on("stopEffect", () => {
   }
 
 });
-
 
 </script>
 
