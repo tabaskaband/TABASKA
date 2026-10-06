@@ -15,6 +15,7 @@ button {
   padding: 10px 15px;
   margin: 5px;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .buttons {
@@ -40,104 +41,47 @@ button {
 </div>
 
 <div class="buttons">
-  <button onclick="startShow()">▶ 演出スタート</button>
-  <button onclick="stopShow()">■ ストップ</button>
+  <button onclick="startEffect()">▶ 演出スタート</button>
+  <button onclick="stopEffect()">■ 演出停止</button>
 </div>
 
 <div class="buttons">
-  <button onclick="flash()">⚡ フラッシュ</button>
+  <button onclick="flash()">⚡ フラッシュ開始</button>
   <button onclick="stopFlash()">■ フラッシュ停止</button>
 </div>
 
-<!-- Socket.IO CDN（重要） -->
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 
 <script>
-const socket = io("https://tabaska.onrender.com");
 
-// 接続確認
+const socket = io(
+  "https://tabaska.onrender.com",
+  {
+    transports: ["websocket"]
+  }
+);
+
+
+/* 接続確認 */
 socket.on("connect", () => {
-  console.log("connected:", socket.id);
+
+  console.log(
+    "connected:",
+    socket.id
+  );
+
 });
 
-// ⭐追加ここ
+socket.on("disconnect", () => {
+
+  console.log(
+    "disconnected"
+  );
+
+});
+
+
+/* 色変更 */
 function setColor(color) {
-  socket.emit("changeColor", color);
-}
 
-// 色送信
-function sendColor() {
-  socket.emit("changeColor", "#ff0000");
-}
-
-// フラッシュ
-function flash() {
-  socket.emit("flash");
-}
-
-/* =========================
-   🎬 自動演出
-========================= */
-
-const scenes = [
-  { time: 0, action: () => setColor("#ff0000") },
-  { time: 5000, action: () => setColor("#0000ff") },
-  { time: 10000, action: () => setColor("#00ff00") },
-  { time: 15000, action: () => setColor("#ffff00") },
-  { time: 20000, action: () => setColor("#ffa500") },
-  { time: 25000, action: () => setColor("#9400d3") }
-];
-
-let timers = [];
-let isRunning = false;
-let runVersion = 0; // ⭐追加
-
-function startShow() {
-  if (isRunning) return;
-  isRunning = true;
-  runVersion++; // ⭐新しいセッション開始
-  runScenes(runVersion);
-}
-
-function runScenes(version) {
-  scenes.forEach(scene => {
-    const t = setTimeout(() => {
-      if (isRunning && version === runVersion) {
-        scene.action();
-      }
-    }, scene.time);
-    timers.push(t);
-  });
-
-  const loopTime = scenes[scenes.length - 1].time + 8000;
-
-  const loop = setTimeout(() => {
-    if (isRunning && version === runVersion) {
-      runScenes(version);
-    }
-  }, loopTime);
-
-  timers.push(loop);
-}
-
-function stopShow() {
-  isRunning = false;
-  runVersion++; // ⭐これで過去ループを完全無効化
-
-  timers.forEach(t => clearTimeout(t));
-  timers = [];
-}
-
-
-  function stopFlash() {
-  socket.emit("stopFlash");
-}
-  
-/* カラーピッカー */
-document.getElementById("colorPicker").addEventListener("input", (e) => {
-  setColor(e.target.value);
-});
-</script>
-
-</body>
-</html>
+  socket
