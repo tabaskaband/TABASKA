@@ -13,22 +13,35 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
+
   console.log("接続:", socket.id);
 
-  // 色変更
   socket.on("changeColor", (color) => {
     io.emit("colorUpdate", color);
   });
 
-  // フラッシュ
+  socket.on("effect", () => {
+    io.emit("effect");
+  });
+
+  socket.on("stopEffect", () => {
+    io.emit("stopEffect");
+  });
+
   socket.on("flash", () => {
     io.emit("flash");
+  });
+
+  socket.on("stopFlash", () => {
+    io.emit("stopFlash");
   });
 
   socket.on("disconnect", () => {
     console.log("切断:", socket.id);
   });
+
 });
+
 
 // Render用（重要）
 const PORT = process.env.PORT || 10000;
