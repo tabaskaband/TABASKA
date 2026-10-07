@@ -181,13 +181,9 @@ function startEffect() {
 
 function stopEffect() {
 
-  console.log(
-    "stopEffect送信"
-  );
+  console.log(">>> CONTROL: stopEffect送信");
 
-  socket.emit(
-    "stopEffect"
-  );
+  socket.emit("stopEffect");
 
 }
 
