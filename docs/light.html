@@ -161,6 +161,9 @@ socket.on("colorUpdate", (color) => {
    ランダム演出
 ================================================== */
 
+let currentEffectColor = "#000000";
+
+
 function runEffectLoop() {
 
   if (!effectRunning) {
@@ -171,7 +174,7 @@ function runEffectLoop() {
 
 
   const color =
-    getRandomColor();
+    currentEffectColor;
 
 
   console.log(
@@ -194,6 +197,38 @@ function runEffectLoop() {
     );
 
 }
+
+
+/* ==================================================
+   サーバーから受信したランダム演出カラー
+================================================== */
+
+socket.on("effectColor", (color) => {
+
+  console.log(
+    "EFFECT COLOR:",
+    color
+  );
+
+  currentEffectColor = color;
+
+  /* ランダム演出開始 */
+  flashing = false;
+
+  if (flashTimer) {
+    clearTimeout(flashTimer);
+    flashTimer = null;
+  }
+
+  if (effectTimer) {
+    clearTimeout(effectTimer);
+    effectTimer = null;
+  }
+
+  effectRunning = true;
+  runEffectLoop();
+
+});
 
 
 /* ==================================================
