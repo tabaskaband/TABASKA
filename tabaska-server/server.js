@@ -13,7 +13,13 @@ const io = new Server(server, {
 });
 
 /* =========================
-   動作確認用
+   状態保持
+========================= */
+
+let currentColor = "#000000";
+
+/* =========================
+   動作確認
 ========================= */
 
 app.get("/", (req, res) => {
@@ -28,64 +34,103 @@ io.on("connection", (socket) => {
 
   console.log("接続:", socket.id);
 
+  /* 新規接続時に現在色を送信 */
+  socket.emit(
+    "colorUpdate",
+    currentColor
+  );
+
   /* 色変更 */
+
   socket.on("changeColor", (color) => {
 
-    console.log("changeColor:", color);
+    console.log(
+      "changeColor:",
+      color
+    );
 
-    io.emit("colorUpdate", color);
+    currentColor = color;
+
+    io.emit(
+      "colorUpdate",
+      color
+    );
 
   });
 
   /* ランダム演出開始 */
+
   socket.on("effect", () => {
 
-    console.log("effect");
+    console.log(
+      "effect"
+    );
 
-    io.emit("effect");
+    io.emit(
+      "effect"
+    );
 
   });
 
   /* ランダム演出停止 */
+
   socket.on("stopEffect", () => {
 
-    console.log("stopEffect");
+    console.log(
+      "stopEffect"
+    );
 
-    io.emit("stopEffect");
+    io.emit(
+      "stopEffect"
+    );
 
   });
 
   /* フラッシュ開始 */
+
   socket.on("flash", () => {
 
-    console.log("flash");
+    console.log(
+      "flash"
+    );
 
-    io.emit("flash");
+    io.emit(
+      "flash"
+    );
 
   });
 
   /* フラッシュ停止 */
+
   socket.on("stopFlash", () => {
 
-    console.log("stopFlash");
+    console.log(
+      "stopFlash"
+    );
 
-    io.emit("stopFlash");
+    io.emit(
+      "stopFlash"
+    );
 
   });
 
   socket.on("disconnect", () => {
 
-    console.log("切断:", socket.id);
+    console.log(
+      "切断:",
+      socket.id
+    );
 
   });
 
 });
 
 /* =========================
-   Render
+   起動
 ========================= */
 
-const PORT = process.env.PORT || 10000;
+const PORT =
+  process.env.PORT || 10000;
 
 server.listen(PORT, () => {
 
