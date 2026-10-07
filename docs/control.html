@@ -6,50 +6,50 @@
 <title>TABASKA Control</title>
 
 <style>
-
-body{
-  margin:0;
-  padding:20px;
-  font-family:sans-serif;
-  text-align:center;
-  background:#111;
-  color:#fff;
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: sans-serif;
+  text-align: center;
+  background: #111;
+  color: #fff;
 }
 
-h1{
-  margin-bottom:20px;
+h1 {
+  margin-bottom: 20px;
 }
 
-#colorPicker{
-  width:80%;
-  max-width:400px;
-  height:60px;
+#colorPicker {
+  width: 80%;
+  max-width: 400px;
+  height: 60px;
+  cursor: pointer;
 }
 
-.buttons{
-  margin-top:20px;
+.buttons {
+  margin-top: 20px;
 }
 
-button{
-  padding:15px 20px;
-  margin:5px;
-  font-size:16px;
-  border:none;
-  border-radius:8px;
-  background:#333;
-  color:#fff;
-  cursor:pointer;
+button {
+  padding: 15px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
 }
 
-button:hover{
-  background:#555;
+button:hover {
+  background: #555;
 }
 
-#status{
-  margin-top:20px;
-  font-size:14px;
+#status {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #00ff88;
 }
-
 </style>
 </head>
 <body>
@@ -103,40 +103,41 @@ button:hover{
 const socket = io(
   "https://tabaska.onrender.com",
   {
-    transports:["websocket"]
+    transports: ["websocket"],
+    reconnection: true,
+    reconnectionAttempts: Infinity,
+    reconnectionDelay: 1000
   }
 );
 
-const status =
-  document.getElementById("status");
+const statusEl = document.getElementById("status");
 
-socket.on("connect",()=>{
+/* 接続状態 */
 
-  console.log(
-    "connected",
-    socket.id
-  );
+socket.on("connect", () => {
 
-  status.innerHTML =
+  console.log("connected", socket.id);
+
+  statusEl.textContent =
     "✅ 接続中";
 
 });
 
-socket.on("disconnect",()=>{
+socket.on("disconnect", () => {
 
   console.log("disconnect");
 
-  status.innerHTML =
+  statusEl.textContent =
     "❌ 切断";
 
 });
 
 /* 色変更 */
 
-function setColor(color){
+function setColor(color) {
 
   console.log(
-    "changeColor",
+    "changeColor:",
     color
   );
 
@@ -154,18 +155,21 @@ function setColor(color){
 /* カラーピッカー */
 
 document
-.getElementById("colorPicker")
-.addEventListener("input",(e)=>{
+  .getElementById("colorPicker")
+  .addEventListener(
+    "input",
+    (e) => {
 
-  setColor(
-    e.target.value
+      setColor(
+        e.target.value
+      );
+
+    }
   );
-
-});
 
 /* ランダム演出開始 */
 
-function startEffect(){
+function startEffect() {
 
   console.log(
     "effect送信"
@@ -179,7 +183,7 @@ function startEffect(){
 
 /* ランダム演出停止 */
 
-function stopEffect(){
+function stopEffect() {
 
   console.log(
     "stopEffect送信"
@@ -193,7 +197,7 @@ function stopEffect(){
 
 /* フラッシュ開始 */
 
-function startFlash(){
+function startFlash() {
 
   console.log(
     "flash送信"
@@ -207,7 +211,7 @@ function startFlash(){
 
 /* フラッシュ停止 */
 
-function stopFlash(){
+function stopFlash() {
 
   console.log(
     "stopFlash送信"
