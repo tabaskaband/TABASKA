@@ -14,99 +14,144 @@ const io = new Server(server, {
   }
 });
 
-/* =========================
-   状態保持
-========================= */
-
 let currentColor = "#000000";
 
-/* =========================
-   動作確認
-========================= */
-
 app.get("/", (req, res) => {
+
   res.send("TABASKA Socket Server Running");
+
 });
 
-/* =========================
-   Socket.IO
-========================= */
 
 io.on("connection", (socket) => {
 
-  console.log("接続:", socket.id);
+  console.log(
+    "接続:",
+    socket.id
+  );
 
-  // 接続時に現在色を送信
-  socket.emit("colorUpdate", currentColor);
 
-  /* 色変更 */
+  /* 現在色 */
+
+  socket.emit(
+    "colorUpdate",
+    currentColor
+  );
+
+
+  /* =========================
+     色変更
+  ========================= */
 
   socket.on("changeColor", (color) => {
 
-    console.log("changeColor:", color);
+    console.log(
+      "changeColor:",
+      color
+    );
 
     currentColor = color;
 
-    io.emit("colorUpdate", color);
+    io.emit(
+      "colorUpdate",
+      color
+    );
 
   });
 
-  /* ランダム演出開始 */
+
+  /* =========================
+     ランダム演出開始
+  ========================= */
 
   socket.on("effect", () => {
 
-    console.log("effect");
+    console.log(
+      ">>> EFFECT"
+    );
 
-    io.emit("effect");
+    io.emit(
+      "effect"
+    );
 
   });
 
-  /* ランダム演出停止 */
+
+  /* =========================
+     ランダム演出停止
+  ========================= */
 
   socket.on("stopEffect", () => {
 
-    console.log("stopEffect");
+    console.log(
+      ">>> STOP EFFECT"
+    );
 
-    io.emit("stopEffect");
+    io.emit(
+      "stopEffect"
+    );
 
   });
 
-  /* フラッシュ開始 */
+
+  /* =========================
+     フラッシュ開始
+  ========================= */
 
   socket.on("flash", () => {
 
-    console.log("flash");
+    console.log(
+      ">>> FLASH"
+    );
 
-    io.emit("flash");
+    io.emit(
+      "flash"
+    );
 
   });
 
-  /* フラッシュ停止 */
+
+  /* =========================
+     フラッシュ停止
+  ========================= */
 
   socket.on("stopFlash", () => {
 
-    console.log("stopFlash");
+    console.log(
+      ">>> STOP FLASH"
+    );
 
-    io.emit("stopFlash");
+    io.emit(
+      "stopFlash"
+    );
 
   });
+
 
   socket.on("disconnect", () => {
 
-    console.log("切断:", socket.id);
+    console.log(
+      "切断:",
+      socket.id
+    );
 
   });
 
 });
 
-/* =========================
-   サーバー起動
-========================= */
 
-const PORT = process.env.PORT || 10000;
+const PORT =
+  process.env.PORT || 10000;
 
-server.listen(PORT, () => {
 
-  console.log("Server running on port", PORT);
+server.listen(
+  PORT,
+  () => {
 
-});
+    console.log(
+      "Server running on port",
+      PORT
+    );
+
+  }
+);
