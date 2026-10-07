@@ -1,6 +1,7 @@
 const express = require("express");
 
-console.log("TABASKA SERVER VERSION 20261007");
+
+console.log("TABASKA SERVER NEW VERSION");
 
 const http = require("http");
 const { Server } = require("socket.io");
