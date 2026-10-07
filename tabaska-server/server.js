@@ -51,8 +51,26 @@ io.on("connection", (socket) => {
       ">>> EFFECT"
     );
 
+    // サーバー側でランダムカラーを1色だけ生成
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+
+    const effectColor =
+      "#" +
+      r.toString(16).padStart(2, "0") +
+      g.toString(16).padStart(2, "0") +
+      b.toString(16).padStart(2, "0");
+
+    console.log(
+      "EFFECT COLOR:",
+      effectColor
+    );
+
+    // 全Light端末へ同じ色を送信
     io.emit(
-      "effect"
+      "effectColor",
+      effectColor
     );
 
   });
