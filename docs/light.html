@@ -1,88 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Light</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Light</title>
 
 <style>
-
 body {
   margin: 0;
+  width: 100vw;
   height: 100vh;
   background: black;
+  overflow: hidden;
 }
-
 </style>
-</head>
 
+</head>
 <body>
 
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 
 <script>
 
-/* ==================================================
-   ライト演出 設定
-   ================================================== */
-
-
-/* ==================================================
-   🎨 通常の演出
-   ================================================== */
+/* =========================
+   通常演出
+========================= */
 
 const EFFECT_DISPLAY = 250;
 const EFFECT_TRANSITION = 100;
 
-
-/* ==================================================
-   ⚡ フラッシュ
-   ================================================== */
+/* =========================
+   フラッシュ
+========================= */
 
 const FLASH_DISPLAY = 150;
 const FLASH_WHITE_DISPLAY = 30;
 const FLASH_TRANSITION = 7;
 
-
-/* ==================================================
+/* =========================
    Socket.IO
-   ================================================== */
+========================= */
 
 const socket = io(
   "https://tabaska.onrender.com",
   {
-    transports: ["websocket"]
+    transports: ["websocket"],
+    reconnection: true,
+    reconnectionAttempts: Infinity
   }
 );
 
-
-/* ==================================================
+/* =========================
    状態
-   ================================================== */
+========================= */
 
 let flashing = false;
-
 let effectTimer = null;
 let flashTimer = null;
 
-
-/* ==================================================
-   色を変更
-   ================================================== */
+/* =========================
+   色変更
+========================= */
 
 function changeColor(color, transitionTime) {
 
   document.body.style.transition =
     `background ${transitionTime}ms linear`;
 
-  document.body.style.background = color;
+  document.body.style.background =
+    color;
 
 }
 
-
-/* ==================================================
-   ランダムカラー
-   ================================================== */
+/* =========================
+   ランダム色
+========================= */
 
 function getRandomColor() {
 
@@ -94,10 +86,9 @@ function getRandomColor() {
 
 }
 
-
-/* ==================================================
+/* =========================
    接続確認
-   ================================================== */
+========================= */
 
 socket.on("connect", () => {
 
@@ -116,16 +107,19 @@ socket.on("disconnect", () => {
 
 });
 
-
-/* ==================================================
-   🎨 通常の色変更
-   ================================================== */
+/* =========================
+   色変更
+========================= */
 
 socket.on("colorUpdate", (color) => {
 
+  console.log(
+    "colorUpdate:",
+    color
+  );
+
   if (flashing) return;
 
-  // 演出中なら停止して手動色を優先
   if (effectTimer) {
 
     clearTimeout(effectTimer);
@@ -140,16 +134,16 @@ socket.on("colorUpdate", (color) => {
 
 });
 
-
-/* ==================================================
-   🎨 ランダムカラー演出
-   ================================================== */
+/* =========================
+   演出ループ
+========================= */
 
 function runEffectLoop() {
 
   if (flashing) return;
 
-  const color = getRandomColor();
+  const color =
+    getRandomColor();
 
   changeColor(
     color,
@@ -158,27 +152,33 @@ function runEffectLoop() {
 
   effectTimer = setTimeout(() => {
 
-    if (flashing) return;
+    if (!flashing) {
 
-    runEffectLoop();
+      runEffectLoop();
 
-  }, EFFECT_TRANSITION + EFFECT_DISPLAY);
+    }
+
+  },
+  EFFECT_DISPLAY +
+  EFFECT_TRANSITION);
 
 }
 
-
-/* ==================================================
-   🎬 演出スタート
-   ================================================== */
+/* =========================
+   演出開始
+========================= */
 
 socket.on("effect", () => {
 
-  if (flashing) return;
+  console.log(
+    "effect received"
+  );
+
+  flashing = false;
 
   if (effectTimer) {
 
     clearTimeout(effectTimer);
-    effectTimer = null;
 
   }
 
@@ -186,12 +186,15 @@ socket.on("effect", () => {
 
 });
 
+/* =========================
+   演出停止
+========================= */
 
-/* ==================================================
-   ⚡ フラッシュ開始
-   ================================================== */
+socket.on("stopEffect", () => {
 
-socket.on("flash", () => {
+  console.log(
+    "stopEffect received"
+  );
 
   if (effectTimer) {
 
@@ -200,7 +203,29 @@ socket.on("flash", () => {
 
   }
 
-  if (flashing) return;
+  changeColor(
+    "#000000",
+    EFFECT_TRANSITION
+  );
+
+});
+
+/* =========================
+   フラッシュ開始
+========================= */
+
+socket.on("flash", () => {
+
+  console.log(
+    "flash received"
+  );
+
+  if (effectTimer) {
+
+    clearTimeout(effectTimer);
+    effectTimer = null;
+
+  }
 
   flashing = true;
 
@@ -208,10 +233,9 @@ socket.on("flash", () => {
 
 });
 
-
-/* ==================================================
-   ⚡ フラッシュ
-   ================================================== */
+/* =========================
+   フラッシュループ
+========================= */
 
 function runFlashLoop() {
 
@@ -237,18 +261,25 @@ function runFlashLoop() {
 
       runFlashLoop();
 
-    }, FLASH_TRANSITION + FLASH_WHITE_DISPLAY);
+    },
+    FLASH_WHITE_DISPLAY +
+    FLASH_TRANSITION);
 
-  }, FLASH_TRANSITION + FLASH_DISPLAY);
+  },
+  FLASH_DISPLAY +
+  FLASH_TRANSITION);
 
 }
 
-
-/* ==================================================
-   🛑 フラッシュ停止
-   ================================================== */
+/* =========================
+   フラッシュ停止
+========================= */
 
 socket.on("stopFlash", () => {
+
+  console.log(
+    "stopFlash received"
+  );
 
   flashing = false;
 
@@ -259,42 +290,10 @@ socket.on("stopFlash", () => {
 
   }
 
-  if (effectTimer) {
-
-    clearTimeout(effectTimer);
-    effectTimer = null;
-
-  }
-
   changeColor(
     "#000000",
     FLASH_TRANSITION
   );
-
-});
-
-
-/* ==================================================
-   🛑 演出停止
-   ================================================== */
-
-socket.on("stopEffect", () => {
-
-  if (effectTimer) {
-
-    clearTimeout(effectTimer);
-    effectTimer = null;
-
-  }
-
-  if (!flashing) {
-
-    changeColor(
-      "#000000",
-      EFFECT_TRANSITION
-    );
-
-  }
 
 });
 
