@@ -1,10 +1,8 @@
 const express = require("express");
-
-
-console.log("TABASKA SERVER NEW VERSION");
-
 const http = require("http");
 const { Server } = require("socket.io");
+
+console.log("TABASKA SERVER NEW VERSION");
 
 const app = express();
 const server = http.createServer(app);
@@ -16,17 +14,32 @@ const io = new Server(server, {
   }
 });
 
+/* =========================
+   状態保持
+========================= */
+
 let currentColor = "#000000";
+
+/* =========================
+   動作確認
+========================= */
 
 app.get("/", (req, res) => {
   res.send("TABASKA Socket Server Running");
 });
 
+/* =========================
+   Socket.IO
+========================= */
+
 io.on("connection", (socket) => {
 
   console.log("接続:", socket.id);
 
+  // 接続時に現在色を送信
   socket.emit("colorUpdate", currentColor);
+
+  /* 色変更 */
 
   socket.on("changeColor", (color) => {
 
@@ -38,6 +51,8 @@ io.on("connection", (socket) => {
 
   });
 
+  /* ランダム演出開始 */
+
   socket.on("effect", () => {
 
     console.log("effect");
@@ -45,6 +60,8 @@ io.on("connection", (socket) => {
     io.emit("effect");
 
   });
+
+  /* ランダム演出停止 */
 
   socket.on("stopEffect", () => {
 
@@ -54,6 +71,8 @@ io.on("connection", (socket) => {
 
   });
 
+  /* フラッシュ開始 */
+
   socket.on("flash", () => {
 
     console.log("flash");
@@ -61,6 +80,8 @@ io.on("connection", (socket) => {
     io.emit("flash");
 
   });
+
+  /* フラッシュ停止 */
 
   socket.on("stopFlash", () => {
 
@@ -77,6 +98,10 @@ io.on("connection", (socket) => {
   });
 
 });
+
+/* =========================
+   サーバー起動
+========================= */
 
 const PORT = process.env.PORT || 10000;
 
