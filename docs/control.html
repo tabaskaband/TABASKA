@@ -171,13 +171,9 @@ document
 
 function startEffect() {
 
-  console.log(
-    "effect送信"
-  );
+  console.log(">>> CONTROL: effect送信");
 
-  socket.emit(
-    "effect"
-  );
+  socket.emit("effect");
 
 }
 
