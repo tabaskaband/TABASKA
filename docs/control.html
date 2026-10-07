@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -51,28 +52,54 @@ button:hover {
   color: #00ff88;
 }
 </style>
+
 </head>
+
 <body>
 
 <h1>🎛 TABASKA Control</h1>
 
 <input
-  type="color"
-  id="colorPicker"
-  value="#ffffff"
+type="color"
+id="colorPicker"
+value="#ffffff"
+
 >
 
 <div class="buttons">
-  <button onclick="setColor('#ff0000')">🔴 赤</button>
-  <button onclick="setColor('#ffa500')">🟠 オレンジ</button>
-  <button onclick="setColor('#ffff00')">🟡 黄</button>
-  <button onclick="setColor('#00ff00')">🟢 緑</button>
-  <button onclick="setColor('#0000ff')">🔵 青</button>
-  <button onclick="setColor('#ffffff')">⚪ 白</button>
-  <button onclick="setColor('#000000')">⚫ 黒</button>
+
+  <button onclick="setColor('#ff0000')">
+    🔴 赤
+  </button>
+
+  <button onclick="setColor('#ffa500')">
+    🟠 オレンジ
+  </button>
+
+  <button onclick="setColor('#ffff00')">
+    🟡 黄
+  </button>
+
+  <button onclick="setColor('#00ff00')">
+    🟢 緑
+  </button>
+
+  <button onclick="setColor('#0000ff')">
+    🔵 青
+  </button>
+
+  <button onclick="setColor('#ffffff')">
+    ⚪ 白
+  </button>
+
+  <button onclick="setColor('#000000')">
+    ⚫ 黒
+  </button>
+
 </div>
 
 <div class="buttons">
+
   <button onclick="startEffect()">
     ▶ ランダム演出開始
   </button>
@@ -80,9 +107,11 @@ button:hover {
   <button onclick="stopEffect()">
     ■ ランダム演出停止
   </button>
+
 </div>
 
 <div class="buttons">
+
   <button onclick="startFlash()">
     ⚡ フラッシュ開始
   </button>
@@ -90,60 +119,141 @@ button:hover {
   <button onclick="stopFlash()">
     ■ フラッシュ停止
   </button>
+
 </div>
 
 <div id="status">
-接続待機中...
+  接続待機中...
 </div>
 
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 
 <script>
 
+/* ==================================================
+   Socket.IO
+================================================== */
+
 const socket = io(
   "https://tabaska.onrender.com",
   {
-    transports: ["websocket"],
+    transports: ["websocket", "polling"],
     reconnection: true,
     reconnectionAttempts: Infinity,
     reconnectionDelay: 1000
   }
 );
 
-const statusEl = document.getElementById("status");
 
-/* 接続状態 */
+/* ==================================================
+   DOM
+================================================== */
+
+const statusEl =
+  document.getElementById("status");
+
+const colorPicker =
+  document.getElementById("colorPicker");
+
+
+/* ==================================================
+   接続
+================================================== */
 
 socket.on("connect", () => {
 
-  console.log("connected", socket.id);
+  console.log(
+    "================================="
+  );
+
+  console.log(
+    "TABASKA CONTROL CONNECTED"
+  );
+
+  console.log(
+    "socket.id:",
+    socket.id
+  );
+
+  console.log(
+    "================================="
+  );
 
   statusEl.textContent =
     "✅ 接続中";
 
 });
 
-socket.on("disconnect", () => {
 
-  console.log("disconnect");
+/* ==================================================
+   接続エラー
+================================================== */
+
+socket.on("connect_error", (error) => {
+
+  console.error(
+    "CONTROL CONNECT ERROR:",
+    error
+  );
+
+  statusEl.textContent =
+    "❌ 接続エラー";
+
+});
+
+
+/* ==================================================
+   切断
+================================================== */
+
+socket.on("disconnect", (reason) => {
+
+  console.log(
+    "CONTROL DISCONNECTED:",
+    reason
+  );
 
   statusEl.textContent =
     "❌ 切断";
 
 });
 
-/* 色変更 */
+
+/* ==================================================
+   色変更
+================================================== */
 
 function setColor(color) {
 
   console.log(
-    "changeColor:",
+    "================================="
+  );
+
+  console.log(
+    "CONTROL: changeColor"
+  );
+
+  console.log(
+    "color:",
     color
   );
 
-  document.getElementById(
-    "colorPicker"
-  ).value = color;
+  console.log(
+    "socket.connected:",
+    socket.connected
+  );
+
+  console.log(
+    "================================="
+  );
+
+
+  /* カラーピッカーを変更 */
+
+  colorPicker.value = color;
+
+
+  /* サーバーへ送信 */
 
   socket.emit(
     "changeColor",
@@ -152,48 +262,113 @@ function setColor(color) {
 
 }
 
-/* カラーピッカー */
 
-document
-  .getElementById("colorPicker")
-  .addEventListener(
-    "input",
-    (e) => {
+/* ==================================================
+   カラーピッカー
+================================================== */
 
-      setColor(
-        e.target.value
-      );
+colorPicker.addEventListener(
+  "input",
+  (e) => {
 
-    }
-  );
+    setColor(
+      e.target.value
+    );
 
-/* ランダム演出開始 */
+  }
+);
+
+
+/* ==================================================
+   ランダム演出開始
+================================================== */
 
 function startEffect() {
 
-  console.log(">>> CONTROL: effect送信");
+  console.log(
+    "================================="
+  );
 
-  socket.emit("effect");
+  console.log(
+    ">>> CONTROL: effect送信"
+  );
+
+  console.log(
+    "socket.connected:",
+    socket.connected
+  );
+
+  console.log(
+    "socket.id:",
+    socket.id
+  );
+
+  console.log(
+    "================================="
+  );
+
+
+  socket.emit(
+    "effect"
+  );
 
 }
 
-/* ランダム演出停止 */
+
+/* ==================================================
+   ランダム演出停止
+================================================== */
 
 function stopEffect() {
 
-  console.log(">>> CONTROL: stopEffect送信");
+  console.log(
+    "================================="
+  );
 
-  socket.emit("stopEffect");
+  console.log(
+    ">>> CONTROL: stopEffect送信"
+  );
+
+  console.log(
+    "socket.connected:",
+    socket.connected
+  );
+
+  console.log(
+    "================================="
+  );
+
+
+  socket.emit(
+    "stopEffect"
+  );
 
 }
 
-/* フラッシュ開始 */
+
+/* ==================================================
+   フラッシュ開始
+================================================== */
 
 function startFlash() {
 
   console.log(
-    "flash送信"
+    "================================="
   );
+
+  console.log(
+    ">>> CONTROL: flash送信"
+  );
+
+  console.log(
+    "socket.connected:",
+    socket.connected
+  );
+
+  console.log(
+    "================================="
+  );
+
 
   socket.emit(
     "flash"
@@ -201,13 +376,30 @@ function startFlash() {
 
 }
 
-/* フラッシュ停止 */
+
+/* ==================================================
+   フラッシュ停止
+================================================== */
 
 function stopFlash() {
 
   console.log(
-    "stopFlash送信"
+    "================================="
   );
+
+  console.log(
+    ">>> CONTROL: stopFlash送信"
+  );
+
+  console.log(
+    "socket.connected:",
+    socket.connected
+  );
+
+  console.log(
+    "================================="
+  );
+
 
   socket.emit(
     "stopFlash"
