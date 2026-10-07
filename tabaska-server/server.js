@@ -15,6 +15,7 @@ const io = new Server(server, {
 });
 
 let currentColor = "#000000";
+let effectTimer = null;
 
 app.get("/", (req, res) => {
   res.send("TABASKA Socket Server Running");
@@ -51,31 +52,51 @@ io.on("connection", (socket) => {
       ">>> EFFECT"
     );
 
-    // サーバー側でランダムカラーを1色だけ生成
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
+    // 全Light端末で同じ色を表示するため、
+    // サーバー側で4秒ごとにランダム色を生成
+    if (effectTimer) {
+      clearInterval(effectTimer);
+    }
 
-    const effectColor =
-      "#" +
-      r.toString(16).padStart(2, "0") +
-      g.toString(16).padStart(2, "0") +
-      b.toString(16).padStart(2, "0");
+    const sendEffectColor = () => {
 
-    console.log(
-      "EFFECT COLOR:",
-      effectColor
-    );
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
 
-    // 全Light端末へ同じ色を送信
-    io.emit(
-      "effectColor",
-      effectColor
+      const effectColor =
+        "#" +
+        r.toString(16).padStart(2, "0") +
+        g.toString(16).padStart(2, "0") +
+        b.toString(16).padStart(2, "0");
+
+      console.log(
+        "EFFECT COLOR:",
+        effectColor
+      );
+
+      io.emit(
+        "effectColor",
+        effectColor
+      );
+
+    };
+
+    sendEffectColor();
+
+    effectTimer = setInterval(
+      sendEffectColor,
+      4000
     );
 
   });
 
   socket.on("stopEffect", () => {
+
+    if (effectTimer) {
+      clearInterval(effectTimer);
+      effectTimer = null;
+    }
 
     console.log(
       ">>> STOP EFFECT"
