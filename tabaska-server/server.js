@@ -17,31 +17,17 @@ const io = new Server(server, {
 let currentColor = "#000000";
 
 app.get("/", (req, res) => {
-
   res.send("TABASKA Socket Server Running");
-
 });
-
 
 io.on("connection", (socket) => {
 
-  console.log(
-    "接続:",
-    socket.id
-  );
-
-
-  /* 現在色 */
+  console.log("接続:", socket.id);
 
   socket.emit(
     "colorUpdate",
     currentColor
   );
-
-
-  /* =========================
-     色変更
-  ========================= */
 
   socket.on("changeColor", (color) => {
 
@@ -59,11 +45,6 @@ io.on("connection", (socket) => {
 
   });
 
-
-  /* =========================
-     ランダム演出開始
-  ========================= */
-
   socket.on("effect", () => {
 
     console.log(
@@ -75,11 +56,6 @@ io.on("connection", (socket) => {
     );
 
   });
-
-
-  /* =========================
-     ランダム演出停止
-  ========================= */
 
   socket.on("stopEffect", () => {
 
@@ -93,11 +69,6 @@ io.on("connection", (socket) => {
 
   });
 
-
-  /* =========================
-     フラッシュ開始
-  ========================= */
-
   socket.on("flash", () => {
 
     console.log(
@@ -109,11 +80,6 @@ io.on("connection", (socket) => {
     );
 
   });
-
-
-  /* =========================
-     フラッシュ停止
-  ========================= */
 
   socket.on("stopFlash", () => {
 
@@ -127,7 +93,6 @@ io.on("connection", (socket) => {
 
   });
 
-
   socket.on("disconnect", () => {
 
     console.log(
@@ -139,10 +104,8 @@ io.on("connection", (socket) => {
 
 });
 
-
 const PORT =
   process.env.PORT || 10000;
-
 
 server.listen(
   PORT,
