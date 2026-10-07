@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,53 +7,51 @@
 
 <style>
 
-body {
-  margin: 0;
-  padding: 20px;
-  font-family: sans-serif;
-  text-align: center;
-  background: #111;
-  color: white;
+body{
+  margin:0;
+  padding:20px;
+  font-family:sans-serif;
+  text-align:center;
+  background:#111;
+  color:#fff;
 }
 
-h1 {
-  margin-bottom: 20px;
+h1{
+  margin-bottom:20px;
 }
 
-#colorPicker {
-  width: 80%;
-  max-width: 400px;
-  height: 60px;
-  cursor: pointer;
+#colorPicker{
+  width:80%;
+  max-width:400px;
+  height:60px;
 }
 
-.buttons {
-  margin-top: 20px;
+.buttons{
+  margin-top:20px;
 }
 
-button {
-  padding: 15px 20px;
-  margin: 5px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  background: #333;
-  color: white;
-  cursor: pointer;
+button{
+  padding:15px 20px;
+  margin:5px;
+  font-size:16px;
+  border:none;
+  border-radius:8px;
+  background:#333;
+  color:#fff;
+  cursor:pointer;
 }
 
-button:hover {
-  background: #555;
+button:hover{
+  background:#555;
 }
 
-#status {
-  margin-top: 20px;
-  color: #00ff88;
+#status{
+  margin-top:20px;
+  font-size:14px;
 }
 
 </style>
 </head>
-
 <body>
 
 <h1>🎛 TABASKA Control</h1>
@@ -96,67 +93,50 @@ button:hover {
 </div>
 
 <div id="status">
-接続中...
+接続待機中...
 </div>
 
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 
 <script>
 
-/* =========================
-   Socket.IO
-========================= */
-
 const socket = io(
   "https://tabaska.onrender.com",
   {
-    transports: ["websocket"],
-    reconnection: true,
-    reconnectionAttempts: Infinity,
-    reconnectionDelay: 1000
+    transports:["websocket"]
   }
 );
 
-const statusEl =
+const status =
   document.getElementById("status");
 
-
-/* =========================
-   接続確認
-========================= */
-
-socket.on("connect", () => {
+socket.on("connect",()=>{
 
   console.log(
-    "connected:",
+    "connected",
     socket.id
   );
 
-  statusEl.textContent =
+  status.innerHTML =
     "✅ 接続中";
 
 });
 
-socket.on("disconnect", () => {
+socket.on("disconnect",()=>{
 
-  console.log(
-    "disconnected"
-  );
+  console.log("disconnect");
 
-  statusEl.textContent =
+  status.innerHTML =
     "❌ 切断";
 
 });
 
+/* 色変更 */
 
-/* =========================
-   色変更
-========================= */
-
-function setColor(color) {
+function setColor(color){
 
   console.log(
-    "changeColor:",
+    "changeColor",
     color
   );
 
@@ -171,31 +151,24 @@ function setColor(color) {
 
 }
 
-
 /* カラーピッカー */
 
 document
-  .getElementById("colorPicker")
-  .addEventListener(
-    "input",
-    (e) => {
+.getElementById("colorPicker")
+.addEventListener("input",(e)=>{
 
-      setColor(
-        e.target.value
-      );
-
-    }
+  setColor(
+    e.target.value
   );
 
+});
 
-/* =========================
-   ランダム演出
-========================= */
+/* ランダム演出開始 */
 
-function startEffect() {
+function startEffect(){
 
   console.log(
-    "effect"
+    "effect送信"
   );
 
   socket.emit(
@@ -204,10 +177,12 @@ function startEffect() {
 
 }
 
-function stopEffect() {
+/* ランダム演出停止 */
+
+function stopEffect(){
 
   console.log(
-    "stopEffect"
+    "stopEffect送信"
   );
 
   socket.emit(
@@ -216,15 +191,12 @@ function stopEffect() {
 
 }
 
+/* フラッシュ開始 */
 
-/* =========================
-   フラッシュ
-========================= */
-
-function startFlash() {
+function startFlash(){
 
   console.log(
-    "flash"
+    "flash送信"
   );
 
   socket.emit(
@@ -233,10 +205,12 @@ function startFlash() {
 
 }
 
-function stopFlash() {
+/* フラッシュ停止 */
+
+function stopFlash(){
 
   console.log(
-    "stopFlash"
+    "stopFlash送信"
   );
 
   socket.emit(
