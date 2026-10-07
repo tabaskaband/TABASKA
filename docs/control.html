@@ -4,9 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>TABASKA Control</title>
 
 <style>
+
 body {
   margin: 0;
   padding: 20px;
@@ -51,6 +53,7 @@ button:hover {
   font-size: 14px;
   color: #00ff88;
 }
+
 </style>
 
 </head>
@@ -59,6 +62,10 @@ button:hover {
 
 <h1>🎛 TABASKA Control</h1>
 
+<!-- =========================
+     カラーピッカー
+========================= -->
+
 <input
 type="color"
 id="colorPicker"
@@ -66,61 +73,77 @@ value="#ffffff"
 
 >
 
+<!-- =========================
+     色ボタン
+========================= -->
+
 <div class="buttons">
 
-  <button onclick="setColor('#ff0000')">
+  <button id="redButton">
     🔴 赤
   </button>
 
-  <button onclick="setColor('#ffa500')">
+  <button id="orangeButton">
     🟠 オレンジ
   </button>
 
-  <button onclick="setColor('#ffff00')">
+  <button id="yellowButton">
     🟡 黄
   </button>
 
-  <button onclick="setColor('#00ff00')">
+  <button id="greenButton">
     🟢 緑
   </button>
 
-  <button onclick="setColor('#0000ff')">
+  <button id="blueButton">
     🔵 青
   </button>
 
-  <button onclick="setColor('#ffffff')">
+  <button id="whiteButton">
     ⚪ 白
   </button>
 
-  <button onclick="setColor('#000000')">
+  <button id="blackButton">
     ⚫ 黒
   </button>
 
 </div>
 
+<!-- =========================
+     ランダム演出
+========================= -->
+
 <div class="buttons">
 
-  <button onclick="startEffect()">
+  <button id="startEffectButton">
     ▶ ランダム演出開始
   </button>
 
-  <button onclick="stopEffect()">
+  <button id="stopEffectButton">
     ■ ランダム演出停止
   </button>
 
 </div>
 
+<!-- =========================
+     フラッシュ
+========================= -->
+
 <div class="buttons">
 
-  <button onclick="startFlash()">
+  <button id="startFlashButton">
     ⚡ フラッシュ開始
   </button>
 
-  <button onclick="stopFlash()">
+  <button id="stopFlashButton">
     ■ フラッシュ停止
   </button>
 
 </div>
+
+<!-- =========================
+     ステータス
+========================= -->
 
 <div id="status">
   接続待機中...
@@ -131,8 +154,24 @@ value="#ffffff"
 <script>
 
 /* ==================================================
+   DOM
+================================================== */
+
+const statusEl =
+  document.getElementById("status");
+
+const colorPicker =
+  document.getElementById("colorPicker");
+
+
+/* ==================================================
    Socket.IO
 ================================================== */
+
+console.log(
+  "TABASKA CONTROL SCRIPT START"
+);
+
 
 const socket = io(
   "https://tabaska.onrender.com",
@@ -143,17 +182,6 @@ const socket = io(
     reconnectionDelay: 1000
   }
 );
-
-
-/* ==================================================
-   DOM
-================================================== */
-
-const statusEl =
-  document.getElementById("status");
-
-const colorPicker =
-  document.getElementById("colorPicker");
 
 
 /* ==================================================
@@ -226,34 +254,12 @@ socket.on("disconnect", (reason) => {
 function setColor(color) {
 
   console.log(
-    "================================="
-  );
-
-  console.log(
-    "CONTROL: changeColor"
-  );
-
-  console.log(
-    "color:",
+    "CONTROL COLOR:",
     color
   );
 
-  console.log(
-    "socket.connected:",
-    socket.connected
-  );
-
-  console.log(
-    "================================="
-  );
-
-
-  /* カラーピッカーを変更 */
-
-  colorPicker.value = color;
-
-
-  /* サーバーへ送信 */
+  colorPicker.value =
+    color;
 
   socket.emit(
     "changeColor",
@@ -264,15 +270,115 @@ function setColor(color) {
 
 
 /* ==================================================
+   色ボタン
+================================================== */
+
+document
+  .getElementById("redButton")
+  .addEventListener("click", () => {
+
+    console.log(
+      "BUTTON CLICK: RED"
+    );
+
+    setColor("#ff0000");
+
+  });
+
+
+document
+  .getElementById("orangeButton")
+  .addEventListener("click", () => {
+
+    console.log(
+      "BUTTON CLICK: ORANGE"
+    );
+
+    setColor("#ffa500");
+
+  });
+
+
+document
+  .getElementById("yellowButton")
+  .addEventListener("click", () => {
+
+    console.log(
+      "BUTTON CLICK: YELLOW"
+    );
+
+    setColor("#ffff00");
+
+  });
+
+
+document
+  .getElementById("greenButton")
+  .addEventListener("click", () => {
+
+    console.log(
+      "BUTTON CLICK: GREEN"
+    );
+
+    setColor("#00ff00");
+
+  });
+
+
+document
+  .getElementById("blueButton")
+  .addEventListener("click", () => {
+
+    console.log(
+      "BUTTON CLICK: BLUE"
+    );
+
+    setColor("#0000ff");
+
+  });
+
+
+document
+  .getElementById("whiteButton")
+  .addEventListener("click", () => {
+
+    console.log(
+      "BUTTON CLICK: WHITE"
+    );
+
+    setColor("#ffffff");
+
+  });
+
+
+document
+  .getElementById("blackButton")
+  .addEventListener("click", () => {
+
+    console.log(
+      "BUTTON CLICK: BLACK"
+    );
+
+    setColor("#000000");
+
+  });
+
+
+/* ==================================================
    カラーピッカー
 ================================================== */
 
 colorPicker.addEventListener(
   "input",
-  (e) => {
+  (event) => {
+
+    console.log(
+      "COLOR PICKER:",
+      event.target.value
+    );
 
     setColor(
-      e.target.value
+      event.target.value
     );
 
   }
@@ -283,129 +389,162 @@ colorPicker.addEventListener(
    ランダム演出開始
 ================================================== */
 
-function startEffect() {
+document
+  .getElementById("startEffectButton")
+  .addEventListener("click", () => {
 
-  console.log(
-    "================================="
-  );
+    console.log(
+      "================================="
+    );
 
-  console.log(
-    ">>> CONTROL: effect送信"
-  );
+    console.log(
+      "BUTTON CLICK: START EFFECT"
+    );
 
-  console.log(
-    "socket.connected:",
-    socket.connected
-  );
+    console.log(
+      "socket.connected:",
+      socket.connected
+    );
 
-  console.log(
-    "socket.id:",
-    socket.id
-  );
+    console.log(
+      "socket.id:",
+      socket.id
+    );
 
-  console.log(
-    "================================="
-  );
+    console.log(
+      ">>> CONTROL: effect送信"
+    );
+
+    console.log(
+      "================================="
+    );
 
 
-  socket.emit(
-    "effect"
-  );
+    socket.emit(
+      "effect"
+    );
 
-}
+  });
 
 
 /* ==================================================
    ランダム演出停止
 ================================================== */
 
-function stopEffect() {
+document
+  .getElementById("stopEffectButton")
+  .addEventListener("click", () => {
 
-  console.log(
-    "================================="
-  );
+    console.log(
+      "================================="
+    );
 
-  console.log(
-    ">>> CONTROL: stopEffect送信"
-  );
+    console.log(
+      "BUTTON CLICK: STOP EFFECT"
+    );
 
-  console.log(
-    "socket.connected:",
-    socket.connected
-  );
+    console.log(
+      "socket.connected:",
+      socket.connected
+    );
 
-  console.log(
-    "================================="
-  );
+    console.log(
+      ">>> CONTROL: stopEffect送信"
+    );
+
+    console.log(
+      "================================="
+    );
 
 
-  socket.emit(
-    "stopEffect"
-  );
+    socket.emit(
+      "stopEffect"
+    );
 
-}
+  });
 
 
 /* ==================================================
    フラッシュ開始
 ================================================== */
 
-function startFlash() {
+document
+  .getElementById("startFlashButton")
+  .addEventListener("click", () => {
 
-  console.log(
-    "================================="
-  );
+    console.log(
+      "================================="
+    );
 
-  console.log(
-    ">>> CONTROL: flash送信"
-  );
+    console.log(
+      "BUTTON CLICK: START FLASH"
+    );
 
-  console.log(
-    "socket.connected:",
-    socket.connected
-  );
+    console.log(
+      "socket.connected:",
+      socket.connected
+    );
 
-  console.log(
-    "================================="
-  );
+    console.log(
+      ">>> CONTROL: flash送信"
+    );
+
+    console.log(
+      "================================="
+    );
 
 
-  socket.emit(
-    "flash"
-  );
+    socket.emit(
+      "flash"
+    );
 
-}
+  });
 
 
 /* ==================================================
    フラッシュ停止
 ================================================== */
 
-function stopFlash() {
+document
+  .getElementById("stopFlashButton")
+  .addEventListener("click", () => {
 
-  console.log(
-    "================================="
-  );
+    console.log(
+      "================================="
+    );
 
-  console.log(
-    ">>> CONTROL: stopFlash送信"
-  );
+    console.log(
+      "BUTTON CLICK: STOP FLASH"
+    );
 
-  console.log(
-    "socket.connected:",
-    socket.connected
-  );
+    console.log(
+      "socket.connected:",
+      socket.connected
+    );
 
-  console.log(
-    "================================="
-  );
+    console.log(
+      ">>> CONTROL: stopFlash送信"
+    );
+
+    console.log(
+      "================================="
+    );
 
 
-  socket.emit(
-    "stopFlash"
-  );
+    socket.emit(
+      "stopFlash"
+    );
 
-}
+  });
+
+
+/* ==================================================
+   初期化完了
+================================================== */
+
+console.log(
+  "TABASKA CONTROL READY"
+);
 
 </script>
 
