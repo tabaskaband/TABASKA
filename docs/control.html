@@ -1,74 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Control</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TABASKA Control</title>
 
 <style>
 body {
-  font-family: sans-serif;
+  margin: 0;
   padding: 20px;
+  font-family: sans-serif;
+  text-align: center;
+  background: #111;
+  color: #fff;
 }
 
-button {
-  padding: 10px 15px;
-  margin: 5px;
-  font-size: 16px;
+h1 {
+  margin-bottom: 20px;
+}
+
+#colorPicker {
+  width: 80%;
+  max-width: 400px;
+  height: 60px;
+  border: none;
   cursor: pointer;
 }
 
 .buttons {
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 15px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #555;
+}
+
+.status {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #aaa;
 }
 </style>
 </head>
 
 <body>
 
-<h1>🎛 Light Control</h1>
+<h1>🎛 TABASKA Control</h1>
 
-<input type="color" id="colorPicker">
+<input
+  type="color"
+  id="colorPicker"
+  value="#ffffff"
+/>
 
 <div class="buttons">
-  <button onclick="setColor('#ff0000')">赤</button>
-  <button onclick="setColor('#ffa500')">オレンジ</button>
-  <button onclick="setColor('#ffff00')">黄</button>
-  <button onclick="setColor('#00ff00')">緑</button>
-  <button onclick="setColor('#0000ff')">青</button>
-  <button onclick="setColor('#ffffff')">白</button>
-  <button onclick="setColor('#000000')">黒</button>
+  <button onclick="setColor('#ff0000')">🔴 赤</button>
+  <button onclick="setColor('#ffa500')">🟠 オレンジ</button>
+  <button onclick="setColor('#ffff00')">🟡 黄</button>
+  <button onclick="setColor('#00ff00')">🟢 緑</button>
+  <button onclick="setColor('#0000ff')">🔵 青</button>
+  <button onclick="setColor('#ffffff')">⚪ 白</button>
+  <button onclick="setColor('#000000')">⚫ 黒</button>
 </div>
 
 <div class="buttons">
-  <button onclick="startEffect()">▶ 演出スタート</button>
-  <button onclick="stopEffect()">■ 演出停止</button>
+  <button onclick="startEffect()">
+    ▶ ランダム演出開始
+  </button>
+
+  <button onclick="stopEffect()">
+    ■ ランダム演出停止
+  </button>
 </div>
 
 <div class="buttons">
-  <button onclick="flash()">⚡ フラッシュ開始</button>
-  <button onclick="stopFlash()">■ フラッシュ停止</button>
+  <button onclick="flash()">
+    ⚡ フラッシュ開始
+  </button>
+
+  <button onclick="stopFlash()">
+    ■ フラッシュ停止
+  </button>
+</div>
+
+<div class="status" id="status">
+  接続中...
 </div>
 
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 
 <script>
 
+const SERVER_URL =
+  "https://tabaska.onrender.com";
+
 const socket = io(
-  "https://tabaska.onrender.com",
+  SERVER_URL,
   {
-    transports: ["websocket"]
+    transports: ["websocket"],
+    reconnection: true,
+    reconnectionAttempts: Infinity,
+    reconnectionDelay: 1000
   }
 );
 
+const statusEl =
+  document.getElementById("status");
 
-/* 接続確認 */
+/* =========================
+   接続状態
+========================= */
+
 socket.on("connect", () => {
 
   console.log(
     "connected:",
     socket.id
   );
+
+  statusEl.textContent =
+    "✅ 接続中";
 
 });
 
@@ -78,10 +140,77 @@ socket.on("disconnect", () => {
     "disconnected"
   );
 
+  statusEl.textContent =
+    "❌ 切断";
+
 });
 
+/* =========================
+   色変更
+========================= */
 
-/* 色変更 */
 function setColor(color) {
 
-  socket
+  document.getElementById(
+    "colorPicker"
+  ).value = color;
+
+  socket.emit(
+    "changeColor",
+    color
+  );
+
+}
+
+/* カラーピッカー */
+
+document
+  .getElementById("colorPicker")
+  .addEventListener(
+    "input",
+    (e) => {
+
+      socket.emit(
+        "changeColor",
+        e.target.value
+      );
+
+    }
+  );
+
+/* =========================
+   演出
+========================= */
+
+function startEffect() {
+
+  socket.emit("effect");
+
+}
+
+function stopEffect() {
+
+  socket.emit("stopEffect");
+
+}
+
+/* =========================
+   フラッシュ
+========================= */
+
+function flash() {
+
+  socket.emit("flash");
+
+}
+
+function stopFlash() {
+
+  socket.emit("stopFlash");
+
+}
+
+</script>
+
+</body>
+</html>
