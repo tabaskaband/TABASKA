@@ -13,7 +13,7 @@ const upcomingEvents = [
     date: "10月24日：(Sat)",
     title: "清和地区星空コンサート",
     venue: "清和小学校校庭特設ステージ",
-    time: "17:30～【TABASKA 時間未定】"
+    time: "17:30～【TABASKA 18:55〜】"
   },
   
   {
