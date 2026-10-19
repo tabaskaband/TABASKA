@@ -23,17 +23,43 @@ const upcomingEvents = [
     time: "Open 18:00／Start 19:00　【TABASKA 19:00～】"
   },
   {
-    date: "11月中旬：(Sat)",
+    date: "11月14日：(Sat)",
     title: "近日公開",
     venue: "",
     time: ""
   },
   {
-    date: "11月中旬：(Sun)",
+    date: "11月15日：(Sun)",
     title: "近日公開",
     venue: "",
     time: ""
   },
+  {
+    date: "12月4日：(Sat)",
+    title: "近日公開",
+    venue: "",
+    time: ""
+  },
+  {
+    date: "12月12日：(Sat)",
+    title: "近日公開",
+    venue: "",
+    time: ""
+  },
+  {
+    date: "12月19日：(Sat)",
+    title: "近日公開",
+    venue: "",
+    time: ""
+  },
+  {
+    date: "12月24日：(Thu)【Christmas Eve】",
+    title: "近日公開",
+    venue: "",
+    time: ""
+  },
+
+  
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
