@@ -53,7 +53,7 @@ const upcomingEvents = [
     time: ""
   },
   {
-    date: "12月24日：(Thu)【Christmas Eve】",
+    date: "12月24日：(Thu)",
     title: "近日公開",
     venue: "",
     time: ""
