@@ -34,30 +34,7 @@ const upcomingEvents = [
     venue: "",
     time: ""
   },
-  {
-    date: "12月4日：(Sat)",
-    title: "近日公開",
-    venue: "",
-    time: ""
-  },
-  {
-    date: "12月12日：(Sat)",
-    title: "近日公開",
-    venue: "",
-    time: ""
-  },
-  {
-    date: "12月19日：(Sat)",
-    title: "近日公開",
-    venue: "",
-    time: ""
-  },
-  {
-    date: "12月24日：(Thu)",
-    title: "近日公開",
-    venue: "",
-    time: ""
-  },
+
 
   
 ];
