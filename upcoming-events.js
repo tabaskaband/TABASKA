@@ -3,12 +3,7 @@
 const upcomingEvents = [
 
 
-  {
-    date: "10月17日：(Sat)",
-    title: "鴨池校区秋まつり",
-    venue: "真砂本町公園",
-    time: "17:00～【TABASKA 20:25～】"
-  },
+
   {
     date: "10月24日：(Sat)",
     title: "清和地区星空コンサート",
