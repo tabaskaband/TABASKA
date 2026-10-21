@@ -6,9 +6,9 @@ const upcomingEvents = [
 
   {
     date: "10月24日：(Sat)",
-    title: "清和地区星空コンサート",
-    venue: "清和小学校校庭特設ステージ",
-    time: "17:30～【TABASKA 18:55〜】"
+    title: "中止：清和地区星空コンサート",
+    venue: "",
+    time: ""
   },
   
   {
@@ -31,9 +31,9 @@ const upcomingEvents = [
   },
   {
     date: "12月5日：(Sat)",
-    title: "",
-    venue: "",
-    time: ""
+    title: "指宿フラワーパーク 冬の星座観察会 Wellcome 演奏",
+    venue: "指宿フラワーパーク ",
+    time: "調整中"
   },
   {
     date: "12月12日：(Sat)",
