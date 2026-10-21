@@ -19,9 +19,9 @@ const upcomingEvents = [
   },
   {
     date: "11月14日：(Sat)",
-    title: "近日公開",
-    venue: "",
-    time: ""
+    title: "～西郷隆盛生誕200年・没後150年カウントダウン記念～第13回わくわく福祉交流フェア",
+    venue: ""かんまちあ,
+    time: "10:00～15:00 【TABASKA　調整中】"
   },
   {
     date: "11月15日：(Sun)",
