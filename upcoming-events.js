@@ -31,7 +31,7 @@ const upcomingEvents = [
   },
   {
     date: "12月5日：(Sat)",
-    title: "近日公開",
+    title: "",
     venue: "",
     time: ""
   },
