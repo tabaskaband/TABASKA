@@ -10,9 +10,9 @@ const upcomingEvents = [
   },
   {
     date: "11月14日：(Sat)",
-    title: "近日公開",
-    venue: "",
-    time: ""
+    title: "クリスマスイルミネーション点灯式",
+    venue: "イオンタウン姶良　東街区屋外さくらの広場",
+    time: "16：00～19：00　【TABASKA 16:00～】"
   },
   {
     date: "11月15日：(Sun)",
