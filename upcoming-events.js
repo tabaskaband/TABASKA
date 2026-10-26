@@ -24,7 +24,7 @@ const upcomingEvents = [
     date: "12月5日：(Sat)",
     title: "指宿フラワーパーク 冬の星座観察会 Wellcome 演奏",
     venue: "指宿フラワーパーク ",
-    time: "調整中"
+    time: "①16:00〜 ②17:45〜 ※変更する場合がありますので、予めご了承ください。"
   },
   {
     date: "12月12日：(Sat)",
