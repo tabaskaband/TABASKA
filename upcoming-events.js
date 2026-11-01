@@ -3,12 +3,6 @@
 const upcomingEvents = [
   
   {
-    date: "10月31日：(Sat)",
-    title: "HALLOWEEN LIVE 2026",
-    venue: "枕崎シェルター",
-    time: "Open 18:00／Start 19:00　【TABASKA 19:00～】"
-  },
-  {
     date: "11月14日：(Sat)",
     title: "クリスマスイルミネーション点灯式",
     venue: "イオンタウン姶良　東街区屋外さくらの広場",
@@ -24,19 +18,19 @@ const upcomingEvents = [
     date: "12月5日：(Sat)",
     title: "冬の星座観察会 Wellcome 演奏",
     venue: "指宿フラワーパーク ",
-    time: "①16:00〜 ②17:45〜 ※変更する場合がありますので、予めご了承ください。"
+    time: "①15:45〜 ②17:45〜 ※変更する場合がありますので、予めご了承ください。"
   },
   {
     date: "12月12日：(Sat)",
-    title: "近日公開",
-    venue: "",
-    time: ""
+    title: "クリスマスコンサート（シークレットライブ）",
+    venue: "姶良市内",
+    time: "14:00～"
   },
   {
     date: "12月19日：(Sat)",
-    title: "近日公開",
-    venue: "",
-    time: ""
+    title: "クリスマスコンサート（シークレットライブ）",
+    venue: "鹿児島市内",
+    time: "15:00〜"
   },
   {
     date: "12月24日：(Thu)",
