@@ -30,7 +30,7 @@ const upcomingEvents = [
     date: "12月19日：(Sat)",
     title: "クリスマスコンサート（シークレットライブ）",
     venue: "鹿児島市内",
-    time: "15:00〜"
+    time: "①15:00〜　②16:00～"
   },
   {
     date: "12月24日：(Thu)",
