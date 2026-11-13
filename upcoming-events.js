@@ -4,7 +4,7 @@ const upcomingEvents = [
   
   {
     date: "11月14日：(Sat)",
-    title: "AIRARIE点灯式",
+    title: "ＡＩＲＡＲＩＥ点灯式",
     venue: "イオンタウン姶良　東街区屋外さくらの広場",
     time: "16：00～18：00　【TABASKA 16:00～】"
   },
