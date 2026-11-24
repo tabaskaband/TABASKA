@@ -2,7 +2,6 @@
 // 公開の許可が出た予定だけ、以下の配列に追加してください。
 const upcomingEvents = [
   
-  
   {
     date: "12月5日：(Sat)",
     title: "フラワーパークイルミネーション２０２６　TABASKA コンサート",
@@ -27,10 +26,7 @@ const upcomingEvents = [
     venue: "",
     time: ""
   },
-
-  
 ];
-
 document.addEventListener("DOMContentLoaded", () => {
   // Aboutの直後にTABASKA紹介動画を追加
   const aboutSection = document.getElementById("about");
@@ -41,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
       <h2>TABASKAを動画で紹介</h2>
       <p style="text-align:center; margin-bottom:20px; color:#94a3b8;">
         音楽で、みんながひとつになる。<br>
-        
       </p>
       <style>
         #tabaska-intro-video .tabaska-intro-video-container {
@@ -78,15 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     aboutSection.insertAdjacentElement("afterend", videoSection);
   }
-
   const container = document.getElementById("upcoming-events");
   if (!container) return;
-
   if (upcomingEvents.length === 0) {
     container.innerHTML = '<div class="upcoming-placeholder">出演予定のイベントは、決まり次第お知らせします。</div>';
     return;
   }
-
   container.innerHTML = upcomingEvents.map(event => `
     <article class="upcoming-card">
       <div class="upcoming-date">${event.date}</div>
