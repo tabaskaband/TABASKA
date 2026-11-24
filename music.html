@@ -140,8 +140,20 @@ gtag('config', 'G-6D7JMXL1LD');
 .stage-group:first-child .stage-title { margin-top: 0; }
 .stage-songs { display: grid; gap: 15px; }
 /* 曲カード基本スタイル（青系） */
-.song-card { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 18px 20px; background: #0f172a; border-radius: 12px; border: 1px solid rgba(148, 163, 184, 0.08); transition: 0.25s ease; }
-.song-card:hover { transform: translateY(-3px); border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
+.song-card { 
+    display: flex; 
+    align-items: flex-start; 
+    justify-content: space-between; 
+    gap: 20px; 
+    padding: 18px 20px; 
+    background: #0f172a; 
+    border-radius: 12px; 
+    border: 1px solid rgba(148, 163, 184, 0.08); 
+    transition: 0.25s ease; }
+.song-card:hover { 
+    transform: translateY(-3px); 
+    border-color: rgba(56, 189, 248, 0.4); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
 .song-info { min-width: 0; flex: 1; }
 .song-title { margin-bottom: 5px; color: #38bdf8; font-size: 1.1rem; font-weight: 600; line-height: 1.4; }
 .song-artist { color: #cbd5e1; font-size: 0.9rem; line-height: 1.4; }
@@ -162,7 +174,14 @@ gtag('config', 'G-6D7JMXL1LD');
     transition: 0.25s ease; }
 .song-link:hover, .medley-link:hover { background: rgba(56, 189, 248, 0.3); color: #38bdf8; }
 .medley-list { margin-top: 12px; padding: 10px 0 2px; border-left: 2px solid rgba(56, 189, 248, 0.35); }
-.medley-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; padding: 7px 0 7px 12px; color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
+.medley-item { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 12px; margin-bottom: 8px; 
+    padding: 7px 0 7px 12px; 
+    color: #cbd5e1; 
+    font-size: 0.9rem; line-height: 1.5; }
 /* STAGE 2以降用のオレンジ系スタイル（カード要素） */
 .song-card.card-orange:hover {
   border-color: rgba(249, 115, 22, 0.5);
@@ -224,13 +243,16 @@ footer { padding: 30px 20px; text-align: center; color: #64748b; font-size: 0.8r
       <a href="index.html" class="sns-btn original-icon" aria-label="TABASKA Official">
         <img src="images/bear_logo.png" alt="TABASKA Bear Logo">
       </a>
-      <a href="https://www.instagram.com/tabaskaband/" target="_blank" rel="noopener noreferrer" class="sns-btn instagram" aria-label="Instagram">
+      <a href="https://www.instagram.com/tabaskaband/" 
+          target="_blank" rel="noopener noreferrer" class="sns-btn instagram" aria-label="Instagram">
         <i class="fa-brands fa-instagram"></i>
       </a>
-      <a href="https://www.youtube.com/@tabaska2025" target="_blank" rel="noopener noreferrer" class="sns-btn youtube" aria-label="YouTube">
+      <a href="https://www.youtube.com/@tabaska2025" 
+          target="_blank" rel="noopener noreferrer" class="sns-btn youtube" aria-label="YouTube">
         <i class="fa-brands fa-youtube"></i>
       </a>
-      <a href="https://www.facebook.com/tabaska.band/" target="_blank" rel="noopener noreferrer" class="sns-btn facebook" aria-label="Facebook">
+      <a href="https://www.facebook.com/tabaska.band/" 
+          target="_blank" rel="noopener noreferrer" class="sns-btn facebook" aria-label="Facebook">
         <i class="fa-brands fa-facebook-f"></i>
       </a>
     </div>
